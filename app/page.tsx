@@ -90,6 +90,13 @@ export default function Home() {
 
       <main className="appMain">
         <section className="introSection" aria-labelledby="intro-title">
+          <figure className="introPortrait">
+            <img
+              src="/images/fredrik-portrait.jpg"
+              alt="Portrett av Fredrik Storheil"
+            />
+          </figure>
+
           <div className="introText">
             <h1 id="intro-title" className="introTitle">
               Produktdesigner
@@ -99,21 +106,13 @@ export default function Home() {
               forretning og hvordan løsninger må fungere når de vokser og
               endrer seg.
             </p>
+            <p className="introBody">
+              Erfaring med å forbedre onboarding, struktur, navigasjon og
+              kjerneflyter i komplekse produkter innen finans, offentlig sektor
+              og datatunge B2B-løsninger.
+            </p>
           </div>
-
-          <figure className="introPortrait">
-            <img
-              src="/fredrik-portrait.jpg"
-              alt="Portrett av Fredrik Storheil"
-            />
-          </figure>
         </section>
-
-        <p className="introBody">
-          Erfaring med å forbedre onboarding, struktur, navigasjon og
-          kjerneflyter i komplekse produkter innen finans, offentlig sektor og
-          datatunge B2B-løsninger.
-        </p>
 
         <section
           className="projectsSection"

@@ -106,6 +106,12 @@ p {
   padding: 8px 16px 16px;
   border-bottom: 1px solid var(--color-border-subtle);
   overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.tabNav::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .tab {
@@ -139,17 +145,12 @@ p {
 }
 
 .introSection {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
+  display: block;
   padding: 0;
 }
 
 .introText {
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: block;
 }
 
 .introTitle {
@@ -160,22 +161,23 @@ p {
 }
 
 .introLead {
-  margin: 0;
+  margin: 16px 0 0;
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
   color: var(--color-text);
+  max-width: 65ch;
 }
 
 .introBody {
-  margin: 0;
+  margin: 16px 0 0;
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
   color: var(--color-text);
+  max-width: 65ch;
 }
 
 .introPortrait {
-  margin: 0;
-  flex: 0 0 auto;
+  margin: 0 0 16px 16px;
   width: 160px;
   height: 160px;
   box-sizing: border-box;
@@ -183,6 +185,7 @@ p {
   background-color: #f2f2f2;
   border: 1px solid var(--color-border-subtle);
   overflow: hidden;
+  float: right;
 }
 
 .introPortrait img {
@@ -245,6 +248,7 @@ p {
   font-size: var(--font-size-body);
   line-height: var(--line-height-card);
   color: var(--color-text);
+  max-width: 65ch;
 }
 
 .projectCta {
@@ -260,6 +264,50 @@ p {
   overflow: hidden;
   background-size: cover;
   background-position: center;
+}
+
+/* Tablet breakpoint */
+@media (min-width: 768px) {
+  .appHeaderInner,
+  .appMain {
+    max-width: 720px;
+  }
+
+  .introSection {
+    max-width: 100%;
+  }
+
+  .projectLink {
+    max-width: 100%;
+  }
+
+  .projectMedia {
+    flex: 0 0 260px;
+  }
+}
+
+/* Desktop breakpoint */
+@media (min-width: 1024px) {
+  .appHeaderInner,
+  .appMain {
+    max-width: 960px;
+  }
+
+  .appMain {
+    padding-inline: 32px;
+  }
+
+  .introSection {
+    gap: 24px;
+  }
+
+  .projectLink {
+    gap: 24px;
+  }
+
+  .projectMedia {
+    flex: 0 0 320px;
+  }
 }
 
 .projectMedia-redq {
