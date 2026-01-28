@@ -39,58 +39,57 @@ export default function Home() {
 
   return (
     <div className="app">
-      <header className="appHeader">
-        <div className="appHeaderTop">
-          <p className="appName">Fredrik Storheil</p>
-        </div>
+      <header className="appHeader" aria-label="Hovednavigasjon">
+        <div className="appHeaderInner">
+          <div className="appHeaderTop">
+            <p className="appName">Fredrik Storheil</p>
+          </div>
 
-        <nav className="tabNav" aria-label="Hovednavigasjon">
-          <Link
-            href="/"
-            className={`tab${isActive("/") ? " tabActive" : ""}`}
-          >
-            Hjem
-          </Link>
-          <Link
-            href="/projects/redq"
-            className={`tab${
-              isActive("/projects/redq") ? " tabActive" : ""
-            }`}
-          >
-            RedQ
-          </Link>
-          <Link
-            href="/projects/chall"
-            className={`tab${
-              isActive("/projects/chall") ? " tabActive" : ""
-            }`}
-          >
-            Chall
-          </Link>
-          <Link
-            href="/projects/ikea"
-            className={`tab${
-              isActive("/projects/ikea") ? " tabActive" : ""
-            }`}
-          >
-            IKEA
-          </Link>
-          <Link
-            href="/projects/senseon"
-            className={`tab${
-              isActive("/projects/senseon") ? " tabActive" : ""
-            }`}
-          >
-            SenseOn
-          </Link>
-        </nav>
+          <nav className="tabNav">
+            <Link
+              href="/"
+              className={`tab${isActive("/") ? " tabActive" : ""}`}
+            >
+              Hjem
+            </Link>
+            <Link
+              href="/projects/redq"
+              className={`tab${
+                isActive("/projects/redq") ? " tabActive" : ""
+              }`}
+            >
+              RedQ
+            </Link>
+            <Link
+              href="/projects/chall"
+              className={`tab${
+                isActive("/projects/chall") ? " tabActive" : ""
+              }`}
+            >
+              Chall
+            </Link>
+            <Link
+              href="/projects/ikea"
+              className={`tab${
+                isActive("/projects/ikea") ? " tabActive" : ""
+              }`}
+            >
+              IKEA
+            </Link>
+            <Link
+              href="/projects/senseon"
+              className={`tab${
+                isActive("/projects/senseon") ? " tabActive" : ""
+              }`}
+            >
+              SenseOn
+            </Link>
+          </nav>
+        </div>
       </header>
 
       <main className="appMain">
-        <section
-          className="introSection"
-          aria-labelledby="intro-title"
-        >
+        <section className="introSection" aria-labelledby="intro-title">
           <div className="introText">
             <h1 id="intro-title" className="introTitle">
               Produktdesigner
@@ -99,11 +98,6 @@ export default function Home() {
               Produktene jeg lager formes med forståelse for mennesker,
               forretning og hvordan løsninger må fungere når de vokser og
               endrer seg.
-            </p>
-            <p className="introBody">
-              Erfaring med å forbedre onboarding, struktur, navigasjon og
-              kjerneflyter i komplekse produkter innen finans, offentlig
-              sektor og datatunge B2B-løsninger.
             </p>
           </div>
 
@@ -114,6 +108,12 @@ export default function Home() {
             />
           </figure>
         </section>
+
+        <p className="introBody">
+          Erfaring med å forbedre onboarding, struktur, navigasjon og
+          kjerneflyter i komplekse produkter innen finans, offentlig sektor og
+          datatunge B2B-løsninger.
+        </p>
 
         <section
           className="projectsSection"
