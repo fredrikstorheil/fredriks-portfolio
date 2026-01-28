@@ -260,7 +260,8 @@ p {
 .projectMedia {
   flex: 0 0 160px;
   height: auto;
-  border-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
   overflow: hidden;
   background-size: cover;
   background-position: center;
