@@ -2,11 +2,21 @@
 
 This file documents project-wide context, major features, milestones, and the database schema.
 
+## Current progress
+
+- Next.js app scaffolded with App Router and global styling in `app/globals.css`.
+- Home page implemented in `app/page.tsx` with:
+  - Header + tab navigation (Hjem, RedQ, Chall, IKEA, SenseOn).
+  - Intro section with portrait image and product designer copy.
+  - Project list/cards for RedQ, Chall, IKEA, SenseOn with links and visual media blocks.
+- Typography updated to use Manrope via `app/layout.tsx`.
+- Mobile layout component drafted in `app/PortfolioMobile.tsx` (not wired into routing yet).
+- Assets added in `public/images/` (portrait) plus default Next.js icons.
+
 ## Database schema
 
-_To be documented as the schema is introduced and evolves._
+No database currently in use.
 
 ## Migrations
 
-_List and describe each migration here as they are added._
-
+No migrations added.
