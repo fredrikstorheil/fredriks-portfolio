@@ -54,7 +54,7 @@ export function PortfolioMobile() {
             <div className="flex-shrink-0">
               <div className="h-[108px] w-[108px] overflow-hidden rounded-2xl bg-[#F5F5F5]">
                 <img
-                  src="/images/fredrik-portrait.png"
+                  src="/public/fredrik-portrait.jpg"
                   alt="Fredrik Storheil"
                   className="h-full w-full object-cover"
                 />
