@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const projects = [
   {
@@ -24,6 +27,16 @@ const projects = [
 ];
 
 export default function Home() {
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname.startsWith(href);
+  };
+
   return (
     <div className="app">
       <header className="appHeader">
@@ -32,19 +45,42 @@ export default function Home() {
         </div>
 
         <nav className="tabNav" aria-label="Hovednavigasjon">
-          <Link href="/" className="tab tabActive">
+          <Link
+            href="/"
+            className={`tab${isActive("/") ? " tabActive" : ""}`}
+          >
             Hjem
           </Link>
-          <Link href="/projects/redq" className="tab">
+          <Link
+            href="/projects/redq"
+            className={`tab${
+              isActive("/projects/redq") ? " tabActive" : ""
+            }`}
+          >
             RedQ
           </Link>
-          <Link href="/projects/chall" className="tab">
+          <Link
+            href="/projects/chall"
+            className={`tab${
+              isActive("/projects/chall") ? " tabActive" : ""
+            }`}
+          >
             Chall
           </Link>
-          <Link href="/projects/ikea" className="tab">
+          <Link
+            href="/projects/ikea"
+            className={`tab${
+              isActive("/projects/ikea") ? " tabActive" : ""
+            }`}
+          >
             IKEA
           </Link>
-          <Link href="/projects/senseon" className="tab">
+          <Link
+            href="/projects/senseon"
+            className={`tab${
+              isActive("/projects/senseon") ? " tabActive" : ""
+            }`}
+          >
             SenseOn
           </Link>
         </nav>

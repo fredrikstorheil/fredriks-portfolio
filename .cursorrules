@@ -1,0 +1,7 @@
+# IMPORTANT:
+
+- Always read `fredriks-portfolio.md` before writing any code.
+- After adding a major feature or completing a milestone, update `fredriks-portfolio.md`.
+- Document the entire database schema in `fredriks-portfolio.md`.
+- For new migrations, make sure to add them to the same file.
+
