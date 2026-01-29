@@ -5,12 +5,13 @@ This file documents project-wide context, major features, milestones, and the da
 ## Current progress
 
 - Next.js app scaffolded with App Router and global styling in `app/globals.css`.
-- Home page implemented in `app/page.tsx` with:
-  - Header + tab navigation (Hjem, RedQ, Chall, IKEA, SenseOn).
+- Home page implemented in `app/(site)/page.tsx` with:
   - Intro section with portrait image and product designer copy.
   - Project list/cards for RedQ, Chall, IKEA, SenseOn with links and visual media blocks.
 - Typography updated to use Manrope via `app/layout.tsx`.
-- Mobile layout component drafted in `app/PortfolioMobile.tsx` (not wired into routing yet).
+- Shared site layout in `app/(site)/layout.tsx` (header + tabs across pages).
+- Project routes scaffolded at `app/(site)/projects/[slug]/page.tsx`.
+- Shared project data in `data/projects.ts` for nav + cards + pages.
 - Assets added in `public/images/` (portrait) plus default Next.js icons.
 
 ## Database schema
