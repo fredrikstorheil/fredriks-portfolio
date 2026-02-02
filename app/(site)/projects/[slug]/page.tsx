@@ -16,33 +16,41 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  const sections = [
-    { title: "Kontekst", items: project.context },
-    { title: "Rolle", items: project.role },
-    { title: "Prosess", items: project.process },
-    { title: "Resultat", items: project.outcome },
-  ];
-
   return (
-    <article className="projectDetail">
-      <header className="projectDetailHeader">
-        <h1 className="projectDetailTitle">{project.title}</h1>
-        <p className="projectDetailSubtitle">{project.subtitle}</p>
-      </header>
+    <div className="projectPage">
+      <div className="projectContent">
+        <h1 className="projectPageTitle">{project.title}</h1>
 
-      {sections.map((section) => (
-        <section key={section.title} className="projectDetailSection">
-          <h2 className="projectDetailHeading">{section.title}</h2>
-          <ul className="projectDetailList">
-            {section.items.map((item) => (
-              <li key={item} className="projectDetailListItem">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
-    </article>
+        <div
+          className={`projectMainPhoto projectMedia-${project.slug}`}
+          aria-label={`${project.title} main image`}
+        >
+          <img
+            className="projectMediaLogo projectMediaLogo--main"
+            src={project.logo}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+        </div>
+
+        <p className="projectBodyText">{project.subtitle}</p>
+
+        {[
+          ...(project.context ?? []),
+          ...(project.role ?? []),
+          ...(project.process ?? []),
+          ...(project.outcome ?? []),
+        ].map((text, idx) => (
+          <div key={idx} style={{ width: "100%", display: "contents" }}>
+            <div className="projectPhoto" aria-hidden="true">
+              <span className="projectPhotoLabel">Bilde</span>
+            </div>
+            <p className="projectBodyText">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 

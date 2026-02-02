@@ -2,6 +2,7 @@ export type Project = {
   slug: string;
   title: string;
   subtitle: string;
+  logo: string;
   context: string[];
   role: string[];
   process: string[];
@@ -13,6 +14,7 @@ export const projects: Project[] = [
     slug: "redq",
     title: "RedQ",
     subtitle: "Datasikkerhet for SMB-markedet",
+    logo: "/images/projects/logo-redq.svg",
     context: [
       "RedQ ønsket å gjøre IT-drift og sikkerhet enklere å forstå og selge til små og mellomstore bedrifter.",
       "Selskapet hadde høy teknisk kompetanse, men tjenestene var organisert som konsulentleveranser og opplevdes lite oversiktlige for ikke-tekniske beslutningstakere.",
@@ -36,6 +38,7 @@ export const projects: Project[] = [
     slug: "chall",
     title: "Chall",
     subtitle: "Gamification i appdesign",
+    logo: "/images/projects/logo-chall.svg",
     context: [
       "Chall ønsket å øke daglig engasjement i appen gjennom tydelige progresjonsløyper og motiverende belønninger.",
       "Målgruppen var unge voksne som trener ujevnt og trenger enkle påminnelser og synlig fremdrift.",
@@ -59,6 +62,7 @@ export const projects: Project[] = [
     slug: "ikea",
     title: "IKEA",
     subtitle: "Digital kommunikasjon på varehuset",
+    logo: "/images/projects/logo-ikea.svg",
     context: [
       "IKEA ønsket bedre digital kommunikasjon i varehuset for å veilede kunder og redusere kø og usikkerhet.",
       "Primære brukere var besøkende som trenger raske svar, samt ansatte som oppdaterer kampanjer og informasjon.",
@@ -82,6 +86,7 @@ export const projects: Project[] = [
     slug: "senseon",
     title: "SenseOn",
     subtitle: "SaaS for ombruk og inventar",
+    logo: "/images/projects/Logo-senseon.svg",
     context: [
       "SenseOn trengte en digital plattform som gjør det enklere å spore inventar og øke ombruk i store organisasjoner.",
       "Brukerne var drift, innkjøp og bærekraftsteam som trenger oversikt, livsløpsdata og friksjonsfri flyt.",

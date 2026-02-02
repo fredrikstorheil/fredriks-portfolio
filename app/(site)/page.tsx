@@ -25,7 +25,10 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="projectsSection" aria-labelledby="projects-title">
+      <section
+        className="projectsSection homeProjectsSection"
+        aria-labelledby="projects-title"
+      >
         <h2 id="projects-title" className="sectionTitle">
           Prosjekter
         </h2>

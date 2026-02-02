@@ -16,7 +16,15 @@ export function ProjectCards() {
             <div
               className={`projectMedia projectMedia-${project.slug}`}
               aria-hidden="true"
-            />
+            >
+              <img
+                className="projectMediaLogo"
+                src={project.logo}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
+            </div>
           </Link>
         </article>
       ))}

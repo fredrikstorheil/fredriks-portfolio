@@ -6,17 +6,20 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="app">
-      <header className="appHeader" aria-label="Hovednavigasjon">
-        <div className="appHeaderInner">
-          <div className="appHeaderTop">
+    <div className="appShell">
+      <header className="appNav" aria-label="Hovednavigasjon">
+        <div className="appNavInner">
+          <div className="appNavTop">
             <p className="appName">Fredrik Storheil</p>
+            <p className="appRole">Produktdesigner</p>
           </div>
           <TabsNav />
         </div>
       </header>
 
-      <main className="appMain">{children}</main>
+      <main className="appMain">
+        <div className="appMainInner">{children}</div>
+      </main>
     </div>
   );
 }

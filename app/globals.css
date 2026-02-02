@@ -58,6 +58,11 @@
   --gap-row: var(--space-lg);
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -77,30 +82,37 @@ p {
   overflow-wrap: normal;
 }
 
-.app {
+.appShell {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--color-bg);
 }
 
-.appHeader {
+.appNav {
   width: 100%;
   border-bottom: 1px solid var(--color-border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--color-bg);
 }
 
-.appHeaderInner {
+.appNavInner {
   width: 100%;
   max-width: none;
   margin: 0;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
-.appHeaderTop {
+.appNavTop {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
   padding: 16px 16px 8px 16px;
-  gap: 8px;
+  gap: 4px;
 }
 
 .appName {
@@ -108,6 +120,14 @@ p {
   font-size: var(--font-size-app-name);
   line-height: var(--line-height-tight);
   font-weight: 600;
+}
+
+.appRole {
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  color: var(--color-text);
 }
 
 .tabNav {
@@ -126,6 +146,9 @@ p {
 }
 
 .tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   background: #e6e6e6;
   color: var(--color-text);
@@ -137,21 +160,45 @@ p {
   border-radius: var(--radius-pill);
   white-space: nowrap;
   cursor: pointer;
+  position: relative;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .tabActive {
-  background-color: #000000;
+  background-color: #1a1a1a;
   color: var(--color-text-inverse);
   font-weight: 700;
+  border-color: currentColor;
+}
+
+.tab:hover {
+  background-color: #dddddd;
+}
+
+.tabActive:hover {
+  background-color: #111111;
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid #1a1a1a;
+  outline-offset: 3px;
 }
 
 .appMain {
   flex: 1;
   width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 16px;
   box-sizing: border-box;
+  padding: 16px;
+  display: block;
+}
+
+.appMainInner {
+  width: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -252,6 +299,14 @@ p {
   border: 1px solid var(--color-border-subtle);
   text-decoration: none;
   color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.projectLink:hover {
+  border-color: #b3b3b3;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 .projectText {
@@ -289,20 +344,48 @@ p {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-size: cover;
   background-position: center;
 }
 
+.projectMediaLogo {
+  width: clamp(64px, 40%, 160px);
+  height: auto;
+  max-height: 70%;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+}
+
 /* Tablet breakpoint */
 @media (min-width: 768px) {
-  .appHeaderInner,
-  .appMain {
+  .appNavInner,
+  .appMainInner {
     max-width: 720px;
     margin: 0 auto;
   }
 
+  .appMain {
+    padding: 24px;
+  }
+
+  .appMainInner {
+    gap: 20px;
+  }
+
   .introSection {
     max-width: 100%;
+  }
+
+  .introTitle,
+  .projectPageTitle,
+  .projectDetailTitle {
+    font-size: 28px;
+    line-height: 1.25;
   }
 
   .projectLink {
@@ -316,38 +399,173 @@ p {
 
 /* Desktop breakpoint */
 @media (min-width: 1024px) {
-  .appHeaderInner,
+  body {
+    overflow: hidden;
+  }
+
+  .appShell {
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  .appNav {
+    flex: 0 0 300px;
+    height: 100vh;
+    border-right: 1px solid var(--color-border-subtle);
+    border-bottom: none;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    overflow: hidden;
+  }
+
+  .appNavInner {
+    height: 100%;
+    padding: 28px 20px;
+    gap: 20px;
+    max-width: none;
+    margin: 0;
+  }
+
+  .appNavTop {
+    padding: 0;
+  }
+
+  .tabNav {
+    flex: 1 1 auto;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    gap: 8px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .tab {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 12px 10px 16px;
+  }
+
   .appMain {
+    padding: 32px;
+    overflow-y: auto;
+    min-height: 0;
+    min-width: 0;
+  }
+
+  .appMainInner {
     max-width: 960px;
+    margin: 0 auto;
+    gap: 24px;
   }
 
   .introSection {
     gap: 24px;
   }
 
+  .introTitle,
+  .projectPageTitle,
+  .projectDetailTitle {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .introLead,
+  .introBody,
+  .projectSubtitle,
+  .projectBodyText,
+  .projectDetailSubtitle,
+  .projectDetailListItem {
+    font-size: 17px;
+  }
+
+  .projectContent {
+    gap: 32px;
+  }
+
   .projectLink {
-    gap: 24px;
+    flex-direction: column;
+    gap: 0;
   }
 
   .projectMedia {
-    flex: 0 0 320px;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 200px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    order: -1;
+  }
+
+  .projectText {
+    padding: 16px;
+    order: 1;
+  }
+
+  .homeProjectsSection .projectList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap-row);
+  }
+
+  .homeProjectsSection .projectCard,
+  .homeProjectsSection .projectLink {
+    height: 100%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .appNav {
+    flex-basis: 320px;
+  }
+
+  .appNavInner {
+    padding: 32px 24px;
+    gap: 24px;
+  }
+
+  .appMain {
+    padding: 48px;
+  }
+
+  .appMainInner {
+    max-width: 1120px;
+    gap: 28px;
+  }
+
+  .introTitle,
+  .projectPageTitle,
+  .projectDetailTitle {
+    font-size: 34px;
+  }
+
+  .projectContent {
+    gap: 36px;
   }
 }
 
 .projectMedia-redq {
   background-color: var(--color-redq-accent);
+  background-image: url("/images/projects/redq-projectimage.jpg");
 }
 
 .projectMedia-chall {
   background-color: var(--color-chall-accent);
+  background-image: url("/images/projects/chall-projectimage.jpg");
 }
 
 .projectMedia-ikea {
   background-color: var(--color-ikea-accent);
+  background-image: url("/images/projects/ikea-projectimage.jpg");
 }
 
 .projectMedia-senseon {
   background-color: var(--color-ikea-accent);
+  background-image: url("/images/projects/senseon-projectimage.jpg");
 }
 
 .projectDetail {
@@ -403,4 +621,90 @@ p {
   line-height: var(--line-height-body);
   color: var(--color-text);
   max-width: 65ch;
+}
+
+.projectPage {
+  width: 100%;
+  background: #f2f2f2;
+}
+
+.projectContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 24px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.projectPageTitle {
+  margin: 0;
+  font-size: 24px;
+  line-height: 33px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.projectBodyText {
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.projectMainPhoto {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-card-md);
+  border: 1px solid var(--color-border-subtle);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.projectMediaLogo--main {
+  width: clamp(96px, 28%, 240px);
+  max-height: 60%;
+}
+
+.projectPhoto {
+  width: 100%;
+  height: 200px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-card-md);
+}
+
+.projectPhotoLabel {
+  font-size: 24px;
+  line-height: 33px;
+  font-weight: 700;
+  color: #f2f2f2;
+}
+
+@media (min-width: 768px) {
+  .projectContent {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .projectContent {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .projectContent {
+    max-width: 1040px;
+  }
 }
