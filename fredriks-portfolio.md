@@ -13,6 +13,7 @@ This file documents project-wide context, major features, milestones, and the da
 - Project routes scaffolded at `app/(site)/projects/[slug]/page.tsx`.
 - Shared project data in `data/projects.ts` for nav + cards + pages.
 - Assets added in `public/images/` (portrait) plus default Next.js icons.
+- Accessibility updates: skip link, `aria-current` for active nav, reduced-motion styles, and improved project media semantics.
 
 ## Database schema
 

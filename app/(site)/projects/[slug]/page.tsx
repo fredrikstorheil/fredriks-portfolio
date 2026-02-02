@@ -21,9 +21,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <div className="projectContent">
         <h1 className="projectPageTitle">{project.title}</h1>
 
-        <div
+        <figure
           className={`projectMainPhoto projectMedia-${project.slug}`}
-          aria-label={`${project.title} main image`}
+          role="img"
+          aria-label={`${project.title} hovedbilde`}
         >
           <img
             className="projectMediaLogo projectMediaLogo--main"
@@ -32,7 +33,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             aria-hidden="true"
             loading="lazy"
           />
-        </div>
+        </figure>
 
         <p className="projectBodyText">{project.subtitle}</p>
 
@@ -42,12 +43,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           ...(project.process ?? []),
           ...(project.outcome ?? []),
         ].map((text, idx) => (
-          <div key={idx} style={{ width: "100%", display: "contents" }}>
+          <section key={idx} className="projectBlock">
             <div className="projectPhoto" aria-hidden="true">
               <span className="projectPhotoLabel">Bilde</span>
             </div>
             <p className="projectBodyText">{text}</p>
-          </div>
+          </section>
         ))}
       </div>
     </div>
