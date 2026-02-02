@@ -9,6 +9,16 @@
   --color-text-inverse: #ffffff;
   --color-border-subtle: #cccccc;
   --color-shadow-soft: rgba(0, 0, 0, 0.06);
+  --color-tab-bg: #e6e6e6;
+  --color-tab-bg-hover: #dddddd;
+  --color-tab-active-bg: #1a1a1a;
+  --color-tab-active-text: #ffffff;
+  --color-focus-ring: #1a1a1a;
+  --color-portrait-bg: #f2f2f2;
+  --color-border-hover: #b3b3b3;
+  --color-photo-bg: #1a1a1a;
+  --color-photo-text: #f2f2f2;
+  color-scheme: light;
 
   /* Accents (tweak as needed) */
   --color-redq-accent: #b21b32;
@@ -56,6 +66,74 @@
   --gap-card-vertical: var(--space-md);
   --gap-list-vertical: var(--space-md);
   --gap-row: var(--space-lg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f1011;
+    --color-surface: #1a1c1e;
+    --color-surface-subtle: #141618;
+    --color-pill-bg: #242628;
+    --color-text: #f2f2f2;
+    --color-text-muted: #c8c8c8;
+    --color-text-inverse: #0f1011;
+    --color-border-subtle: #2c2f32;
+    --color-shadow-soft: rgba(0, 0, 0, 0.4);
+    --color-tab-bg: #222427;
+    --color-tab-bg-hover: #2d3033;
+    --color-tab-active-bg: #f2f2f2;
+    --color-tab-active-text: #0f1011;
+    --color-focus-ring: #f2f2f2;
+    --color-portrait-bg: #1c1f22;
+    --color-border-hover: #3a3d40;
+    --color-photo-bg: #0b0c0d;
+    --color-photo-text: #f2f2f2;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="light"] {
+  --color-bg: #f2f2f2;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f5f5f5;
+  --color-pill-bg: #e5e5e5;
+  --color-text: #1a1a1a;
+  --color-text-muted: #1a1a1a;
+  --color-text-inverse: #ffffff;
+  --color-border-subtle: #cccccc;
+  --color-shadow-soft: rgba(0, 0, 0, 0.06);
+  --color-tab-bg: #e6e6e6;
+  --color-tab-bg-hover: #dddddd;
+  --color-tab-active-bg: #1a1a1a;
+  --color-tab-active-text: #ffffff;
+  --color-focus-ring: #1a1a1a;
+  --color-portrait-bg: #f2f2f2;
+  --color-border-hover: #b3b3b3;
+  --color-photo-bg: #1a1a1a;
+  --color-photo-text: #f2f2f2;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #0f1011;
+  --color-surface: #1a1c1e;
+  --color-surface-subtle: #141618;
+  --color-pill-bg: #242628;
+  --color-text: #f2f2f2;
+  --color-text-muted: #c8c8c8;
+  --color-text-inverse: #0f1011;
+  --color-border-subtle: #2c2f32;
+  --color-shadow-soft: rgba(0, 0, 0, 0.4);
+  --color-tab-bg: #222427;
+  --color-tab-bg-hover: #2d3033;
+  --color-tab-active-bg: #f2f2f2;
+  --color-tab-active-text: #0f1011;
+  --color-focus-ring: #f2f2f2;
+  --color-portrait-bg: #1c1f22;
+  --color-border-hover: #3a3d40;
+  --color-photo-bg: #0b0c0d;
+  --color-photo-text: #f2f2f2;
+  color-scheme: dark;
 }
 
 html,
@@ -109,10 +187,11 @@ p {
 
 .appNavTop {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   padding: 16px 16px 8px 16px;
-  gap: 4px;
+  gap: 12px;
 }
 
 .appName {
@@ -122,12 +201,48 @@ p {
   font-weight: 600;
 }
 
-.appRole {
-  margin: 0;
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 500;
+.themeToggle {
+  flex-shrink: 0;
+  width: 48px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-subtle);
   color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.themeToggle:hover {
+  background: var(--color-surface-subtle);
+  border-color: var(--color-border-hover);
+}
+
+.themeToggleThumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-text);
+  color: var(--color-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.themeToggle--dark .themeToggleThumb {
+  transform: translateX(18px);
+}
+
+.themeToggle:focus-visible {
+  outline: 4px solid var(--color-focus-ring);
+  outline-offset: 4px;
 }
 
 .tabNav {
@@ -150,7 +265,7 @@ p {
   align-items: center;
   justify-content: center;
   border: none;
-  background: #e6e6e6;
+  background: var(--color-tab-bg);
   color: var(--color-text);
   text-decoration: none;
   font-size: var(--font-size-tab);
@@ -167,24 +282,24 @@ p {
 }
 
 .tabActive {
-  background-color: #1a1a1a;
-  color: var(--color-text-inverse);
+  background-color: var(--color-tab-active-bg);
+  color: var(--color-tab-active-text);
   font-weight: 700;
   border-color: currentColor;
 }
 
 .tab:hover {
-  background-color: #dddddd;
+  background-color: var(--color-tab-bg-hover);
 }
 
 .tabActive:hover {
-  background-color: #111111;
+  background-color: var(--color-tab-active-bg);
 }
 
 a:focus-visible,
 button:focus-visible,
 [role="button"]:focus-visible {
-  outline: 4px solid #1a1a1a;
+  outline: 4px solid var(--color-focus-ring);
   outline-offset: 4px;
 }
 
@@ -194,6 +309,7 @@ button:focus-visible,
   box-sizing: border-box;
   padding: 16px;
   display: block;
+  background: var(--color-bg);
 }
 
 .appMainInner {
@@ -202,6 +318,8 @@ button:focus-visible,
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
+  z-index: 1;
 }
 
 .introSection {
@@ -238,7 +356,7 @@ button:focus-visible,
   height: 160px;
   box-sizing: border-box;
   border-radius: 16px;
-  background-color: #f2f2f2;
+  background-color: var(--color-portrait-bg);
   border: 1px solid var(--color-border-subtle);
   overflow: hidden;
   float: right;
@@ -304,7 +422,7 @@ button:focus-visible,
 }
 
 .projectLink:hover {
-  border-color: #b3b3b3;
+  border-color: var(--color-border-hover);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   transform: translateY(-4px);
 }
@@ -624,7 +742,7 @@ button:focus-visible,
 
 .projectPage {
   width: 100%;
-  background: #f2f2f2;
+  background: transparent;
 }
 
 .projectContent {
@@ -642,7 +760,7 @@ button:focus-visible,
   font-size: 24px;
   line-height: 33px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--color-text);
 }
 
 .projectBodyText {
@@ -650,7 +768,7 @@ button:focus-visible,
   font-size: 16px;
   line-height: 22px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: var(--color-text);
 }
 
 .projectMainPhoto {
@@ -675,7 +793,7 @@ button:focus-visible,
 .projectPhoto {
   width: 100%;
   height: 200px;
-  background: #1a1a1a;
+  background: var(--color-photo-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -686,7 +804,7 @@ button:focus-visible,
   font-size: 24px;
   line-height: 33px;
   font-weight: 700;
-  color: #f2f2f2;
+  color: var(--color-photo-text);
 }
 
 @media (min-width: 768px) {

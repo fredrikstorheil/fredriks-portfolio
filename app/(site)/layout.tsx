@@ -1,4 +1,5 @@
 import { TabsNav } from "@/components/nav/tabs-nav";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 export default function SiteLayout({
   children,
@@ -11,7 +12,7 @@ export default function SiteLayout({
         <div className="appNavInner">
           <div className="appNavTop">
             <p className="appName">Fredrik Storheil</p>
-            <p className="appRole">Produktdesigner</p>
+            <ThemeToggle />
           </div>
           <TabsNav />
         </div>
