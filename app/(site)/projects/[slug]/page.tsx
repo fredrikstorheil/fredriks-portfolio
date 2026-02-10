@@ -88,7 +88,6 @@ function renderProjectText(text: string) {
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
-  const projectSubtitle = "Kredittkort for førstegangsbrukere";
 
   if (!project) {
     notFound();
@@ -98,7 +97,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <div className={`projectPage projectPage-${project.slug}`}>
       <div className="projectContent">
         <h1 className="projectPageTitle">{project.title}</h1>
-        <p className="projectBodyText">{projectSubtitle}</p>
+        <p className="projectBodyText">{project.subtitle}</p>
 
         <div className="project-hero">
           <figure
@@ -116,7 +115,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </figure>
         </div>
 
-        <p className="projectBodyText">{project.subtitle}</p>
+        {project.heroText ? (
+          <div className="projectTextBlock">
+            {renderProjectText(project.heroText)}
+          </div>
+        ) : null}
 
         {[
           ...(project.context ?? []),
