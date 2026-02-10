@@ -15,7 +15,7 @@ export const projects: Project[] = [
     title: "Credit Builder",
     subtitle:
       "Gjorde et komplekst kredittkortkonsept forståelig og testbart ved å strukturere produktlogikk og sikre riktige designpremisser.",
-    logo: "/logos/credit-builder.svg",
+    logo: "/images/projects/Credit Builder Card.svg",
     context: [
       "**Kontekst**\nEt kredittkort rettet mot unge voksne med liten kreditthistorikk. Produktet kombinerte onboarding, kredittscore, tier-system, cashback og målsetting i én sammenhengende opplevelse.",
       "**Utfordring**\nÅ få hele systemet til å henge sammen – og gjøre det forståelig.",

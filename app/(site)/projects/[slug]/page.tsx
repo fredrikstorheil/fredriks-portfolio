@@ -18,7 +18,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <div className="projectPage">
+    <div className={`projectPage projectPage-${project.slug}`}>
       <div className="projectContent">
         <h1 className="projectPageTitle">{project.title}</h1>
         <p className="projectBodyText">{projectSubtitle}</p>
