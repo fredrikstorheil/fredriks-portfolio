@@ -968,7 +968,6 @@ button:focus-visible,
 
 .projectList {
   margin: 0;
-  padding-left: 18px;
   display: flex;
   flex-direction: column;
   gap: 8px;
