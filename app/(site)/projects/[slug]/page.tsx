@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { notFound } from "next/navigation";
 
 import { getProjectBySlug, projects } from "@/data/projects";
@@ -10,7 +11,7 @@ type ProjectPageProps = {
 
 function renderProjectText(text: string) {
   const lines = text.split("\n");
-  const elements: JSX.Element[] = [];
+  const elements: ReactElement[] = [];
   let paragraphLines: string[] = [];
   let listItems: string[] = [];
   let elementIndex = 0;
