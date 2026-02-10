@@ -1,4 +1,5 @@
 import { TabsNav } from "@/components/nav/tabs-nav";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 export default function SiteLayout({
   children,
@@ -6,17 +7,23 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="app">
-      <header className="appHeader" aria-label="Hovednavigasjon">
-        <div className="appHeaderInner">
-          <div className="appHeaderTop">
+    <div className="appShell">
+      <a className="skipLink" href="#main-content">
+        Hopp til innhold
+      </a>
+      <header className="appNav" aria-label="Hovednavigasjon">
+        <div className="appNavInner">
+          <div className="appNavTop">
             <p className="appName">Fredrik Storheil</p>
+            <ThemeToggle />
           </div>
           <TabsNav />
         </div>
       </header>
 
-      <main className="appMain">{children}</main>
+      <main id="main-content" className="appMain" tabIndex={-1}>
+        <div className="appMainInner">{children}</div>
+      </main>
     </div>
   );
 }

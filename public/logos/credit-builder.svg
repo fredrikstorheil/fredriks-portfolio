@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="title-credit-builder">
+  <title id="title-credit-builder">Credit Builder logo</title>
+  <rect x="10" y="14" width="44" height="36" rx="6" />
+  <path d="M18 44h10v-10h10v-10h10" />
+  <polyline points="48 24 51 21 54 24" />
+</svg>

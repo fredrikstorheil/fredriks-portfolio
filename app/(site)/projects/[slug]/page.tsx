@@ -8,41 +8,130 @@ type ProjectPageProps = {
   }>;
 };
 
+function renderProjectText(text: string) {
+  const lines = text.split("\n");
+  const elements: JSX.Element[] = [];
+  let paragraphLines: string[] = [];
+  let listItems: string[] = [];
+  let elementIndex = 0;
+
+  const flushParagraph = () => {
+    if (paragraphLines.length === 0) {
+      return;
+    }
+
+    elements.push(
+      <p key={`p-${elementIndex}`} className="projectBodyText">
+        {paragraphLines.join(" ")}
+      </p>
+    );
+    elementIndex += 1;
+    paragraphLines = [];
+  };
+
+  const flushList = () => {
+    if (listItems.length === 0) {
+      return;
+    }
+
+    elements.push(
+      <ul key={`list-${elementIndex}`} className="projectList">
+        {listItems.map((item, idx) => (
+          <li key={`item-${elementIndex}-${idx}`} className="projectListItem">
+            {item}
+          </li>
+        ))}
+      </ul>
+    );
+    elementIndex += 1;
+    listItems = [];
+  };
+
+  lines.forEach((line) => {
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      flushParagraph();
+      flushList();
+      return;
+    }
+
+    const headingMatch = trimmed.match(/^\*\*(.+)\*\*$/);
+    if (headingMatch) {
+      flushParagraph();
+      flushList();
+      elements.push(
+        <h3 key={`h-${elementIndex}`} className="projectSectionTitle">
+          {headingMatch[1]}
+        </h3>
+      );
+      elementIndex += 1;
+      return;
+    }
+
+    if (trimmed.startsWith("- ")) {
+      flushParagraph();
+      listItems.push(trimmed.slice(2));
+      return;
+    }
+
+    paragraphLines.push(trimmed);
+  });
+
+  flushParagraph();
+  flushList();
+
+  return elements;
+}
+
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
+  const projectSubtitle = "Kredittkort for førstegangsbrukere";
 
   if (!project) {
     notFound();
   }
 
-  const sections = [
-    { title: "Kontekst", items: project.context },
-    { title: "Rolle", items: project.role },
-    { title: "Prosess", items: project.process },
-    { title: "Resultat", items: project.outcome },
-  ];
-
   return (
-    <article className="projectDetail">
-      <header className="projectDetailHeader">
-        <h1 className="projectDetailTitle">{project.title}</h1>
-        <p className="projectDetailSubtitle">{project.subtitle}</p>
-      </header>
+    <div className={`projectPage projectPage-${project.slug}`}>
+      <div className="projectContent">
+        <h1 className="projectPageTitle">{project.title}</h1>
+        <p className="projectBodyText">{projectSubtitle}</p>
 
-      {sections.map((section) => (
-        <section key={section.title} className="projectDetailSection">
-          <h2 className="projectDetailHeading">{section.title}</h2>
-          <ul className="projectDetailList">
-            {section.items.map((item) => (
-              <li key={item} className="projectDetailListItem">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
-    </article>
+        <div className="project-hero">
+          <figure
+            className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
+            role="img"
+            aria-label={`${project.title} hovedbilde`}
+          >
+            <img
+              className="projectMediaLogo projectMediaLogo--main"
+              src={project.logo}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+
+        <p className="projectBodyText">{project.subtitle}</p>
+
+        {[
+          ...(project.context ?? []),
+          ...(project.role ?? []),
+          ...(project.process ?? []),
+          ...(project.outcome ?? []),
+        ].map((text, idx) => (
+          <section key={idx} className="projectBlock">
+            <div className="projectPhoto" aria-hidden="true">
+              <span className="projectPhotoLabel">Bilde</span>
+            </div>
+            <div className="projectTextBlock">{renderProjectText(text)}</div>
+          </section>
+        ))}
+      </div>
+    </div>
   );
 }
 
