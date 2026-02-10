@@ -3,7 +3,7 @@ import Link from "next/link";
 import { projects } from "@/data/projects";
 
 export function ProjectCards() {
-  const creditBuilderSubtitle = "Kredittkortkonsept for førstegangsbrukere";
+  const creditBuilderSubtitle = "Kredittkort for førstegangsbrukere";
 
   return (
     <div className="projectList">

@@ -14,26 +14,21 @@ export const projects: Project[] = [
     slug: "credit-builder",
     title: "Credit Builder",
     subtitle:
-      "Gjorde et komplekst kredittkortkonsept forståelig og testbart ved å strukturere produktlogikk og sikre riktige designpremisser.",
+      "Et kredittkort utviklet for unge voksne med liten kreditthistorikk, der kredittscore, medlemsnivåer og belønning er integrert i én operativ bankløsning.",
     logo: "/images/projects/Credit Builder Card.svg",
     context: [
-      "**Kontekst**\nEt kredittkort rettet mot unge voksne med liten kreditthistorikk. Produktet kombinerte onboarding, kredittscore, tier-system, cashback og målsetting i én sammenhengende opplevelse.",
-      "**Utfordring**\nÅ få hele systemet til å henge sammen – og gjøre det forståelig.",
+      "**Produktet**\nCredit Builder ble utviklet som en del av en eksisterende mobilbank.\n\nLøsningen gir brukeren:\n- Oversikt over kredittscore og påvirkningsfaktorer\n- Progresjon gjennom nivåsystem basert på bruk\n- Cashback og forbedrede vilkår ved ansvarlig atferd\n- Full kortadministrasjon i samme grensesnitt\n\nProduktet kobler sammen kredittforståelse og faktisk kortbruk i én sammenhengende opplevelse.",
+      "**Utfordring**\nKredittscore, renter og vilkår kommuniseres ofte i et språk som er vanskelig å forstå for nye brukere.\nMange førstegangsbrukere ser ikke sammenhengen mellom egen atferd og økonomiske konsekvenser.\n\nLøsningen måtte gjøre denne sammenhengen tydelig og konkret.",
     ],
     role: [
-      "**Min rolle**\nProduktdesigner med ansvar for strukturering av brukerreiser, interaksjonsdesign/prototyping og avklaringer rundt scope og premisser.",
-      "**Leveranse**\nDelbare prototyper for review og iterasjon.",
+      "**Min rolle**\nProduktdesigner med ansvar for informasjonsarkitektur, brukerreiser og interaktive prototyper som dannet grunnlag for implementering.",
     ],
     process: [
-      "**Oppdaterte designpremisser**\nAvdekket at mobilbanken hadde nytt design – unngikk at vi bygget på et utdatert visuelt grunnlag.",
-      "**Strukturerte onboarding**\nReduserte kompleksiteten til tre tydelige budskap: forstå kredittscore → tjen belønning → få bedre vilkår.",
-      "**Ryddet i dashboardet**\nPrioriterte kjerneinformasjon og skilte tydelig mellom kortadministrasjon og medlemslogikk.",
-      "**Gjorde løsningen reviewbar**\nBygget strukturerte “happy flows” som muliggjorde presis feedback og små iterasjoner.",
+      "**Løsning**\nLøsningen oversetter kredittspråk til progresjon.\n- Atferd kobles direkte til nivå og fordeler\n- Kredittscore visualiseres med tydelige påvirkningsfaktorer\n- Belønning og vilkår presenteres som resultat av riktig bruk\n- Viktigste informasjon prioriteres i dashboardet\n\nProduktet er bygget for å gjøre kreditt forståelig gjennom struktur, ikke forklaring alene.",
+      "**Struktur**\n- Onboarding: Forklarer hvordan kreditt bygges og hva som påvirker score.\n- Medlemsnivåer: Riktig bruk gir progresjon og konkrete fordeler.\n- Dashboard: Balanse, progresjon og belønning er synlig uten unødvendig kompleksitet.",
     ],
     outcome: [
-      "**Hva endret seg**\nFra funksjonsliste → til tydelig produktarkitektur.",
-      "**Hva endret seg**\nFra fragmentert verdifortelling → til klar progresjon.",
-      "**Hva endret seg**\nFra risiko for utdatert design → til oppdatert og relevant kontekst.",
+      "**Resultat**\n- Strukturert og implementerbar produktarkitektur\n- Tydelig kobling mellom atferd, kredittscore og fordeler\n- Løsningen ble tatt videre og brukt i en operativ bankkontekst",
     ],
   },
   {

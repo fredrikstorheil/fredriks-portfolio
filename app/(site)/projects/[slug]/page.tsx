@@ -8,10 +8,86 @@ type ProjectPageProps = {
   }>;
 };
 
+function renderProjectText(text: string) {
+  const lines = text.split("\n");
+  const elements: JSX.Element[] = [];
+  let paragraphLines: string[] = [];
+  let listItems: string[] = [];
+  let elementIndex = 0;
+
+  const flushParagraph = () => {
+    if (paragraphLines.length === 0) {
+      return;
+    }
+
+    elements.push(
+      <p key={`p-${elementIndex}`} className="projectBodyText">
+        {paragraphLines.join(" ")}
+      </p>
+    );
+    elementIndex += 1;
+    paragraphLines = [];
+  };
+
+  const flushList = () => {
+    if (listItems.length === 0) {
+      return;
+    }
+
+    elements.push(
+      <ul key={`list-${elementIndex}`} className="projectList">
+        {listItems.map((item, idx) => (
+          <li key={`item-${elementIndex}-${idx}`} className="projectListItem">
+            {item}
+          </li>
+        ))}
+      </ul>
+    );
+    elementIndex += 1;
+    listItems = [];
+  };
+
+  lines.forEach((line) => {
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      flushParagraph();
+      flushList();
+      return;
+    }
+
+    const headingMatch = trimmed.match(/^\*\*(.+)\*\*$/);
+    if (headingMatch) {
+      flushParagraph();
+      flushList();
+      elements.push(
+        <h3 key={`h-${elementIndex}`} className="projectSectionTitle">
+          {headingMatch[1]}
+        </h3>
+      );
+      elementIndex += 1;
+      return;
+    }
+
+    if (trimmed.startsWith("- ")) {
+      flushParagraph();
+      listItems.push(trimmed.slice(2));
+      return;
+    }
+
+    paragraphLines.push(trimmed);
+  });
+
+  flushParagraph();
+  flushList();
+
+  return elements;
+}
+
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
-  const projectSubtitle = "Kredittkortkonsept for førstegangsbrukere";
+  const projectSubtitle = "Kredittkort for førstegangsbrukere";
 
   if (!project) {
     notFound();
@@ -51,7 +127,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="projectPhoto" aria-hidden="true">
               <span className="projectPhotoLabel">Bilde</span>
             </div>
-            <p className="projectBodyText">{text}</p>
+            <div className="projectTextBlock">{renderProjectText(text)}</div>
           </section>
         ))}
       </div>
