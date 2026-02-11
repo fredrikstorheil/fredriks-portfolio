@@ -18,12 +18,12 @@ export const projects: Project[] = [
       "Digital infrastruktur for sirkulær ressursforvaltning på tvers av roller og flater.",
     logo: "/logos/resource.svg",
     heroText:
-      "**Utfordring**\nKunden trengte klikkbare prototyper til kundemøter, samtidig som alt måtte være klart for produksjonsoverlevering.\nProduktet besto av fire sammenkoblede løsninger for ulike roller, og uten struktur ville opplevelsen bli fragmentert.\n\nLøsningen måtte sikre konsistens på tvers av flater og gi et tydelig grunnlag for utvikling.",
+      "**Utfordring**\nInventar ble registrert og håndtert manuelt, uten felles struktur eller systemstøtte.\n\nKunden trengte en digital plattform som kunne samle registrering, forvaltning og gjenbruk i én skalerbar SaaS-løsning – på tvers av interne og eksterne roller.",
     context: [
       "**Produktet**\nRe:Source er en plattform for sirkulær ressursforvaltning på tvers av roller og flater.\n\nLøsningen består av:\n- Admin/Backoffice for masterdata og styring av regelverk\n- Intern mobilapp for registrering av inventar og etablering av flåter\n- Kunde-backoffice for administrasjon av flåter og tilgang\n- Kundeapp for registrering av eiendeler og rapportering av vedlikeholdsbehov\n\nProduktet binder sammen drift, forvaltning og kundesiden i én sammenhengende flyt.",
     ],
     role: [
-      "**Min rolle**\nProduktdesigner og UX-lead med ansvar for informasjonsarkitektur, flytdiagrammer for estimering og planlegging, klikkbare prototyper og et designsystem for prototyping og overlevering.",
+      "**Min rolle**\nProduktdesigner og UX-lead med ansvar for informasjonsarkitektur, flytdiagrammer for estimering og planlegging, klikkbare prototyper og et designsystem for prototyping og overlevering.\n\nOppgaven var å levere klikkbare prototyper til kundemøter, samtidig som leveransen måtte være klar for produksjonsoverlevering.",
     ],
     process: [
       "**Løsning**\nLøsningen etablerer en felles arkitektur for fire produkter og gjorde dem demonstrerbare i salg, investor- og kundedemoer.\n- Klikkbare prototyper ble brukt i kundemøter og fungerte som grunnlag for produksjonsoverlevering\n- Alle flyter ble laget med tanke på direkte utvikling og konsistente regler på tvers av roller\n- Et nytt designsystem ble bygget fra bunnen av for gjenbruk på tvers av flater\n- Komponentmønstre ble benchmarket mot component.gallery med fokus på tilgjengelighet og beste praksis\n\nResultatet er en helhetlig produktpakke som fungerer som prototype og byggbart grunnlag.",
