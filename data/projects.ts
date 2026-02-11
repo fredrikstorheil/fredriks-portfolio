@@ -12,6 +12,28 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "resource",
+    title: "Re:Source",
+    subtitle:
+      "Digital infrastruktur for sirkulær ressursforvaltning på tvers av roller og flater.",
+    logo: "/logos/resource.svg",
+    heroText:
+      "**Utfordring**\nKunden trengte klikkbare prototyper til kundemøter, samtidig som alt måtte være klart for produksjonsoverlevering.\nProduktet besto av fire sammenkoblede løsninger for ulike roller, og uten struktur ville opplevelsen bli fragmentert.\n\nLøsningen måtte sikre konsistens på tvers av flater og gi et tydelig grunnlag for utvikling.",
+    context: [
+      "**Produktet**\nRe:Source er en plattform for sirkulær ressursforvaltning på tvers av roller og flater.\n\nLøsningen består av:\n- Admin/Backoffice for masterdata og styring av regelverk\n- Intern mobilapp for registrering av inventar og etablering av flåter\n- Kunde-backoffice for administrasjon av flåter og tilgang\n- Kundeapp for registrering av eiendeler og rapportering av vedlikeholdsbehov\n\nProduktet binder sammen drift, forvaltning og kundesiden i én sammenhengende flyt.",
+    ],
+    role: [
+      "**Min rolle**\nProduktdesigner og UX-lead med ansvar for informasjonsarkitektur, flytdiagrammer for estimering og planlegging, klikkbare prototyper og et designsystem for prototyping og overlevering.",
+    ],
+    process: [
+      "**Løsning**\nLøsningen etablerer en felles arkitektur for fire produkter og gjorde dem demonstrerbare i salg, investor- og kundedemoer.\n- Klikkbare prototyper ble brukt i kundemøter og fungerte som grunnlag for produksjonsoverlevering\n- Alle flyter ble laget med tanke på direkte utvikling og konsistente regler på tvers av roller\n- Et nytt designsystem ble bygget fra bunnen av for gjenbruk på tvers av flater\n- Komponentmønstre ble benchmarket mot component.gallery med fokus på tilgjengelighet og beste praksis\n\nResultatet er en helhetlig produktpakke som fungerer som prototype og byggbart grunnlag.",
+      "**Struktur**\n- Admin/Backoffice: Masterdata, regelverk og tilgangsstyring.\n- Intern mobil: Registrerer inventar og bygger flåter ute i felt.\n- Kunde-backoffice: Administrerer flåter, brukere og rapportering.\n- Kundeapp: Registrerer eiendeler og melder vedlikehold.\n\nAlle produkter deler samme komponentsystem og rollebaserte flyter, slik at data og handlinger henger sammen.",
+    ],
+    outcome: [
+      "**Resultat**\n- Fullt scope levert to uker tidligere enn estimert\n- Bufferen ble brukt til uforutsette avklaringer og til å finjustere og innarbeide nye kundeønsker\n- Overleveringsklart designgrunnlag selv om løsningen ikke ble satt i produksjon",
+    ],
+  },
+  {
     slug: "credit-builder",
     title: "Credit Builder",
     subtitle:
@@ -53,28 +75,6 @@ export const projects: Project[] = [
     ],
     outcome: [
       "**Resultat**\n- MVP med standardisert KPI-struktur og rapporteringsrytme klar for pilot\n- Mindre manuelt arbeid i sammenstilling fordi data kommer i samme format\n- Felles arbeidsflate som gir sporbarhet i oppfølging og ansvar",
-    ],
-  },
-  {
-    slug: "assetcycle",
-    title: "AssetCycle",
-    subtitle:
-      "Plattform for registrering og gjenbruk av inventar på tvers av lokasjoner.",
-    logo: "/logos/assetcycle.svg",
-    heroText:
-      "**Utfordring**\nInventar ble flyttet mellom kontorer uten sporbarhet, og gjenbruk krevde manuell koordinering.\nDet gjorde ansvar uklart og førte til unødvendige innkjøp.\n\nProduktet måtte gjøre status, eierskap og flyt synlig i sanntid.",
-    context: [
-      "**Produktet**\nAssetCycle er en operativ arbeidsflate for inventar og gjenbruk.\n\nLøsningen gir brukeren:\n- Registrering med tilstand, bilder og ansvarlig enhet\n- Søk og oversikt med filter på lokasjon og kategori\n- Flytte- og gjenbruksforespørsler med enkel godkjenning\n- Historikk per objekt for bruk, lagring og omplassering\n\nProduktet gjør inventar håndterbart som en levende ressurs.",
-    ],
-    role: [
-      "**Min rolle**\nProduktdesigner med ansvar for kjerneflyter, UI på desktop og mobil, og designsystem.",
-    ],
-    process: [
-      "**Løsning**\nLøsningen definerer et tydelig livsløp for hvert objekt.\n- Hvert inventar får status fra registrert til i bruk, på lager eller til gjenbruk\n- Flytt og ombruk er egne handlinger med ansvarlig mottaker\n- Tilstand og bilder gir rask vurdering før beslutning\n- Lager og lokasjoner vises som konkrete steder, ikke fritekst\n\nDet gir forutsigbarhet i flyt og eierskap.",
-      "**Struktur**\n- Registrering: Opprett objekt med tilstand og lokasjon.\n- Inventaroversikt: Filtrer, finn og prioriter basert på status.\n- Flytt og gjenbruk: Forespør, godkjenn og bekreft overlevering.",
-    ],
-    outcome: [
-      "**Resultat**\n- Klar produktflyt for registrering, flytt og ombruk\n- Sporbar status og ansvar per objekt i hele livsløpet\n- Designspråk og komponenter som støtter videre utrulling",
     ],
   },
   {
