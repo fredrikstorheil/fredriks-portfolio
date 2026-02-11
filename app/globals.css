@@ -774,11 +774,6 @@ button:focus-visible,
   background-image: url("/images/projects/ikea-projectimage.jpg");
 }
 
-.projectMedia-senseon {
-  background-color: var(--color-ikea-accent);
-  background-image: url("/images/projects/senseon-projectimage.jpg");
-}
-
 .projectMedia-credit-builder {
   background-color: #0b2a44;
   background-image:
