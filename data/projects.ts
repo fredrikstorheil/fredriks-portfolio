@@ -34,47 +34,47 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "portfolio-insight",
+    title: "Portfolio Insight",
+    subtitle:
+      "Rollebasert SaaS for KPI-rapportering og oppfølging av verdidrivere i porteføljeselskaper.",
+    logo: "/logos/portfolio-insight.svg",
+    heroText:
+      "**Utfordring**\nRapportering skjedde i regneark og e-post, uten felles definisjoner eller sporbarhet.\nTall måtte kvalitetssikres manuelt, og beslutninger ble forsinket.\n\nMålet var en felles arbeidsflate som gjør KPI-rapportering konsistent og oppfølging mulig i sanntid.",
+    context: [
+      "**Produktet**\nPortfolio Insight er en rollebasert SaaS-arbeidsflate for investeringsmiljøer og porteføljeselskaper.\n\nLøsningen gir:\n- Standardiserte KPI-maler som gjør tall sammenlignbare\n- Strukturert innrapportering per periode med full sporbarhet\n- Sanntidsoversikt av mål, avvik og verdidrivere\n- Datagrunnlag som kan bygges videre til trend- og prediktiv innsikt",
+    ],
+    role: [
+      "**Min rolle**\nProduktdesigner med ansvar for informasjonsarkitektur, rapporteringsflyt og prototyper for MVP.\n\n- Definerte KPI-maler og inputkrav for sammenlignbarhet\n- Designet rollebaserte visninger for investorer og porteføljeselskaper\n- Spesifiserte krav til logging, validering og kvalitetssikring",
+    ],
+    process: [
+      "**Løsning**\nLøsningen gjør kvalitet på vurderinger målbar og sammenlignbar.\n- Vurderinger benchmarkes mot historiske vurderinger per KPI\n- Valideres mot objektive metrikker og terskelverdier\n- Konsistenssjekk mellom brukere og selskaper flagger avvik\n- Automatiske varsler ved terskelavvik og krav om begrunnelse ved ekstreme vurderinger\n- Alle endringer logges med bruker og tidspunkt",
+      "**Struktur**\nArbeidsflaten følger én standard rytme for innrapportering og oppfølging.\n- Rapportering per selskap og periode med faste felt og definisjoner\n- Driver-oppfølging koblet til KPI-avvik og tiltak\n- Porteføljeoversikt for investeringsmiljø med prioriteringer\n- Selskapsside med historikk, kommentarer og dokumentasjon",
+    ],
+    outcome: [
+      "**Resultat**\n- Raskere beslutninger fordi tall og avvik er synlige i sanntid\n- Høyere datakvalitet gjennom validering og konsistente maler\n- Tydelig ansvar med full sporbarhet på hver innrapportering\n- Skalerbar rapportering på tvers av porteføljeselskaper",
+    ],
+  },
+  {
     slug: "credit-builder",
     title: "Credit Builder",
     subtitle:
       "Kredittkort for unge førstegangsbrukere med integrert kredittscore og belønningssystem.",
     logo: "/images/projects/Credit Builder Card.svg",
     heroText:
-      "**Utfordring**\nKredittscore, renter og vilkår kommuniseres ofte i et språk som er vanskelig å forstå for nye brukere.\nMange førstegangsbrukere ser ikke sammenhengen mellom egen atferd og økonomiske konsekvenser.\n\nLøsningen måtte gjøre denne sammenhengen tydelig og konkret.",
+      "**Utfordring**\nKredittspråk og vilkår er ofte uklare for unge førstegangsbrukere.\nProduktet måtte gjøre sammenhengen mellom atferd og fordeler konkret og trygg i hverdagsbruk.",
     context: [
-      "**Produktet**\nCredit Builder ble utviklet som en del av en eksisterende mobilbank.\n\nLøsningen gir brukeren:\n- Oversikt over kredittscore og påvirkningsfaktorer\n- Progresjon gjennom nivåsystem basert på bruk\n- Cashback og forbedrede vilkår ved ansvarlig atferd\n- Full kortadministrasjon i samme grensesnitt\n\nProduktet kobler sammen kredittforståelse og faktisk kortbruk i én sammenhengende opplevelse.",
+      "**Produktet**\nCredit Builder er et kredittkortkonsept som samler læring, belønning og kortstyring i én helhet.\nFire moduler knytter onboarding, dashboard, nivåsystem og score-overvåking sammen.",
     ],
     role: [
-      "**Min rolle**\nProduktdesigner med ansvar for informasjonsarkitektur, brukerreiser og interaktive prototyper som dannet grunnlag for implementering.",
+      "**Min rolle**\nProduktdesigner med ansvar for produktlogikk, flyt og prototyper.\nDefinerte struktur, innhold og målepunkt for en implementerbar løsning.",
     ],
     process: [
-      "**Løsning**\nLøsningen oversetter kredittspråk til progresjon.\n- Atferd kobles direkte til nivå og fordeler\n- Kredittscore visualiseres med tydelige påvirkningsfaktorer\n- Belønning og vilkår presenteres som resultat av riktig bruk\n- Viktigste informasjon prioriteres i dashboardet\n\nProduktet er bygget for å gjøre kreditt forståelig gjennom struktur, ikke forklaring alene.",
-      "**Struktur**\n- Onboarding: Forklarer hvordan kreditt bygges og hva som påvirker score.\n- Medlemsnivåer: Riktig bruk gir progresjon og konkrete fordeler.\n- Dashboard: Balanse, progresjon og belønning er synlig uten unødvendig kompleksitet.",
+      "**Løsning**\nKredittspråk ble oversatt til konkrete valg og synlige fordeler.\nAtferd påvirker nivå, belønning og vilkår, og score vises med tydelige drivere.\nOnboarding setter verdiene: forstå kreditt, tjen belønning, forbedre vilkår.",
+      "**Struktur**\nFire moduler henger sammen i en progresjon: onboarding, dashboard, nivåsystem og score.\nDashboard samler balanse, score, cashback og fremdrift i ett bilde.\nPrototyper ble brukt til samordning og var klare for videre utvikling.",
     ],
     outcome: [
-      "**Resultat**\n- Strukturert og implementerbar produktarkitektur\n- Tydelig kobling mellom atferd, kredittscore og fordeler\n- Løsningen ble tatt videre og brukt i en operativ bankkontekst",
-    ],
-  },
-  {
-    slug: "portfolio-insight",
-    title: "Portfolio Insight",
-    subtitle:
-      "SaaS for investeringsmiljøer som samler rapportering og KPI-oppfølging i én arbeidsflate.",
-    logo: "/logos/portfolio-insight.svg",
-    heroText:
-      "**Utfordring**\nRapportering foregikk i regneark og e-post, og tallene var vanskelig å sammenligne på tvers av selskap.\nOppfølging ble tidkrevende og lite sporbar.\n\nProduktet måtte gjøre KPI-rapportering konsistent og beslutninger mulig å ta raskt.",
-    context: [
-      "**Produktet**\nPortfolio Insight ble bygget som en felles arbeidsflate for investorer og porteføljeselskaper.\n\nLøsningen gir brukeren:\n- Standardiserte KPI-rapporter per selskap og periode\n- Dashboard med mål, avvik og utvikling over tid\n- Rollebaserte visninger for oversikt og detalj\n- Oppfølgingspunkter knyttet til konkrete tall\n\nProduktet gjør rapportering og oppfølging til én sammenhengende flyt.",
-    ],
-    role: [
-      "**Min rolle**\nProduktdesigner med ansvar for informasjonsarkitektur, dashboardstruktur og prototyper for MVP.",
-    ],
-    process: [
-      "**Løsning**\nLøsningen samler rapportering og oppfølging i et fast rammeverk.\n- KPI-er defineres én gang og brukes likt i alle selskaper\n- Avvik og mål vises først, detaljer ligger bak\n- Oppgaver og kommentarer knyttes til perioder og tall\n- Rollebasert tilgang styrer hva som er synlig og hvem som eier oppfølging\n\nSlik blir tall operative, ikke bare dokumentert.",
-      "**Struktur**\n- Rapportering: Selskap fyller inn KPI-er med tydelige definisjoner.\n- Dashboard: Investor ser portefølje, avvik og prioriterte tiltak.\n- Selskapsside: Historikk og dokumentasjon per KPI-område.",
-    ],
-    outcome: [
-      "**Resultat**\n- MVP med standardisert KPI-struktur og rapporteringsrytme klar for pilot\n- Mindre manuelt arbeid i sammenstilling fordi data kommer i samme format\n- Felles arbeidsflate som gir sporbarhet i oppfølging og ansvar",
+      "**Resultat**\n- Implementerbar produktarkitektur og felles forståelse av kreditt\n- Bedre datagrunnlag for beslutninger gjennom tydelige prototyper\n- Levert to uker før estimat med tid til finjustering",
     ],
   },
   {
@@ -84,19 +84,19 @@ export const projects: Project[] = [
       "Konkurranseplattform for strukturert vurdering og automatisk rangering av bidrag.",
     logo: "/logos/scoreflow.svg",
     heroText:
-      "**Utfordring**\nScoring ble gjennomført ulikt mellom dommere, og reglene var vanskelig å følge i praksis.\nResultater måtte kontrolleres manuelt og var sårbare for feil.\n\nProduktet måtte gjøre vurdering konsistent og beregningene transparente.",
+      "**Utfordring**\nVurderinger ble gjort ulikt og manuelt, med mye tolkning fra dommer til dommer.\nDet skapte usikkerhet rundt rettferdighet og krevde tidkrevende kontroll.\nMålet var ett felles system for konsistent scoring og tydelig resultatgrunnlag.",
     context: [
-      "**Produktet**\nScoreFlow er en vurderingsplattform for innsending, scoring og resultater.\n\nLøsningen gir brukeren:\n- Kriteriesett med skalaer og vekting per kategori\n- Dommerpanel med tildelte bidrag og status\n- Automatisk poengberegning og rangering\n- Resultatsider med grunnlag per kriterium\n\nProduktet gjør regelverk til en konkret arbeidsflyt for dommere og arrangør.",
+      "**Produktet**\nScoreFlow er en plattform som standardiserer vurdering av bidrag mot definerte kriterier.\nDen samler innsending, scoring og resultatvisning i en felles arbeidsflyt.\nFokus er på skalerbar vurdering, sporbarhet og bedre beslutninger.",
     ],
     role: [
-      "**Min rolle**\nProduktdesigner med ansvar for vurderingsflyt, regelsett og resultatvisning.",
+      "**Min rolle**\nProduktdesigner med ansvar for å strukturere scoringslogikk og flyt.\nPrototyperte vurderingsløp og justerte kriterier sammen med fagmiljøet.\nSikret at oppsett, begreper og prioritering hang sammen.",
     ],
     process: [
-      "**Løsning**\nLøsningen oversetter regelverket til faste steg i scoring.\n- Kriterier og vekting defineres før konkurransen starter\n- Dommere vurderer i en strukturert liste med tydelig fremdrift\n- Scoring låses per bidrag og summeres automatisk\n- Tie-breaker-regler håndteres som en del av beregningen\n\nDet gir lik behandling av alle bidrag.",
-      "**Struktur**\n- Innsending: Deltakere leverer bidrag med riktig kategori.\n- Vurdering: Dommere scorer mot kriterier med status per bidrag.\n- Resultater: Rangering, poengsummer og tie-breaker vises tydelig.",
+      "**Løsning**\nScoreFlow gjør scoring lik for alle ved å låse kriterier før vurdering.\nBeregning av poeng skjer automatisk, med synlig grunnlag per bidrag.\nDommerne får en ryddig flyt som reduserer friksjon og skjevhet.",
+      "**Struktur**\nKriterier og skalaer defineres på forhånd.\nReviewer-flyt samler tildelte bidrag, status og fremdrift.\nResultater aggregeres og vises i oversiktlige dashboards.",
     ],
     outcome: [
-      "**Resultat**\n- Konsistent scoring på tvers av dommere og kriterier\n- Automatisk beregning og rangering uten manuelle regneark\n- Robust håndtering av tie-breakers og ufullstendige vurderinger",
+      "**Resultat**\n- Mer konsistent scoring og mindre skjevhet mellom dommere\n- Skalerbar vurdering uten manuelle regneark\n- Tydeligere beslutningsgrunnlag og bedre transparens",
     ],
   },
 ];
