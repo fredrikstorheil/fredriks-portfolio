@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { projects } from "@/data/projects";
+import { ArrowRight } from "@/components/icons";
 
 export function ProjectCards() {
   return (
@@ -11,7 +12,15 @@ export function ProjectCards() {
             <div className="projectText">
               <h3 className="projectTitle">{project.title}</h3>
               <p className="projectSubtitle">{project.subtitle}</p>
-              <span className="projectCta">Se case →</span>
+              <span className="projectCta">
+                Se case
+                <ArrowRight
+                  className="projectCtaIcon"
+                  size={16}
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+              </span>
             </div>
             <div
               className={`projectMedia projectMedia-${project.slug}`}

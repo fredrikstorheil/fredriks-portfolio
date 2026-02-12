@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { projects } from "@/data/projects";
+import { Home } from "@/components/icons";
 
 export function TabsNav() {
   const pathname = usePathname();
@@ -24,12 +25,7 @@ export function TabsNav() {
         aria-current={isActive("/") ? "page" : undefined}
       >
         <span className="tabIcon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="16" height="16" focusable="false">
-            <path
-              d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"
-              fill="currentColor"
-            />
-          </svg>
+          <Home size={16} aria-hidden="true" />
         </span>
         Hjem
       </Link>
