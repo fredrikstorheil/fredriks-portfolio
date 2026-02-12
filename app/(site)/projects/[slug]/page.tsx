@@ -93,6 +93,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const isResource = project.slug === "resource";
+
   return (
     <div className={`projectPage projectPage-${project.slug}`}>
       <div className="projectContent">
@@ -100,19 +102,66 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <p className="projectBodyText">{project.subtitle}</p>
 
         <div className="project-hero">
-          <figure
-            className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
-            role="img"
-            aria-label={`${project.title} hovedbilde`}
-          >
-            <img
-              className="projectMediaLogo projectMediaLogo--main"
-              src={project.logo}
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-            />
-          </figure>
+          {isResource ? (
+            <figure
+              className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
+              role="img"
+              aria-label={`${project.title} hovedbilde`}
+            >
+              <div className="projectMediaGrid" aria-hidden="true">
+                <div className="projectMediaGridItem">
+                  <img
+                    className="projectMediaMockup projectMediaMockup--laptop"
+                    src="/images/projects/resource/SenseOn Backoffice Macbook Mockup.svg"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="projectMediaGridItem">
+                  <img
+                    className="projectMediaMockup projectMediaMockup--phone"
+                    src="/images/projects/resource/Login Mobil Iphone Mockup.svg"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="projectMediaGridItem">
+                  <img
+                    className="projectMediaMockup projectMediaMockup--phone"
+                    src="/images/projects/resource/Kunde Mobil Iphone Mockup.svg"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="projectMediaGridItem">
+                  <img
+                    className="projectMediaMockup projectMediaMockup--laptop"
+                    src="/images/projects/resource/Kunde Backoffice Macbook Mockup.svg"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </figure>
+          ) : (
+            <figure
+              className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
+              role="img"
+              aria-label={`${project.title} hovedbilde`}
+            >
+              <img
+                className="projectMediaLogo projectMediaLogo--main"
+                src={project.logo}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
+            </figure>
+          )}
         </div>
 
         {project.heroText ? (
