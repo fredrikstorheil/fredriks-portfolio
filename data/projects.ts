@@ -16,7 +16,7 @@ export const projects: Project[] = [
     title: "Re:Source",
     subtitle:
       "Digital infrastruktur for sirkulær ressursforvaltning på tvers av roller og flater.",
-    logo: "/logos/resource.svg",
+    logo: "/images/projects/resource/SenseOn Backoffice Macbook Mockup.svg",
     heroText:
       "**Utfordring**\nInventar ble registrert og håndtert manuelt, uten felles struktur eller systemstøtte.\n\nKunden trengte en digital plattform som kunne samle registrering, forvaltning og gjenbruk i én skalerbar SaaS-løsning – på tvers av interne og eksterne roller.",
     context: [
