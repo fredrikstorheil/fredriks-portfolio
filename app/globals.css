@@ -491,9 +491,16 @@ button:focus-visible,
 }
 
 .projectCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: var(--font-size-caption);
   line-height: var(--line-height-body);
   font-weight: 700;
+}
+
+.projectCtaIcon {
+  flex: 0 0 auto;
 }
 
 .projectMedia {
