@@ -9,6 +9,18 @@ export function ProjectCards() {
       {projects.map((project) => (
         <article key={project.slug} className="projectCard">
           <Link href={`/projects/${project.slug}`} className="projectLink">
+            <div
+              className={`projectMedia projectMedia-${project.slug}`}
+              aria-hidden="true"
+            >
+              <img
+                className="projectMediaLogo"
+                src={project.logo}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
+            </div>
             <div className="projectText">
               <h3 className="projectTitle">{project.title}</h3>
               <p className="projectSubtitle">{project.subtitle}</p>
@@ -21,18 +33,6 @@ export function ProjectCards() {
                   aria-hidden="true"
                 />
               </span>
-            </div>
-            <div
-              className={`projectMedia projectMedia-${project.slug}`}
-              aria-hidden="true"
-            >
-              <img
-                className="projectMediaLogo"
-                src={project.logo}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-              />
             </div>
           </Link>
         </article>
