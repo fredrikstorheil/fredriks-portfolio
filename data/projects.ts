@@ -24,20 +24,20 @@ export const projects: Project[] = [
   {
     slug: "resource",
     title: "Re:Source",
-    subtitle: "Digital infrastruktur for sirkulaer ressursforvaltning",
+    subtitle: "Digital infrastruktur for sirkulær ressursforvaltning",
     logo: "/images/projects/resource/SenseOn Backoffice Macbook Mockup.svg",
     signals: {
-      domain: "Sirkulaer drift",
+      domain: "Sirkulær drift",
       caseType: "Plattform",
       keyStrength: "Systemdesign",
     },
     heroText:
-      "Re:Source startet som en ambisjon om aa erstatte manuell inventarhaandtering med en skalerbar plattform for sirkulaer ressursforvaltning.",
+      "Re:Source startet som en ambisjon om å erstatte manuell inventarhåndtering med en skalerbar plattform for sirkulær ressursforvaltning.",
     context: [
       "Data var fragmentert. Prosessene var personavhengige. Plattformen kunne ikke vokse uten struktur.",
     ],
     role: [
-      "Jeg definerte rollelogikk, dataflyt og livssyklus foer visuell detaljering.",
+      "Jeg definerte rollelogikk, dataflyt og livssyklus før visuell detaljering.",
     ],
     process: [
       "Flytdiagrammer avdekket hull tidlig. Designsystem ble bygget med produksjonsklar komponenttenkning.",
@@ -49,7 +49,7 @@ export const projects: Project[] = [
       header: {
         title: "Re:Source",
         intro:
-          "Re:Source gikk fra fragmentert inventarhaandtering til en samlet digital infrastruktur for sirkulaer ressursforvaltning. Caset krevde tydelig rollefordeling, sporbar dataflyt og en struktur som kunne skaleres uten manuelle avhengigheter.",
+          "Re:Source gikk fra fragmentert inventarhåndtering til en samlet digital infrastruktur for sirkulær ressursforvaltning. Caset krevde tydelig rollefordeling, sporbar dataflyt og en struktur som kunne skaleres uten manuelle avhengigheter.",
         role: "Lead produktdesigner",
         team: "1 designer, 2 utviklere, 1 produkteier",
         timeline: "14 uker",
@@ -65,7 +65,7 @@ export const projects: Project[] = [
           "Komponentspesifikasjon",
           "MVP scope",
         ],
-        confidentiality: "Kundenavn og tallnivaa er anonymisert.",
+        confidentiality: "Kundenavn og tallnivå er anonymisert.",
       },
       findings: [
         {
@@ -74,14 +74,14 @@ export const projects: Project[] = [
         },
         {
           title: "Ansvar var fordelt utydelig",
-          body: "Oppgaver ble handtert i epost og regneark uten tydelig eierskap per steg.",
+          body: "Oppgaver ble håndtert i epost og regneark uten tydelig eierskap per steg.",
         },
         {
           title: "Rolleflater var blandet",
           body: "Admin, intern drift og kunde trengte ulike handlinger, men fikk overlappende grensesnitt.",
         },
         {
-          title: "Mangel paa sporbarhet ga risiko",
+          title: "Mangel på sporbarhet ga risiko",
           body: "Endringer i status og lokasjon manglet historikk og kunne ikke spores raskt.",
         },
         {
@@ -94,7 +94,7 @@ export const projects: Project[] = [
         },
       ],
       kpis: [
-        { label: "Tid til registrering", value: "-43%", note: "Malt i intern pilot" },
+        { label: "Tid til registrering", value: "-43%", note: "Målt i intern pilot" },
         {
           label: "Datakompletthet",
           value: "+31 pp",
@@ -108,7 +108,7 @@ export const projects: Project[] = [
         {
           label: "Tidlig leveranse",
           value: "2 uker",
-          note: "Ferdig foer plan",
+          note: "Ferdig før plan",
         },
       ],
       scope: {
@@ -118,7 +118,7 @@ export const projects: Project[] = [
           "Inventarregister med validering",
         ],
         should: [
-          "Sammenligning av objekter pa tvers av enheter",
+          "Sammenligning av objekter på tvers av enheter",
           "Kommentarspor for avvik",
           "Dashbord for status og volum",
         ],
@@ -128,21 +128,21 @@ export const projects: Project[] = [
           "Maler for oppsettsstarter",
         ],
         reasons: {
-          must: "uten dette blir drift ustabil og vanskelig aa skalere",
+          must: "uten dette blir drift ustabil og vanskelig å skalere",
           should: "gir bedre kvalitet i beslutninger og raskere avklaring",
           nice: "gir effektivisering, men er ikke kritisk i første fase",
         },
       },
       flow: {
         overview:
-          "Flyten dekker registrering, intern behandling, kundeoppfoelging og avslutning med tydelige overleveringer.",
+          "Flyten dekker registrering, intern behandling, kundeoppfølging og avslutning med tydelige overleveringer.",
         nodes: [
           {
             id: "capture",
             title: "Registrering",
             description:
               "Objekt blir registrert med strukturert metadata, eierskap og status.",
-            screens: ["Nytt objekt", "Validering", "Koeoversikt"],
+            screens: ["Nytt objekt", "Validering", "Køoversikt"],
           },
           {
             id: "triage",
@@ -153,7 +153,7 @@ export const projects: Project[] = [
           },
           {
             id: "customer",
-            title: "Kundeoppfolging",
+            title: "Kundeoppfølging",
             description:
               "Kunden ser relevant status, kommentarer og neste steg i egen flate.",
             screens: ["Kundeside", "Varsler", "Dokumentasjon"],
@@ -171,7 +171,7 @@ export const projects: Project[] = [
         {
           trigger: "Objekt registreres uten komplett metadata",
           response: "Systemet stopper innsending og markerer manglende felter",
-          rule: "Alle kritiske felter maa valideres foer lagring",
+          rule: "Alle kritiske felter må valideres før lagring",
           consequence: "Reduserer feil og senere manuell opprydding",
         },
         {
@@ -183,8 +183,8 @@ export const projects: Project[] = [
         {
           trigger: "To brukere oppdaterer samme sak samtidig",
           response: "Siste endring blokkeres inntil ny versjon er hentet",
-          rule: "Optimistisk laasing med konfliktmelding",
-          consequence: "Unngaar at oppdateringer overskriver hverandre",
+          rule: "Optimistisk låsing med konfliktmelding",
+          consequence: "Unngår at oppdateringer overskriver hverandre",
         },
       ],
       dataModel: {
@@ -217,11 +217,11 @@ export const projects: Project[] = [
           },
           {
             title: "Rolle styrer handling",
-            body: "Brukere ser bare handlinger de faktisk kan fullfoere.",
+            body: "Brukere ser bare handlinger de faktisk kan fullføre.",
           },
           {
-            title: "Validering foer visning",
-            body: "Systemet stopper ufullstendige data foer de sprer seg i flyten.",
+            title: "Validering før visning",
+            body: "Systemet stopper ufullstendige data før de sprer seg i flyten.",
           },
         ],
       },
@@ -237,7 +237,7 @@ export const projects: Project[] = [
           deliverables: [
             "Problemkart",
             "Prioriteringsmatrise",
-            "Maaldefinisjon",
+            "Måldefinisjon",
           ],
           integrations: ["Ingen, analysefase"],
         },
@@ -302,16 +302,16 @@ export const projects: Project[] = [
         },
       ],
       reflection: [
-        "Systemflyt maa visualiseres tidlig, ellers blir UI avgjoerelser tilfeldige.",
-        "Rollemodell boer avklares foer detaljdesign for aa unngaa omarbeid.",
-        "Tydelig audit-logg reduserer baade feilrate og supportkostnader.",
+        "Systemflyt må visualiseres tidlig, ellers blir UI avgjørelser tilfeldige.",
+        "Rollemodell bør avklares før detaljdesign for å unngå omarbeid.",
+        "Tydelig audit-logg reduserer både feilrate og supportkostnader.",
       ],
     },
   },
   {
     slug: "credit-builder",
     title: "Credit Builder",
-    subtitle: "Kredittkort for foerstegangsbrukere",
+    subtitle: "Kredittkort for førstegangsbrukere",
     logo: "/images/projects/Credit Builder Card.svg",
     signals: {
       domain: "Finans",
@@ -319,24 +319,24 @@ export const projects: Project[] = [
       keyStrength: "Trust by design",
     },
     heroText:
-      "Credit Builder ble utviklet for unge brukere uten kreditthistorikk, med maalet om aa gjoere kreditt forstaaelig og handlingsdrevet.",
+      "Credit Builder ble utviklet for unge brukere uten kreditthistorikk, med målet om å gjøre kreditt forståelig og handlingsdrevet.",
     context: [
-      "Tradisjonelle kort forklarer vilkaar, men viser ikke tydelig hvordan atferd paavirker score og fremtidige vilkaar.",
+      "Tradisjonelle kort forklarer vilkår, men viser ikke tydelig hvordan atferd påvirker score og fremtidige vilkår.",
     ],
     role: [
-      "Jeg strukturerte produktet rundt en tydelig progresjonsmodell, fra forstaaelse til handling og bedre vilkaar.",
+      "Jeg strukturerte produktet rundt en tydelig progresjonsmodell, fra forståelse til handling og bedre vilkår.",
     ],
     process: [
-      "Delbare prototyper ble brukt som beslutningsgrunnlag for baade design og gjennomforing.",
+      "Delbare prototyper ble brukt som beslutningsgrunnlag for både design og gjennomføring.",
     ],
     outcome: [
-      "Caset ga en implementerbar struktur som koblet atferd, score og belonning i samme opplevelse.",
+      "Caset ga en implementerbar struktur som koblet atferd, score og belønning i samme opplevelse.",
     ],
     caseContent: {
       header: {
         title: "Credit Builder",
         intro:
-          "Credit Builder er et kredittkortkonsept for brukere uten etablert kreditthistorikk. Maalet var aa gjore abstrakte begrep konkrete, slik at brukeren forstar sammenhengen mellom atferd, score og bedre vilkaar. Løsningen ble bygget som en modulert mobilbankopplevelse med tydelig progresjon.",
+          "Credit Builder er et kredittkortkonsept for brukere uten etablert kreditthistorikk. Målet var å gjøre abstrakte begrep konkrete, slik at brukeren forstår sammenhengen mellom atferd, score og bedre vilkår. Løsningen ble bygget som en modulert mobilbankopplevelse med tydelig progresjon.",
         role: "Lead produktdesigner",
         team: "1 designer, 3 utviklere, 1 produkteier",
         timeline: "12 uker",
@@ -361,15 +361,15 @@ export const projects: Project[] = [
         },
         {
           title: "Feedback kom for sent",
-          body: "Brukeren saa konsekvenser av atferd for sent, som reduserte laeringseffekt.",
+          body: "Brukeren så konsekvenser av atferd for sent, som reduserte læringseffekt.",
         },
         {
-          title: "Belonning sto utenfor kontekst",
-          body: "Cashback og medlemsniva var ikke knyttet til konkrete handlinger i flyten.",
+          title: "Belønning sto utenfor kontekst",
+          body: "Cashback og medlemsnivå var ikke knyttet til konkrete handlinger i flyten.",
         },
         {
           title: "Onboarding var for generell",
-          body: "Foerste steg manglet differensiering mellom nye og erfarne kortbrukere.",
+          body: "Første steg manglet differensiering mellom nye og erfarne kortbrukere.",
         },
         {
           title: "Score ble presentert uten anbefaling",
@@ -385,19 +385,19 @@ export const projects: Project[] = [
         },
         {
           title: "Sammenheng ga motivasjon",
-          body: "Nar handling, progresjon og belonning ble koblet, økte fullforingsgrad i testflyt.",
+          body: "Når handling, progresjon og belønning ble koblet, økte fullføringsgrad i testflyt.",
         },
       ],
       kpis: [
         {
-          label: "Onboarding fullforing",
+          label: "Onboarding fullføring",
           value: "+26%",
-          note: "Malt i prototype-test",
+          note: "Målt i prototype-test",
         },
         {
-          label: "Forstaelighet APR",
+          label: "Forståelighet APR",
           value: "+34 pp",
-          note: "Indikator, testspoersmaal",
+          note: "Indikator, testspørsmål",
         },
         {
           label: "Aktive score-sjekker",
@@ -405,43 +405,43 @@ export const projects: Project[] = [
           note: "Indikator, uke 1",
         },
         {
-          label: "Tid til foerste handling",
+          label: "Tid til første handling",
           value: "-39%",
-          note: "Malt i onboardingflyt",
+          note: "Målt i onboardingflyt",
         },
       ],
       scope: {
         must: [
           "Onboarding med tydelig forventning",
           "Scorekort med forklarende tiltak",
-          "Belonningsmodell koblet til atferd",
+          "Belønningsmodell koblet til atferd",
         ],
         should: [
-          "Nivaprogram med synlig progresjon",
+          "Nivåprogram med synlig progresjon",
           "Scenarioforklaring for renteendring",
           "Samlet kortadministrasjon",
         ],
         nice: [
-          "Personlige tips basert pa mønster",
+          "Personlige tips basert på mønster",
           "Push-varsler med prediksjon",
           "Ekstern benchmark i anonymisert form",
         ],
         reasons: {
-          must: "uten disse modulene forstar brukeren ikke hvordan kreditt faktisk bygges",
+          must: "uten disse modulene forstår brukeren ikke hvordan kreditt faktisk bygges",
           should: "disse styrker beslutningskvalitet og reduserer feilbruk",
-          nice: "disse oker motivasjon, men kan fases inn etter validering",
+          nice: "disse øker motivasjon, men kan fases inn etter validering",
         },
       },
       flow: {
         overview:
-          "Flyten er bygget som en laeringssløyfe, fra onboarding til daglig handling og periodisk evaluering.",
+          "Flyten er bygget som en læringssløyfe, fra onboarding til daglig handling og periodisk evaluering.",
         nodes: [
           {
             id: "start",
             title: "Onboarding",
             description:
-              "Brukeren velger maal, setter risikoprofil og ser hvordan handlinger paavirker score.",
-            screens: ["Maalvalg", "Kortvilkaar", "Foerste anbefaling"],
+              "Brukeren velger mål, setter risikoprofil og ser hvordan handlinger påvirker score.",
+            screens: ["Målvalg", "Kortvilkår", "Første anbefaling"],
           },
           {
             id: "dashboard",
@@ -452,14 +452,14 @@ export const projects: Project[] = [
           },
           {
             id: "tier",
-            title: "Medlemsniva",
+            title: "Medlemsnivå",
             description:
-              "Brukeren ser progresjon mot neste niva og hvilke handlinger som utloeser belonning.",
-            screens: ["Nivaaoversikt", "Regler", "Belonning"],
+              "Brukeren ser progresjon mot neste nivå og hvilke handlinger som utløser belønning.",
+            screens: ["Nivåoversikt", "Regler", "Belønning"],
           },
           {
             id: "score",
-            title: "Scoreoppfolging",
+            title: "Scoreoppfølging",
             description:
               "Periodiske scoreoppdateringer kobles til konkrete hendelser i forrige periode.",
             screens: ["Scorehistorikk", "Forklaring", "Neste steg"],
@@ -468,15 +468,15 @@ export const projects: Project[] = [
       },
       exceptions: [
         {
-          trigger: "Bruker betaler under minimumsbelop",
-          response: "Systemet viser direkte effekt paa score og anbefaler korrigerende handling",
+          trigger: "Bruker betaler under minimumsbeløp",
+          response: "Systemet viser direkte effekt på score og anbefaler korrigerende handling",
           rule: "Kritisk avvik krever synlig advarsel og neste steg",
           consequence: "Reduserer risiko for gjentatt feiladferd",
         },
         {
           trigger: "Bruker passerer kredittutnyttelse over terskel",
           response: "Dashboard prioriterer tiltak som demper negativ scoreeffekt",
-          rule: "Tiltak med hoyest effekt vises først",
+          rule: "Tiltak med høyest effekt vises først",
           consequence: "Bedre beslutning under tidspress",
         },
         {
@@ -489,7 +489,7 @@ export const projects: Project[] = [
           trigger: "Bruker hopper over onboardingsteg",
           response: "Flyten tilbyr komprimert versjon med minstekrav",
           rule: "Kritisk informasjon kan ikke utelates",
-          consequence: "Opprettholder kvalitet uten a tvinge lang flyt",
+          consequence: "Opprettholder kvalitet uten å tvinge lang flyt",
         },
       ],
       dataModel: {
@@ -497,14 +497,14 @@ export const projects: Project[] = [
           {
             name: "Brukerprofil",
             description:
-              "Personlige maal, risikoprofil og preferanser som styrer anbefalinger.",
-            relations: ["Har mange handlinger", "Har ett aktivt medlemsniva"],
+              "Personlige mål, risikoprofil og preferanser som styrer anbefalinger.",
+            relations: ["Har mange handlinger", "Har ett aktivt medlemsnivå"],
           },
           {
             name: "Kreditthendelse",
             description:
               "Registrerer betaling, utnyttelse, forfall og avvik med tidsstempel.",
-            relations: ["Tilhører brukerprofil", "Paavirker score"],
+            relations: ["Tilhører brukerprofil", "Påvirker score"],
           },
           {
             name: "ScoreSnapshot",
@@ -513,15 +513,15 @@ export const projects: Project[] = [
             relations: ["Bygges av kreditthendelser", "Kobles til anbefaling"],
           },
           {
-            name: "Medlemsniva",
+            name: "Medlemsnivå",
             description:
-              "Regelsett for progresjon, belonning og vilkaar per niva.",
+              "Regelsett for progresjon, belønning og vilkår per nivå.",
             relations: ["Har mange terskler", "Kobles til brukerprofil"],
           },
         ],
         principles: [
           {
-            title: "Forklarbarhet foerst",
+            title: "Forklarbarhet først",
             body: "Alle viktige scoreendringer skal kunne forklares i klar tekst.",
           },
           {
@@ -530,16 +530,16 @@ export const projects: Project[] = [
           },
           {
             title: "Progressiv tillit",
-            body: "Brukeren faar mer avansert innsikt etter hvert som forstaaelsen øker.",
+            body: "Brukeren får mer avansert innsikt etter hvert som forståelsen øker.",
           },
         ],
       },
       buildPlan: [
         {
-          phase: "Problemforstaaelse og modell",
+          phase: "Problemforståelse og modell",
           duration: "2 uker",
           goals: [
-            "Avdekke hovedbarrierer i kredittforstaaelse",
+            "Avdekke hovedbarrierer i kredittforståelse",
             "Definere nordstjerneflyt",
             "Forankre prioriteringskriterier",
           ],
@@ -552,20 +552,20 @@ export const projects: Project[] = [
           goals: [
             "Bygge onboarding og dashboard",
             "Koble handling til scoreeffekt",
-            "Teste forstaelighet i prototype",
+            "Teste forståelighet i prototype",
           ],
           deliverables: ["Lo-fi prototyper", "Designregler", "Testoppsett"],
           integrations: ["Kredittmotor", "Kundedata API"],
         },
         {
-          phase: "Nivaa og belonning",
+          phase: "Nivå og belønning",
           duration: "3 uker",
           goals: [
             "Definere progresjonsregler",
-            "Synliggjore cashbacklogikk",
+            "Synliggjøre cashbacklogikk",
             "Validere edge cases",
           ],
-          deliverables: ["Nivaamodel", "Belonningskort", "Feilhåndtering"],
+          deliverables: ["Nivåmodell", "Belønningskort", "Feilhåndtering"],
           integrations: ["Lojalitetsmotor", "Varslingssystem"],
         },
         {
@@ -601,10 +601,10 @@ export const projects: Project[] = [
         },
       ],
       reflection: [
-        "APR og atferd boer kobles enda tidligere i onboarding.",
+        "APR og atferd bør kobles enda tidligere i onboarding.",
         "Forklaringslag for score endring er avgjørende for tillit.",
-        "Nivaaprogrammet fungerer best nar progresjon vises som konkrete steg.",
-        "Mikrocopy rundt risiko boer testes med flere brukersegmenter.",
+        "Nivåprogrammet fungerer best når progresjon vises som konkrete steg.",
+        "Mikrocopy rundt risiko bør testes med flere brukersegmenter.",
       ],
     },
   },
@@ -623,7 +623,7 @@ export const projects: Project[] = [
     context: [
       "Rapportering foregikk i regneark og epost, med lav sammenlignbarhet og fragmentert beslutningsgrunnlag.",
     ],
-    role: ["Jeg definerte driverlogikk, rolleflater og valideringsregler foer visuell detaljering."],
+    role: ["Jeg definerte driverlogikk, rolleflater og valideringsregler før visuell detaljering."],
     process: [
       "Systemet fikk historisk sammenligning, peer-avviksvarsler og kommentarplikt ved ekstreme vurderinger.",
     ],
@@ -634,7 +634,7 @@ export const projects: Project[] = [
       header: {
         title: "Portfolio Insight",
         intro:
-          "Portfolio Insight ble laget for investormiljo med mange porteføljeselskaper og ulik rapporteringsmodenhet. Maalet var en felles struktur for KPI, verdidrivere og avviksbehandling, slik at beslutninger tas paa sammenlignbare data.",
+          "Portfolio Insight ble laget for investormiljø med mange porteføljeselskaper og ulik rapporteringsmodenhet. Målet var en felles struktur for KPI, verdidrivere og avviksbehandling, slik at beslutninger tas på sammenlignbare data.",
         role: "Lead produktdesigner",
         team: "1 designer, 4 utviklere, 1 analyseansvarlig",
         timeline: "16 uker",
@@ -663,10 +663,10 @@ export const projects: Project[] = [
         },
         {
           title: "Rollebehov var ulike",
-          body: "Investor og selskap trengte forskjellig detaljniva i samme datasett.",
+          body: "Investor og selskap trengte forskjellig detaljnivå i samme datasett.",
         },
         {
-          title: "Historikk var vanskelig aa lese",
+          title: "Historikk var vanskelig å lese",
           body: "Manuell sammenstilling gjorde trendtolkning treg og sårbar for feil.",
         },
         {
@@ -675,14 +675,14 @@ export const projects: Project[] = [
         },
         {
           title: "Terskler var udefinerte",
-          body: "Uklare varslingsgrenser ga for mange eller for faa avviksalarmer.",
+          body: "Uklare varslingsgrenser ga for mange eller for få avviksalarmer.",
         },
       ],
       kpis: [
         {
           label: "Rapporteringssyklus",
           value: "-37%",
-          note: "Malt i pilotperiode",
+          note: "Målt i pilotperiode",
         },
         {
           label: "Komplette innsendelser",
@@ -692,12 +692,12 @@ export const projects: Project[] = [
         {
           label: "Avvik med kommentar",
           value: "94%",
-          note: "Malt etter regelinnforing",
+          note: "Målt etter regelinnføring",
         },
         {
           label: "Tid til beslutning",
           value: "-22%",
-          note: "Indikator, komitemote",
+          note: "Indikator, komitemøte",
         },
       ],
       scope: {
@@ -724,7 +724,7 @@ export const projects: Project[] = [
       },
       flow: {
         overview:
-          "Prosessen gaar fra datainnsending og validering til avviksbehandling og investorklargjort innsikt.",
+          "Prosessen går fra datainnsending og validering til avviksbehandling og investorklargjort innsikt.",
         nodes: [
           {
             id: "submit",
@@ -737,14 +737,14 @@ export const projects: Project[] = [
             id: "validate",
             title: "Validering",
             description:
-              "Systemet sammenligner historikk, peers og terskler foer data godkjennes.",
+              "Systemet sammenligner historikk, peers og terskler før data godkjennes.",
             screens: ["Avvikspanel", "Kommentar", "Godkjenning"],
           },
           {
             id: "review",
             title: "Vurdering",
             description:
-              "Investor gjennomgar drivere, avvik og forklaringer med prioritering.",
+              "Investor gjennomgår drivere, avvik og forklaringer med prioritering.",
             screens: ["Drivervisning", "KPI-kort", "Notater"],
           },
           {
@@ -752,7 +752,7 @@ export const projects: Project[] = [
             title: "Beslutning",
             description:
               "Resultatet brukes i komite med eksportert beslutningsunderlag.",
-            screens: ["Beslutningspakke", "Oppfolging"],
+            screens: ["Beslutningspakke", "Oppfølging"],
           },
         ],
       },
@@ -761,16 +761,16 @@ export const projects: Project[] = [
           trigger: "Ekstrem KPI-endring uten kommentar",
           response: "Innsending stoppes inntil begrunnelse er lagt inn",
           rule: "Kommentarplikt ved terskelbrudd",
-          consequence: "Hoeyere kvalitet i avviksanalyse",
+          consequence: "Høyere kvalitet i avviksanalyse",
         },
         {
           trigger: "Historikk mangler for ny KPI",
           response: "KPI merkes som oppstart med alternativ benchmark",
-          rule: "Nye KPI-er maa ha baseline-regel",
-          consequence: "Unngaar feil tolkning av trend",
+          rule: "Nye KPI-er må ha baseline-regel",
+          consequence: "Unngår feil tolkning av trend",
         },
         {
-          trigger: "Rolle uten tilgang forsoker aa godkjenne",
+          trigger: "Rolle uten tilgang forsøker å godkjenne",
           response: "Handling avvises og logges",
           rule: "Kun godkjennerrolle kan signere periode",
           consequence: "Sterkere styring og revisjonsspor",
@@ -779,7 +779,7 @@ export const projects: Project[] = [
       dataModel: {
         entities: [
           {
-            name: "Portefoljeselskap",
+            name: "Porteføljeselskap",
             description: "Rapporterende enhet med egne KPI-sett og perioder.",
             relations: ["Har mange KPI-innsendinger", "Har en rollemodell"],
           },
@@ -802,7 +802,7 @@ export const projects: Project[] = [
         principles: [
           {
             title: "Lik definisjon for alle",
-            body: "En KPI skal ha samme betydning pa tvers av selskap.",
+            body: "En KPI skal ha samme betydning på tvers av selskap.",
           },
           {
             title: "Avvik krever kontekst",
@@ -810,7 +810,7 @@ export const projects: Project[] = [
           },
           {
             title: "Rollebasert klarhet",
-            body: "Brukere ser data i detaljniva som passer ansvaret deres.",
+            body: "Brukere ser data i detaljnivå som passer ansvaret deres.",
           },
         ],
       },
@@ -851,7 +851,7 @@ export const projects: Project[] = [
         {
           phase: "Pilot og kalibrering",
           duration: "3 uker",
-          goals: ["Kjore pilot", "Tette valideringshull", "Planlegge neste release"],
+          goals: ["Kjøre pilot", "Tette valideringshull", "Planlegge neste release"],
           deliverables: ["Pilotfunn", "Justerte terskler", "Backlog"],
           integrations: ["Analyse events"],
         },
@@ -877,9 +877,9 @@ export const projects: Project[] = [
         },
       ],
       reflection: [
-        "Terskeldefinisjon boer forankres enda tidligere med domeneeksperter.",
-        "Kommentarplikt ved avvik gir tydelig kvalitetsløft i beslutningsmoter.",
-        "Rolleflater reduserer stoy og oker handlingshastighet.",
+        "Terskeldefinisjon bør forankres enda tidligere med domeneeksperter.",
+        "Kommentarplikt ved avvik gir tydelig kvalitetsløft i beslutningsmøter.",
+        "Rolleflater reduserer støy og øker handlingshastighet.",
       ],
     },
   },
@@ -909,7 +909,7 @@ export const projects: Project[] = [
       header: {
         title: "ScoreFlow",
         intro:
-          "ScoreFlow ble utviklet for aa redusere bias og feil i manuell konkurransescoring. Caset fokuserte pa kriterielogikk, vekting og transparent aggregasjon slik at resultatet blir konsistent, uavhengig av hvem som scorer.",
+          "ScoreFlow ble utviklet for å redusere bias og feil i manuell konkurransescoring. Caset fokuserte på kriterielogikk, vekting og transparent aggregasjon slik at resultatet blir konsistent, uavhengig av hvem som scorer.",
         role: "Produktdesigner",
         team: "1 designer, 2 utviklere, 1 fagansvarlig",
         timeline: "10 uker",
@@ -933,7 +933,7 @@ export const projects: Project[] = [
         },
         {
           title: "Vekting var lite transparent",
-          body: "Deltakere og arrangor forsto ikke hvordan totalscore ble beregnet.",
+          body: "Deltakere og arrangør forsto ikke hvordan totalscore ble beregnet.",
         },
         {
           title: "Tie-breakers var manuelle",
@@ -945,15 +945,15 @@ export const projects: Project[] = [
         },
         {
           title: "Audit trail manglet",
-          body: "Det var vanskelig aa etterproeve hvem som gjorde hva.",
+          body: "Det var vanskelig å etterprøve hvem som gjorde hva.",
         },
         {
           title: "Felles arbeidsflate reduserte feil",
-          body: "Samlet prosess for innlegging, beregning og review reduserte manuell overforing.",
+          body: "Samlet prosess for innlegging, beregning og review reduserte manuell overføring.",
         },
       ],
       kpis: [
-        { label: "Tid per bidrag", value: "-28%", note: "Malt i pilot" },
+        { label: "Tid per bidrag", value: "-28%", note: "Målt i pilot" },
         {
           label: "Vurderingsavvik",
           value: "-19%",
@@ -967,7 +967,7 @@ export const projects: Project[] = [
         {
           label: "Feil i summering",
           value: "0",
-          note: "Malt i testsett",
+          note: "Målt i testsett",
         },
       ],
       scope: {
@@ -1000,7 +1000,7 @@ export const projects: Project[] = [
             id: "setup",
             title: "Oppsett",
             description:
-              "Arrangor definerer kriterier, vekter og tie-breaker-regler foer runden starter.",
+              "Arrangør definerer kriterier, vekter og tie-breaker-regler før runden starter.",
             screens: ["Kriterieoppsett", "Vekter", "Regelkontroll"],
           },
           {
@@ -1021,7 +1021,7 @@ export const projects: Project[] = [
             id: "review",
             title: "Review",
             description:
-              "Panelleder gjennomgar logg og godkjenner endelig resultat.",
+              "Panelleder gjennomgår logg og godkjenner endelig resultat.",
             screens: ["Audit-logg", "Godkjenning"],
           },
         ],
@@ -1030,13 +1030,13 @@ export const projects: Project[] = [
         {
           trigger: "Dommer sender inn uten alle kriterier",
           response: "Systemet blokkerer innsending og markerer mangler",
-          rule: "Alle kriterier er paakrevd",
-          consequence: "Lik datakvalitet pa tvers av dommere",
+          rule: "Alle kriterier er påkrevd",
+          consequence: "Lik datakvalitet på tvers av dommere",
         },
         {
-          trigger: "To bidrag faar identisk totalscore",
+          trigger: "To bidrag får identisk totalscore",
           response: "Tie-breaker-regel anvendes automatisk",
-          rule: "Forhaandsdefinert tie-break prioriteres",
+          rule: "Forhåndsdefinert tie-break prioriteres",
           consequence: "Rask og forutsigbar rangering",
         },
         {
@@ -1079,8 +1079,8 @@ export const projects: Project[] = [
             body: "Totalscore skal kunne spores tilbake til enkeltvurderinger.",
           },
           {
-            title: "Regelbasert avvikshandtering",
-            body: "Store avvik skal utlose standardisert review.",
+            title: "Regelbasert avvikshåndtering",
+            body: "Store avvik skal utløse standardisert review.",
           },
         ],
       },
@@ -1105,7 +1105,7 @@ export const projects: Project[] = [
           goals: [
             "Bygge resultatmotor",
             "Implementere tie-break",
-            "Synliggjore avvik",
+            "Synliggjøre avvik",
           ],
           deliverables: ["Resultatvisning", "Avvikspanel", "Audit-logg"],
           integrations: ["Analyse", "Eksport"],
@@ -1113,7 +1113,7 @@ export const projects: Project[] = [
         {
           phase: "Kvalitetssikring",
           duration: "2 uker",
-          goals: ["Koere testsett", "Lukke avvik", "Dokumentere videre"],
+          goals: ["Kjøre testsett", "Lukke avvik", "Dokumentere videre"],
           deliverables: ["Testfunn", "Justering", "Release-notat"],
           integrations: ["Supportkanal"],
         },
@@ -1133,8 +1133,8 @@ export const projects: Project[] = [
         },
       ],
       reflection: [
-        "Kalibreringsmodus boer testes i flere dommerpaneler.",
-        "Terskler for avvik maa eies tydelig av fagansvarlig.",
+        "Kalibreringsmodus bør testes i flere dommerpaneler.",
+        "Terskler for avvik må eies tydelig av fagansvarlig.",
         "Audit-logg er kritisk for tillit i etterkant av konkurranser.",
       ],
     },

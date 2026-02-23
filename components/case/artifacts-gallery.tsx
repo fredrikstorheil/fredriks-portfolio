@@ -109,7 +109,7 @@ export function ArtifactsGallery({ artifacts }: ArtifactsGalleryProps) {
               target="_blank"
               rel="noreferrer"
             >
-              Apne artefakt
+              Åpne artefakt
             </a>
           </div>
         </div>

@@ -13,7 +13,7 @@ export function Scoreboard({ kpis }: ScoreboardProps) {
 
   return (
     <CaseSection
-      title="Maltavle"
+      title="Måltavle"
       lede="Tall som ble brukt til kalibrering av effekt og retning."
       variant="subtle"
     >
