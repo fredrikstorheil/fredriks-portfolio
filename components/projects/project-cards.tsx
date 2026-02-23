@@ -21,6 +21,13 @@ export function ProjectCards() {
                 loading="lazy"
               />
             </div>
+
+            <div className="projectSignals" aria-label="Prosjektsignaler">
+              <span className="projectSignalChip">{project.signals.domain}</span>
+              <span className="projectSignalChip">{project.signals.caseType}</span>
+              <span className="projectSignalChip">{project.signals.keyStrength}</span>
+            </div>
+
             <div className="projectText">
               <h3 className="projectTitle">{project.title}</h3>
               <p className="projectSubtitle">{project.subtitle}</p>

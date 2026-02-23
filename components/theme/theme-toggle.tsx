@@ -14,18 +14,29 @@ function getSystemTheme() {
     : "light";
 }
 
+function getInitialTheme(): Theme {
+  if (typeof window === "undefined") {
+    return "light";
+  }
+
+  const stored = localStorage.getItem(storageKey);
+  if (stored === "light" || stored === "dark") {
+    return stored;
+  }
+
+  return getSystemTheme();
+}
+
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
-    const stored = localStorage.getItem(storageKey);
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
+    const stored = localStorage.getItem(storageKey);
     if (stored === "light" || stored === "dark") {
-      setTheme(stored);
       document.documentElement.setAttribute("data-theme", stored);
     } else {
-      setTheme(media.matches ? "dark" : "light");
       document.documentElement.removeAttribute("data-theme");
     }
 
