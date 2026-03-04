@@ -1,9 +1,11 @@
 import type { CaseHeaderData } from "@/data/project-case";
+import type { ProjectMockup } from "@/data/projects";
 
 type CaseHeaderMedia = {
   slug: string;
   title: string;
   logo: string;
+  mockups?: ProjectMockup[];
 };
 
 type CaseHeaderProps = {
@@ -12,9 +14,7 @@ type CaseHeaderProps = {
 };
 
 function ProjectHeroMedia({ media }: { media: CaseHeaderMedia }) {
-  const isResource = media.slug === "resource";
-
-  if (isResource) {
+  if (media.mockups?.length) {
     return (
       <figure
         className={`project-hero__media projectMainPhoto projectMedia-${media.slug}`}
@@ -22,42 +22,17 @@ function ProjectHeroMedia({ media }: { media: CaseHeaderMedia }) {
         aria-label={`${media.title} hovedbilde`}
       >
         <div className="projectMediaGrid" aria-hidden="true">
-          <div className="projectMediaGridItem">
-            <img
-              className="projectMediaMockup projectMediaMockup--laptop"
-              src="/images/projects/resource/SenseOn Backoffice Macbook Mockup.svg"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-            />
-          </div>
-          <div className="projectMediaGridItem">
-            <img
-              className="projectMediaMockup projectMediaMockup--phone"
-              src="/images/projects/resource/Login Mobil Iphone Mockup.svg"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-            />
-          </div>
-          <div className="projectMediaGridItem">
-            <img
-              className="projectMediaMockup projectMediaMockup--phone"
-              src="/images/projects/resource/Kunde Mobil Iphone Mockup.svg"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-            />
-          </div>
-          <div className="projectMediaGridItem">
-            <img
-              className="projectMediaMockup projectMediaMockup--laptop"
-              src="/images/projects/resource/Kunde Backoffice Macbook Mockup.svg"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-            />
-          </div>
+          {media.mockups.map((mockup) => (
+            <div key={mockup.src} className="projectMediaGridItem">
+              <img
+                className={`projectMediaMockup projectMediaMockup--${mockup.type}`}
+                src={mockup.src}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
+            </div>
+          ))}
         </div>
       </figure>
     );
