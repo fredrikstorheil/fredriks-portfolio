@@ -3,7 +3,11 @@ import Link from "next/link";
 import { projects } from "@/data/projects";
 import { ArrowRight } from "@/components/icons";
 
-export function ProjectCards() {
+type ProjectCardsProps = {
+  showSelectionReason?: boolean;
+};
+
+export function ProjectCards({ showSelectionReason = false }: ProjectCardsProps) {
   return (
     <div className="projectList">
       {projects.map((project) => (
@@ -31,6 +35,14 @@ export function ProjectCards() {
             <div className="projectText">
               <h3 className="projectTitle">{project.title}</h3>
               <p className="projectSubtitle">{project.subtitle}</p>
+
+              {showSelectionReason && project.selectionReason ? (
+                <p className="projectSelectionReason">
+                  <span className="projectSelectionLabel">Hvorfor dette caset:</span>{" "}
+                  {project.selectionReason}
+                </p>
+              ) : null}
+
               <span className="projectCta">
                 Se case
                 <ArrowRight

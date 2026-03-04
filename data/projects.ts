@@ -18,6 +18,7 @@ export type Project = {
   logo: string;
   mockups?: ProjectMockup[];
   signals: ProjectSignals;
+  selectionReason?: string;
   heroText?: string;
   context: string[];
   role: string[];
@@ -43,6 +44,8 @@ export const projects: Project[] = [
       caseType: "Plattform",
       keyStrength: "Systemdesign",
     },
+    selectionReason:
+      "Viser hvordan jeg bygger struktur, roller og dataflyt i et komplekst plattformprodukt.",
     heroText:
       "Re:Source startet som en ambisjon om å erstatte manuell inventarhåndtering med en skalerbar plattform for sirkulær ressursforvaltning.",
     context: [
@@ -330,6 +333,8 @@ export const projects: Project[] = [
       caseType: "Mobilbank",
       keyStrength: "Trust by design",
     },
+    selectionReason:
+      "Viser hvordan jeg gjør et komplekst finansdomene forståelig med tydelige handlinger og progresjon.",
     heroText:
       "Credit Builder ble utviklet for unge brukere uten kreditthistorikk, med målet om å gjøre kreditt forståelig og handlingsdrevet.",
     context: [
@@ -630,6 +635,8 @@ export const projects: Project[] = [
       caseType: "Rapportering",
       keyStrength: "Datamodell",
     },
+    selectionReason:
+      "Viser hvordan innsikt, validering og rollebehov oversettes til beslutningsstøtte i datatunge flater.",
     heroText:
       "Portfolio Insight samlet KPI-rapportering og vurdering av verdidrivere i en strukturert arbeidsflate.",
     context: [
@@ -905,6 +912,8 @@ export const projects: Project[] = [
       caseType: "Operativ plattform",
       keyStrength: "Beslutningslogikk",
     },
+    selectionReason:
+      "Viser hvordan jeg standardiserer vurdering, reduserer bias og gjør resultatlogikk transparent.",
     heroText:
       "ScoreFlow standardiserte vurdering, vekting og resultatberegning i konkurranser med mange bidrag.",
     context: [
