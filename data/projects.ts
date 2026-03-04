@@ -1,1162 +1,258 @@
-import type { ProjectCaseContent } from "./project-case";
-
-export type ProjectSignals = {
-  domain: string;
-  caseType: string;
-  keyStrength: string;
-};
-
 export type ProjectMockup = {
   src: string;
   type: "laptop" | "phone";
+};
+
+export type ProjectStorySection = {
+  title: string;
+  body?: string;
+  bullets?: string[];
+};
+
+export type ProjectStory = {
+  sections: ProjectStorySection[];
 };
 
 export type Project = {
   slug: string;
   title: string;
   subtitle: string;
-  logo: string;
+  logo?: string;
   mockups?: ProjectMockup[];
-  signals: ProjectSignals;
-  selectionReason?: string;
-  heroText?: string;
-  context: string[];
-  role: string[];
-  process: string[];
-  outcome: string[];
-  caseContent?: ProjectCaseContent;
+  story: ProjectStory;
 };
 
 export const projects: Project[] = [
   {
-    slug: "resource",
-    title: "Re:Source",
-    subtitle: "Digital infrastruktur for sirkulær ressursforvaltning",
-    logo: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg",
-    mockups: [
-      { src: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg", type: "laptop" },
-      { src: "/images/projects/resource/login-mobil-iphone-mockup.svg", type: "phone" },
-      { src: "/images/projects/resource/kunde-mobil-iphone-mockup.svg", type: "phone" },
-      { src: "/images/projects/resource/kunde-backoffice-macbook-mockup.svg", type: "laptop" },
-    ],
-    signals: {
-      domain: "Sirkulær drift",
-      caseType: "Plattform",
-      keyStrength: "Systemdesign",
-    },
-    selectionReason:
-      "Viser hvordan jeg bygger struktur, roller og dataflyt i et komplekst plattformprodukt.",
-    heroText:
-      "Re:Source startet som en ambisjon om å erstatte manuell inventarhåndtering med en skalerbar plattform for sirkulær ressursforvaltning.",
-    context: [
-      "Data var fragmentert. Prosessene var personavhengige. Plattformen kunne ikke vokse uten struktur.",
-    ],
-    role: [
-      "Jeg definerte rollelogikk, dataflyt og livssyklus før visuell detaljering.",
-    ],
-    process: [
-      "Flytdiagrammer avdekket hull tidlig. Designsystem ble bygget med produksjonsklar komponenttenkning.",
-    ],
-    outcome: [
-      "Leveransen ble implementerbar, robust og ferdig tidligere enn planlagt.",
-    ],
-    caseContent: {
-      header: {
-        title: "Re:Source",
-        intro:
-          "Re:Source gikk fra fragmentert inventarhåndtering til en samlet digital infrastruktur for sirkulær ressursforvaltning. Caset krevde tydelig rollefordeling, sporbar dataflyt og en struktur som kunne skaleres uten manuelle avhengigheter.",
-        role: "Lead produktdesigner",
-        team: "1 designer, 2 utviklere, 1 produkteier",
-        timeline: "14 uker",
-        responsibilities: [
-          "Produktarkitektur",
-          "Rolle og tilgangsmodell",
-          "Flytmodellering",
-          "Designsystem",
-        ],
-        deliverables: [
-          "One screen story",
-          "Flytkart",
-          "Komponentspesifikasjon",
-          "MVP scope",
-        ],
-        confidentiality: "Kundenavn og tallnivå er anonymisert.",
-      },
-      findings: [
-        {
-          title: "Datakilder manglet felles struktur",
-          body: "Samme inventarpost kunne eksistere i flere formater, som ga friksjon i kvalitetssikring.",
-        },
-        {
-          title: "Ansvar var fordelt utydelig",
-          body: "Oppgaver ble håndtert i epost og regneark uten tydelig eierskap per steg.",
-        },
-        {
-          title: "Rolleflater var blandet",
-          body: "Admin, intern drift og kunde trengte ulike handlinger, men fikk overlappende grensesnitt.",
-        },
-        {
-          title: "Mangel på sporbarhet ga risiko",
-          body: "Endringer i status og lokasjon manglet historikk og kunne ikke spores raskt.",
-        },
-        {
-          title: "Ulik terminologi sinket onboarding",
-          body: "Teamet brukte forskjellige begrep for samme prosess, som ga feil i prioritering.",
-        },
-        {
-          title: "Komponentgjenbruk ga stor effekt",
-          body: "Tidlig systematisering reduserte antall unike skjermer og forenklet utviklingsplan.",
-        },
-      ],
-      kpis: [
-        { label: "Tid til registrering", value: "-43%", note: "Målt i intern pilot" },
-        {
-          label: "Datakompletthet",
-          value: "+31 pp",
-          note: "Indikator, felter per objekt",
-        },
-        {
-          label: "Flyter med gjenbruk",
-          value: "68%",
-          note: "Indikator, delte komponentmønstre",
-        },
-        {
-          label: "Tidlig leveranse",
-          value: "2 uker",
-          note: "Ferdig før plan",
-        },
-      ],
-      scope: {
-        must: [
-          "Rollebasert tilgangsstyring",
-          "Statusflyt med historikk",
-          "Inventarregister med validering",
-        ],
-        should: [
-          "Sammenligning av objekter på tvers av enheter",
-          "Kommentarspor for avvik",
-          "Dashbord for status og volum",
-        ],
-        nice: [
-          "Automatisk forslag til neste handling",
-          "Varsling ved terskelbrudd",
-          "Maler for oppsettsstarter",
-        ],
-        reasons: {
-          must: "uten dette blir drift ustabil og vanskelig å skalere",
-          should: "gir bedre kvalitet i beslutninger og raskere avklaring",
-          nice: "gir effektivisering, men er ikke kritisk i første fase",
-        },
-      },
-      flow: {
-        overview:
-          "Flyten dekker registrering, intern behandling, kundeoppfølging og avslutning med tydelige overleveringer.",
-        nodes: [
-          {
-            id: "capture",
-            title: "Registrering",
-            description:
-              "Objekt blir registrert med strukturert metadata, eierskap og status.",
-            screens: ["Nytt objekt", "Validering", "Køoversikt"],
-          },
-          {
-            id: "triage",
-            title: "Intern behandling",
-            description:
-              "Internt team prioriterer, setter tiltak og oppdaterer status med sporbar logg.",
-            screens: ["Arbeidsflate", "Prioritet", "Historikk"],
-          },
-          {
-            id: "customer",
-            title: "Kundeoppfølging",
-            description:
-              "Kunden ser relevant status, kommentarer og neste steg i egen flate.",
-            screens: ["Kundeside", "Varsler", "Dokumentasjon"],
-          },
-          {
-            id: "close",
-            title: "Lukking",
-            description:
-              "Saken avsluttes med standardisert dokumentasjon og kvalitetssjekk.",
-            screens: ["Oppsummering", "Signoff"],
-          },
-        ],
-      },
-      exceptions: [
-        {
-          trigger: "Objekt registreres uten komplett metadata",
-          response: "Systemet stopper innsending og markerer manglende felter",
-          rule: "Alle kritiske felter må valideres før lagring",
-          consequence: "Reduserer feil og senere manuell opprydding",
-        },
-        {
-          trigger: "Kunde endrer status uten intern bekreftelse",
-          response: "Endringen parkeres som forslag med intern godkjenning",
-          rule: "Statusendring med risiko krever intern signoff",
-          consequence: "Beskytter datakvalitet og revisjonsspor",
-        },
-        {
-          trigger: "To brukere oppdaterer samme sak samtidig",
-          response: "Siste endring blokkeres inntil ny versjon er hentet",
-          rule: "Optimistisk låsing med konfliktmelding",
-          consequence: "Unngår at oppdateringer overskriver hverandre",
-        },
-      ],
-      dataModel: {
-        entities: [
-          {
-            name: "Objekt",
-            description: "Kjerneenhet med identitet, status, lokasjon og livssyklus.",
-            relations: ["Har mange hendelser", "Eies av en organisasjon"],
-          },
-          {
-            name: "Hendelse",
-            description: "Tidsstemplet endring knyttet til handling, rolle og kommentar.",
-            relations: ["Tilhører ett objekt", "Kan trigge varsel"],
-          },
-          {
-            name: "Rolle",
-            description: "Definerer tilgang til handlinger, datafelt og visninger.",
-            relations: ["Kobles til bruker", "Styrer hvilke overganger som er gyldige"],
-          },
-          {
-            name: "Organisasjon",
-            description: "Representerer kunde eller intern enhet med egne rettigheter.",
-            relations: ["Har mange objekter", "Har mange brukere"],
-          },
-        ],
-        principles: [
-          {
-            title: "En sannhetskilde",
-            body: "Alle statusendringer skrives til ett sporbart datalag.",
-          },
-          {
-            title: "Rolle styrer handling",
-            body: "Brukere ser bare handlinger de faktisk kan fullføre.",
-          },
-          {
-            title: "Validering før visning",
-            body: "Systemet stopper ufullstendige data før de sprer seg i flyten.",
-          },
-        ],
-      },
-      buildPlan: [
-        {
-          phase: "Kartlegging og scope",
-          duration: "2 uker",
-          goals: [
-            "Definere kjerneproblemer",
-            "Avgrense MVP",
-            "Etablere suksessindikatorer",
-          ],
-          deliverables: [
-            "Problemkart",
-            "Prioriteringsmatrise",
-            "Måldefinisjon",
-          ],
-          integrations: ["Ingen, analysefase"],
-        },
-        {
-          phase: "Kjernemodell og flyt",
-          duration: "5 uker",
-          goals: [
-            "Bygge rollemodell",
-            "Definere statusoverganger",
-            "Teste kritiske noder",
-          ],
-          deliverables: ["Flytdiagram", "Lo-fi prototyper", "Regelsett"],
-          integrations: ["Autentisering", "Logg og audit"],
-        },
-        {
-          phase: "Komponenter og implementering",
-          duration: "5 uker",
-          goals: [
-            "Sikre konsistent UI",
-            "Redusere utviklingsfriksjon",
-            "Levere testbar MVP",
-          ],
-          deliverables: ["Designsystem", "Hi-fi prototyper", "Hand-off"],
-          integrations: ["Backoffice API", "Kundeportal"],
-        },
-        {
-          phase: "Stabilisering og overlevering",
-          duration: "2 uker",
-          goals: [
-            "Verifisere flyter i drift",
-            "Lukke avvik",
-            "Dokumentere neste fase",
-          ],
-          deliverables: ["QA-funn", "Release-notater", "Videre plan"],
-          integrations: ["Dashbord", "Varslingskanal"],
-        },
-      ],
-      artifacts: [
-        {
-          label: "Backoffice mockup",
-          type: "UI",
-          href: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg",
-          thumbnail: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg",
-        },
-        {
-          label: "Login mobil",
-          type: "UI",
-          href: "/images/projects/resource/login-mobil-iphone-mockup.svg",
-          thumbnail: "/images/projects/resource/login-mobil-iphone-mockup.svg",
-        },
-        {
-          label: "Kunde mobil",
-          type: "UI",
-          href: "/images/projects/resource/kunde-mobil-iphone-mockup.svg",
-          thumbnail: "/images/projects/resource/kunde-mobil-iphone-mockup.svg",
-        },
-        {
-          label: "Kunde backoffice",
-          type: "UI",
-          href: "/images/projects/resource/kunde-backoffice-macbook-mockup.svg",
-          thumbnail: "/images/projects/resource/kunde-backoffice-macbook-mockup.svg",
-        },
-      ],
-      reflection: [
-        "Systemflyt må visualiseres tidlig, ellers blir UI avgjørelser tilfeldige.",
-        "Rollemodell bør avklares før detaljdesign for å unngå omarbeid.",
-        "Tydelig audit-logg reduserer både feilrate og supportkostnader.",
-      ],
-    },
-  },
-  {
-    slug: "credit-builder",
+    slug: "riseup",
     title: "Credit Builder",
-    subtitle: "Kredittkort for førstegangsbrukere",
+    subtitle: "Kredittkonsept for Emerging Prime",
     logo: "/images/projects/credit-builder-card.svg",
-    signals: {
-      domain: "Finans",
-      caseType: "Mobilbank",
-      keyStrength: "Trust by design",
-    },
-    selectionReason:
-      "Viser hvordan jeg gjør et komplekst finansdomene forståelig med tydelige handlinger og progresjon.",
-    heroText:
-      "Credit Builder ble utviklet for unge brukere uten kreditthistorikk, med målet om å gjøre kreditt forståelig og handlingsdrevet.",
-    context: [
-      "Tradisjonelle kort forklarer vilkår, men viser ikke tydelig hvordan atferd påvirker score og fremtidige vilkår.",
-    ],
-    role: [
-      "Jeg strukturerte produktet rundt en tydelig progresjonsmodell, fra forståelse til handling og bedre vilkår.",
-    ],
-    process: [
-      "Delbare prototyper ble brukt som beslutningsgrunnlag for både design og gjennomføring.",
-    ],
-    outcome: [
-      "Caset ga en implementerbar struktur som koblet atferd, score og belønning i samme opplevelse.",
-    ],
-    caseContent: {
-      header: {
-        title: "Credit Builder",
-        intro:
-          "Credit Builder er et kredittkortkonsept for brukere uten etablert kreditthistorikk. Målet var å gjøre abstrakte begrep konkrete, slik at brukeren forstår sammenhengen mellom atferd, score og bedre vilkår. Løsningen ble bygget som en modulert mobilbankopplevelse med tydelig progresjon.",
-        role: "Lead produktdesigner",
-        team: "1 designer, 3 utviklere, 1 produkteier",
-        timeline: "12 uker",
-        responsibilities: [
-          "Produktstrategi",
-          "Informasjonsarkitektur",
-          "Kritiske flyter",
-          "Designsystem",
-        ],
-        deliverables: [
-          "MVP blueprint",
-          "Interaktiv prototype",
-          "Prioriteringsmatrise",
-          "Handoff",
-        ],
-        confidentiality: "Detaljerte forretningsmetrikker er anonymisert.",
-      },
-      findings: [
+    story: {
+      sections: [
         {
-          title: "Kredittbegrep var uklare",
-          body: "Brukerne blandet APR, minimumsbetaling og scoreendring, og tok beslutninger uten forutsigbarhet.",
+          title: "Kort fortalt",
+          body:
+            "Jeg designet et kredittkortkonsept som gjør kredittscore forståelig og handlingsbar for Emerging Prime. Løsningen er bygget som en mestringsreise og testet best i målgruppen 18 til 24 i en konsepttest med 1 013 respondenter.",
         },
         {
-          title: "Feedback kom for sent",
-          body: "Brukeren så konsekvenser av atferd for sent, som reduserte læringseffekt.",
+          title: "Min rolle",
+          body:
+            "Lead UX og Product Designer i konsept og prototypefase. Jeg eide retning, informasjonsarkitektur, kjerneflyter, mestringsmekanismer, prototyping og formidling mot interessenter.",
         },
         {
-          title: "Belønning sto utenfor kontekst",
-          body: "Cashback og medlemsnivå var ikke knyttet til konkrete handlinger i flyten.",
+          title: "Kontekst",
+          body:
+            "Tradisjonelle kredittkort er ofte bygget rundt grenser, priser og straff. For unge brukere skaper det stress, lav forutsigbarhet og dårlige valg. Målet var å utvikle en opplevelse som bygger gode vaner og kredittscore over tid, samtidig som modellen er kommersielt bærekraftig.",
         },
         {
-          title: "Onboarding var for generell",
-          body: "Første steg manglet differensiering mellom nye og erfarne kortbrukere.",
+          title: "Hva jeg leverte",
+          body: "Leveransen besto av produktstruktur, mestringsmekanismer og tydelig forretningslogikk.",
         },
         {
-          title: "Score ble presentert uten anbefaling",
-          body: "Et tall alene ga lav verdi uten konkrete tiltak og forventet effekt.",
+          title: "Produktstruktur",
+          body:
+            "Fem hovedreiser som henger sammen: søknad og onboarding, dashboard, medlemskap med nivåer og belønninger, kredittscore og mål, kortkontroll og forbruksstyring.",
         },
         {
-          title: "Kortadministrasjon var fragmentert",
-          body: "Innstillinger og kredittinformasjon var spredt i separate visninger.",
-        },
-        {
-          title: "Tillit krevde sporbar logikk",
-          body: "Brukere trengte forklaringer som viste hvorfor en endring i score skjedde.",
-        },
-        {
-          title: "Sammenheng ga motivasjon",
-          body: "Når handling, progresjon og belønning ble koblet, økte fullføringsgrad i testflyt.",
-        },
-      ],
-      kpis: [
-        {
-          label: "Onboarding fullføring",
-          value: "+26%",
-          note: "Målt i prototype-test",
-        },
-        {
-          label: "Forståelighet APR",
-          value: "+34 pp",
-          note: "Indikator, testspørsmål",
-        },
-        {
-          label: "Aktive score-sjekker",
-          value: "2.1x",
-          note: "Indikator, uke 1",
-        },
-        {
-          label: "Tid til første handling",
-          value: "-39%",
-          note: "Målt i onboardingflyt",
-        },
-      ],
-      scope: {
-        must: [
-          "Onboarding med tydelig forventning",
-          "Scorekort med forklarende tiltak",
-          "Belønningsmodell koblet til atferd",
-        ],
-        should: [
-          "Nivåprogram med synlig progresjon",
-          "Scenarioforklaring for renteendring",
-          "Samlet kortadministrasjon",
-        ],
-        nice: [
-          "Personlige tips basert på mønster",
-          "Push-varsler med prediksjon",
-          "Ekstern benchmark i anonymisert form",
-        ],
-        reasons: {
-          must: "uten disse modulene forstår brukeren ikke hvordan kreditt faktisk bygges",
-          should: "disse styrker beslutningskvalitet og reduserer feilbruk",
-          nice: "disse øker motivasjon, men kan fases inn etter validering",
-        },
-      },
-      flow: {
-        overview:
-          "Flyten er bygget som en læringssløyfe, fra onboarding til daglig handling og periodisk evaluering.",
-        nodes: [
-          {
-            id: "start",
-            title: "Onboarding",
-            description:
-              "Brukeren velger mål, setter risikoprofil og ser hvordan handlinger påvirker score.",
-            screens: ["Målvalg", "Kortvilkår", "Første anbefaling"],
-          },
-          {
-            id: "dashboard",
-            title: "Dashboard",
-            description:
-              "Samlet oversikt over score, limit, forbruk og neste anbefalte handling.",
-            screens: ["Hovedkort", "Handlinger", "Varsler"],
-          },
-          {
-            id: "tier",
-            title: "Medlemsnivå",
-            description:
-              "Brukeren ser progresjon mot neste nivå og hvilke handlinger som utløser belønning.",
-            screens: ["Nivåoversikt", "Regler", "Belønning"],
-          },
-          {
-            id: "score",
-            title: "Scoreoppfølging",
-            description:
-              "Periodiske scoreoppdateringer kobles til konkrete hendelser i forrige periode.",
-            screens: ["Scorehistorikk", "Forklaring", "Neste steg"],
-          },
-        ],
-      },
-      exceptions: [
-        {
-          trigger: "Bruker betaler under minimumsbeløp",
-          response: "Systemet viser direkte effekt på score og anbefaler korrigerende handling",
-          rule: "Kritisk avvik krever synlig advarsel og neste steg",
-          consequence: "Reduserer risiko for gjentatt feiladferd",
-        },
-        {
-          trigger: "Bruker passerer kredittutnyttelse over terskel",
-          response: "Dashboard prioriterer tiltak som demper negativ scoreeffekt",
-          rule: "Tiltak med høyest effekt vises først",
-          consequence: "Bedre beslutning under tidspress",
-        },
-        {
-          trigger: "Mangler historikk for scoreendring",
-          response: "Systemet markerer lav datakvalitet og forklarer begrensning",
-          rule: "Ingen implisitt konklusjon uten datagrunnlag",
-          consequence: "Bygger tillit gjennom transparent usikkerhet",
-        },
-        {
-          trigger: "Bruker hopper over onboardingsteg",
-          response: "Flyten tilbyr komprimert versjon med minstekrav",
-          rule: "Kritisk informasjon kan ikke utelates",
-          consequence: "Opprettholder kvalitet uten å tvinge lang flyt",
-        },
-      ],
-      dataModel: {
-        entities: [
-          {
-            name: "Brukerprofil",
-            description:
-              "Personlige mål, risikoprofil og preferanser som styrer anbefalinger.",
-            relations: ["Har mange handlinger", "Har ett aktivt medlemsnivå"],
-          },
-          {
-            name: "Kreditthendelse",
-            description:
-              "Registrerer betaling, utnyttelse, forfall og avvik med tidsstempel.",
-            relations: ["Tilhører brukerprofil", "Påvirker score"],
-          },
-          {
-            name: "ScoreSnapshot",
-            description:
-              "Periodisk scoreverdi med forklarbare drivere.",
-            relations: ["Bygges av kreditthendelser", "Kobles til anbefaling"],
-          },
-          {
-            name: "Medlemsnivå",
-            description:
-              "Regelsett for progresjon, belønning og vilkår per nivå.",
-            relations: ["Har mange terskler", "Kobles til brukerprofil"],
-          },
-        ],
-        principles: [
-          {
-            title: "Forklarbarhet først",
-            body: "Alle viktige scoreendringer skal kunne forklares i klar tekst.",
-          },
-          {
-            title: "Handling over teori",
-            body: "Systemet prioriterer konkrete neste steg framfor passiv informasjon.",
-          },
-          {
-            title: "Progressiv tillit",
-            body: "Brukeren får mer avansert innsikt etter hvert som forståelsen øker.",
-          },
-        ],
-      },
-      buildPlan: [
-        {
-          phase: "Problemforståelse og modell",
-          duration: "2 uker",
-          goals: [
-            "Avdekke hovedbarrierer i kredittforståelse",
-            "Definere nordstjerneflyt",
-            "Forankre prioriteringskriterier",
+          title: "Mekanismer for mestring og kontroll",
+          bullets: [
+            "Goal Engine for å sette og følge kredittscore mål.",
+            "Buffer gjennom round ups for å redusere betalingsstress.",
+            "Future Fund som belønner god adferd over tid.",
+            "Tier system som knytter progresjon til perks og fordeler.",
+            "Price Promise som gir bedre vilkår ved ansvarlig bruk.",
           ],
-          deliverables: ["Intervjuguide", "Flytskissse", "Scopevurdering"],
-          integrations: ["Ingen, innsiktsfase"],
         },
         {
-          phase: "Kjerneflyter og prototyping",
-          duration: "4 uker",
-          goals: [
-            "Bygge onboarding og dashboard",
-            "Koble handling til scoreeffekt",
-            "Teste forståelighet i prototype",
+          title: "Forretningslogikk",
+          body:
+            "Konseptet ble koblet til hypoteser om differensiering, risikoreduksjon, økt langsiktig engasjement og høyere livstidsverdi.",
+        },
+        {
+          title: "Bevis og impact",
+          bullets: [
+            "Konsepttest: RiseUp rangerte høyest totalt og særlig sterkt i segmentet 18 til 24, basert på 1 013 respondenter.",
+            "MVP metrics som følger direkte av løsningen: andel som setter kredittscore mål, bygger buffer og velger planlagt nedbetaling fremfor minimum.",
           ],
-          deliverables: ["Lo-fi prototyper", "Designregler", "Testoppsett"],
-          integrations: ["Kredittmotor", "Kundedata API"],
         },
-        {
-          phase: "Nivå og belønning",
-          duration: "3 uker",
-          goals: [
-            "Definere progresjonsregler",
-            "Synliggjøre cashbacklogikk",
-            "Validere edge cases",
-          ],
-          deliverables: ["Nivåmodell", "Belønningskort", "Feilhåndtering"],
-          integrations: ["Lojalitetsmotor", "Varslingssystem"],
-        },
-        {
-          phase: "Hardening og handoff",
-          duration: "3 uker",
-          goals: [
-            "Polere kritiske flyter",
-            "Lukke uklarheter med utvikling",
-            "Forberede implementering",
-          ],
-          deliverables: ["Hi-fi prototype", "Handoff", "Backlog for neste fase"],
-          integrations: ["Analyse events", "Supportkanal"],
-        },
-      ],
-      artifacts: [
-        {
-          label: "Kortvisual",
-          type: "UI",
-          href: "/images/projects/credit-builder-card.svg",
-          thumbnail: "/images/projects/credit-builder-card.svg",
-        },
-        {
-          label: "Behavioral tier system",
-          type: "Systemkart",
-          href: "/images/projects/behavioural-tier-system.svg",
-          thumbnail: "/images/projects/behavioural-tier-system.svg",
-        },
-        {
-          label: "Current credit score",
-          type: "Datavisning",
-          href: "/images/projects/current-credit-score.svg",
-          thumbnail: "/images/projects/current-credit-score.svg",
-        },
-      ],
-      reflection: [
-        "APR og atferd bør kobles enda tidligere i onboarding.",
-        "Forklaringslag for score endring er avgjørende for tillit.",
-        "Nivåprogrammet fungerer best når progresjon vises som konkrete steg.",
-        "Mikrocopy rundt risiko bør testes med flere brukersegmenter.",
       ],
     },
   },
   {
-    slug: "portfolio-insight",
-    title: "Portfolio Insight",
-    subtitle: "Rollebasert rapporteringsplattform",
-    logo: "/logos/portfolio-insight.svg",
-    signals: {
-      domain: "B2B SaaS",
-      caseType: "Rapportering",
-      keyStrength: "Datamodell",
-    },
-    selectionReason:
-      "Viser hvordan innsikt, validering og rollebehov oversettes til beslutningsstøtte i datatunge flater.",
-    heroText:
-      "Portfolio Insight samlet KPI-rapportering og vurdering av verdidrivere i en strukturert arbeidsflate.",
-    context: [
-      "Rapportering foregikk i regneark og epost, med lav sammenlignbarhet og fragmentert beslutningsgrunnlag.",
-    ],
-    role: ["Jeg definerte driverlogikk, rolleflater og valideringsregler før visuell detaljering."],
-    process: [
-      "Systemet fikk historisk sammenligning, peer-avviksvarsler og kommentarplikt ved ekstreme vurderinger.",
-    ],
-    outcome: [
-      "Produktet flyttet teamet fra etterskuddsrapportering til strukturert sanntidsinnsikt.",
-    ],
-    caseContent: {
-      header: {
-        title: "Portfolio Insight",
-        intro:
-          "Portfolio Insight ble laget for investormiljø med mange porteføljeselskaper og ulik rapporteringsmodenhet. Målet var en felles struktur for KPI, verdidrivere og avviksbehandling, slik at beslutninger tas på sammenlignbare data.",
-        role: "Lead produktdesigner",
-        team: "1 designer, 4 utviklere, 1 analyseansvarlig",
-        timeline: "16 uker",
-        responsibilities: [
-          "Informasjonsarkitektur",
-          "Valideringslogikk",
-          "Rolleflater",
-          "Dashbordprinsipper",
-        ],
-        deliverables: [
-          "Datamodell",
-          "Flytkart",
-          "KPI-rammeverk",
-          "Implementeringsplan",
-        ],
-        confidentiality: "Kundenavn og verdier er anonymisert.",
-      },
-      findings: [
-        {
-          title: "KPI-er ble tolket ulikt",
-          body: "Selskaper rapporterte samme indikator med forskjellig definisjon og periode.",
-        },
-        {
-          title: "Kommentarer manglet ved avvik",
-          body: "Ekstreme vurderinger kom uten forklaring, som svekket beslutningskvalitet.",
-        },
-        {
-          title: "Rollebehov var ulike",
-          body: "Investor og selskap trengte forskjellig detaljnivå i samme datasett.",
-        },
-        {
-          title: "Historikk var vanskelig å lese",
-          body: "Manuell sammenstilling gjorde trendtolkning treg og sårbar for feil.",
-        },
-        {
-          title: "Peer-sammenligning manglet kontekst",
-          body: "Avvik ble observert sent fordi gruppesnitt ikke var synlig i flyten.",
-        },
-        {
-          title: "Terskler var udefinerte",
-          body: "Uklare varslingsgrenser ga for mange eller for få avviksalarmer.",
-        },
-      ],
-      kpis: [
-        {
-          label: "Rapporteringssyklus",
-          value: "-37%",
-          note: "Målt i pilotperiode",
-        },
-        {
-          label: "Komplette innsendelser",
-          value: "+29 pp",
-          note: "Indikator, validerte felter",
-        },
-        {
-          label: "Avvik med kommentar",
-          value: "94%",
-          note: "Målt etter regelinnføring",
-        },
-        {
-          label: "Tid til beslutning",
-          value: "-22%",
-          note: "Indikator, komitemøte",
-        },
-      ],
-      scope: {
-        must: [
-          "KPI-definisjon med validering",
-          "Rollebaserte visninger",
-          "Kommentarplikt ved avvik",
-        ],
-        should: [
-          "Historisk trendvisning",
-          "Peer-sammenligning",
-          "Automatisk avviksflagg",
-        ],
-        nice: [
-          "Forslag til tiltak fra tidligere perioder",
-          "Eksport til styrerapporter",
-          "Skreddersydd varsling per rolle",
-        ],
-        reasons: {
-          must: "uten felles definisjon blir data ikke sammenlignbar",
-          should: "gir raskere innsikt og bedre kalibrering",
-          nice: "gir ekstra effektivisering etter at grunnmuren er stabil",
-        },
-      },
-      flow: {
-        overview:
-          "Prosessen går fra datainnsending og validering til avviksbehandling og investorklargjort innsikt.",
-        nodes: [
-          {
-            id: "submit",
-            title: "Innsending",
-            description:
-              "Selskapet registrerer KPI-data i rollebasert skjema med feltvalidering.",
-            screens: ["Rapporteringsskjema", "Status", "Kvalitetssjekk"],
-          },
-          {
-            id: "validate",
-            title: "Validering",
-            description:
-              "Systemet sammenligner historikk, peers og terskler før data godkjennes.",
-            screens: ["Avvikspanel", "Kommentar", "Godkjenning"],
-          },
-          {
-            id: "review",
-            title: "Vurdering",
-            description:
-              "Investor gjennomgår drivere, avvik og forklaringer med prioritering.",
-            screens: ["Drivervisning", "KPI-kort", "Notater"],
-          },
-          {
-            id: "decision",
-            title: "Beslutning",
-            description:
-              "Resultatet brukes i komite med eksportert beslutningsunderlag.",
-            screens: ["Beslutningspakke", "Oppfølging"],
-          },
-        ],
-      },
-      exceptions: [
-        {
-          trigger: "Ekstrem KPI-endring uten kommentar",
-          response: "Innsending stoppes inntil begrunnelse er lagt inn",
-          rule: "Kommentarplikt ved terskelbrudd",
-          consequence: "Høyere kvalitet i avviksanalyse",
-        },
-        {
-          trigger: "Historikk mangler for ny KPI",
-          response: "KPI merkes som oppstart med alternativ benchmark",
-          rule: "Nye KPI-er må ha baseline-regel",
-          consequence: "Unngår feil tolkning av trend",
-        },
-        {
-          trigger: "Rolle uten tilgang forsøker å godkjenne",
-          response: "Handling avvises og logges",
-          rule: "Kun godkjennerrolle kan signere periode",
-          consequence: "Sterkere styring og revisjonsspor",
-        },
-      ],
-      dataModel: {
-        entities: [
-          {
-            name: "Porteføljeselskap",
-            description: "Rapporterende enhet med egne KPI-sett og perioder.",
-            relations: ["Har mange KPI-innsendinger", "Har en rollemodell"],
-          },
-          {
-            name: "KPIEntry",
-            description: "En rapportert indikator med verdi, periode og kommentar.",
-            relations: ["Tilhører selskap", "Valideres mot regelsett"],
-          },
-          {
-            name: "DriverAssessment",
-            description: "Vurdering av verdidriver med score og begrunnelse.",
-            relations: ["Kobles til KPIEntry", "Brukes i beslutning"],
-          },
-          {
-            name: "ThresholdRule",
-            description: "Definerer terskler for varsling og kommentarplikt.",
-            relations: ["Gjelder KPIEntry", "Eies av investorrolle"],
-          },
-        ],
-        principles: [
-          {
-            title: "Lik definisjon for alle",
-            body: "En KPI skal ha samme betydning på tvers av selskap.",
-          },
-          {
-            title: "Avvik krever kontekst",
-            body: "Store endringer skal alltid forklares med kommentar.",
-          },
-          {
-            title: "Rollebasert klarhet",
-            body: "Brukere ser data i detaljnivå som passer ansvaret deres.",
-          },
-        ],
-      },
-      buildPlan: [
-        {
-          phase: "Definisjon og alignment",
-          duration: "3 uker",
-          goals: [
-            "Standardisere KPI-definisjoner",
-            "Enes om terskler",
-            "Prioritere kritiske roller",
-          ],
-          deliverables: ["KPI-ordbok", "Rollekart", "Scope"],
-          integrations: ["Ingen, analysefase"],
-        },
-        {
-          phase: "Datamodell og validering",
-          duration: "5 uker",
-          goals: [
-            "Bygge innsending med validering",
-            "Etablere avviksregler",
-            "Koble historikk",
-          ],
-          deliverables: ["Datamodell", "Valideringsflyt", "Lo-fi"],
-          integrations: ["Rapporterings-API", "Autentisering"],
-        },
-        {
-          phase: "Rolleflater og beslutningsvisning",
-          duration: "5 uker",
-          goals: [
-            "Bygge investorflate",
-            "Bygge selskapsflate",
-            "Teste beslutningspakker",
-          ],
-          deliverables: ["Hi-fi", "Komponentbibliotek", "Notatsystem"],
-          integrations: ["Dashborddata", "Eksport"],
-        },
-        {
-          phase: "Pilot og kalibrering",
-          duration: "3 uker",
-          goals: ["Kjøre pilot", "Tette valideringshull", "Planlegge neste release"],
-          deliverables: ["Pilotfunn", "Justerte terskler", "Backlog"],
-          integrations: ["Analyse events"],
-        },
-      ],
-      artifacts: [
-        {
-          label: "Portfolio logo",
-          type: "Brand",
-          href: "/logos/portfolio-insight.svg",
-          thumbnail: "/logos/portfolio-insight.svg",
-        },
-        {
-          label: "Prosjektbilde",
-          type: "Cover",
-          href: "/images/projects/chall-projectimage.jpg",
-          thumbnail: "/images/projects/chall-projectimage.jpg",
-        },
-        {
-          label: "Prosjektbilde alternativ",
-          type: "Cover",
-          href: "/images/projects/redq-projectimage.jpg",
-          thumbnail: "/images/projects/redq-projectimage.jpg",
-        },
-      ],
-      reflection: [
-        "Terskeldefinisjon bør forankres enda tidligere med domeneeksperter.",
-        "Kommentarplikt ved avvik gir tydelig kvalitetsløft i beslutningsmøter.",
-        "Rolleflater reduserer støy og øker handlingshastighet.",
-      ],
-    },
-  },
-  {
-    slug: "scoreflow",
+    slug: "chall",
     title: "ScoreFlow",
-    subtitle: "Strukturert evalueringsplattform",
-    logo: "/logos/scoreflow.svg",
-    signals: {
-      domain: "Vurdering",
-      caseType: "Operativ plattform",
-      keyStrength: "Beslutningslogikk",
-    },
-    selectionReason:
-      "Viser hvordan jeg standardiserer vurdering, reduserer bias og gjør resultatlogikk transparent.",
-    heroText:
-      "ScoreFlow standardiserte vurdering, vekting og resultatberegning i konkurranser med mange bidrag.",
-    context: [
-      "Manuell scoring ga inkonsistens, ulik tolkning av kriterier og feil i summering.",
-    ],
-    role: ["Jeg designet kriterielogikk, dommerflyt og transparens i beregningene."],
-    process: [
-      "Systemet gikk fra individuell vurdering til aggregert resultat med automatisert beregning og sporbarhet.",
-    ],
-    outcome: [
-      "Plattformen reduserte subjektivitet og ga skalerbar vurdering med tydelig revisjonsspor.",
-    ],
-    caseContent: {
-      header: {
-        title: "ScoreFlow",
-        intro:
-          "ScoreFlow ble utviklet for å redusere bias og feil i manuell konkurransescoring. Caset fokuserte på kriterielogikk, vekting og transparent aggregasjon slik at resultatet blir konsistent, uavhengig av hvem som scorer.",
-        role: "Produktdesigner",
-        team: "1 designer, 2 utviklere, 1 fagansvarlig",
-        timeline: "10 uker",
-        responsibilities: [
-          "Scoringsmodell",
-          "Dommerflyter",
-          "Resultatvisning",
-          "Avviksregler",
-        ],
-        deliverables: [
-          "Vektingsmodell",
-          "Dommerflate",
-          "Resultatlogikk",
-          "Pilotprototype",
-        ],
-      },
-      findings: [
+    subtitle: "Skalerbar konkurranseplattform",
+    story: {
+      sections: [
         {
-          title: "Kriterier ble tolket ulikt",
-          body: "Dommere brukte ulike referanserammer uten tydelig normering.",
+          title: "Kort fortalt",
+          body:
+            "Jeg utviklet en mer troverdig og skalerbar konkurransemotor for en challenge-plattform ved å definere et tydelig rammeverk for domming og scoring, og ved å rydde opp i navigasjon og design- og utvikling-alignment.",
         },
         {
-          title: "Vekting var lite transparent",
-          body: "Deltakere og arrangør forsto ikke hvordan totalscore ble beregnet.",
+          title: "Min rolle",
+          body:
+            "UX og Product Designer. Jeg eide rammeverk for scoring og vurdering, restrukturering av kjerneflyter og etablering av et produksjonsnært designsystem i Figma basert på eksisterende frontend.",
         },
         {
-          title: "Tie-breakers var manuelle",
-          body: "Like score krevde tidkrevende diskusjoner uten standardregel.",
+          title: "Kontekst",
+          body:
+            "Plattformen hadde inkonsistens mellom Figma og implementert UI, fragmentert navigasjon med dead ends og en vinnerlogikk som var for løs til at konkurranser føltes rettferdige. Samtidig bygget produktet opp teknisk og visuell gjeld som gjorde videre utvikling tregere og mer risikabel.",
         },
         {
-          title: "Store avvik kom sent frem",
-          body: "Ekstreme vurderingssprik ble oppdaget sent i prosessen.",
+          title: "Hva jeg leverte",
+          body:
+            "Leveransen besto av et produksjonsnært designsystem, kjerneflyt uten dead ends og et skalerbart rammeverk for scoring og domming.",
         },
         {
-          title: "Audit trail manglet",
-          body: "Det var vanskelig å etterprøve hvem som gjorde hva.",
+          title: "Produksjonsnært designsystem",
+          body:
+            "Jeg tok utgangspunkt i produksjonskoden og formaliserte tokens og komponenter til et system i Figma. Det inkluderte strukturert farge- og typografihierarki, komponenter med varianter og states, avatar-system med status, navigasjonskomponenter med aktive states og en hero-løsning som håndterer flere verter.",
         },
         {
-          title: "Felles arbeidsflate reduserte feil",
-          body: "Samlet prosess for innlegging, beregning og review reduserte manuell overføring.",
-        },
-      ],
-      kpis: [
-        { label: "Tid per bidrag", value: "-28%", note: "Målt i pilot" },
-        {
-          label: "Vurderingsavvik",
-          value: "-19%",
-          note: "Indikator, standardavvik",
+          title: "Kjerneflyt uten dead ends",
+          body:
+            "Jeg restrukturerte opplevelsen til en sammenhengende navigasjonsloop mellom feed, chall room, contributions og profiler. Målet var at back og innganger alltid skulle returnere til riktig kontekst, og at contribution view skulle være konsistent uavhengig av hvor brukeren kom fra.",
         },
         {
-          label: "Automatisk tie-break",
-          value: "100%",
-          note: "Regelbasert utfall",
+          title: "Scoring og domming som tåler skala",
+          body:
+            "Jeg definerte et fleksibelt vurderingsrammeverk med kriterier og underkriterier, vektet scoring, automatisk ranking, tydelige tie breakers og håndtering av edge cases som manglende vurderinger og diskvalifisering.",
         },
         {
-          label: "Feil i summering",
-          value: "0",
-          note: "Målt i testsett",
-        },
-      ],
-      scope: {
-        must: [
-          "Kriterie- og vektingsmotor",
-          "Dommerflate med validering",
-          "Automatisk totalberegning",
-        ],
-        should: [
-          "Avviksvisning mellom dommere",
-          "Tie-breaker-regler",
-          "Resultatlogg",
-        ],
-        nice: [
-          "Kalibreringsmodus før scoring",
-          "Eksport med forklaringsfelt",
-          "Anonymiseringsmodus per runde",
-        ],
-        reasons: {
-          must: "uten denne kjernen blir ikke resultatet konsistent",
-          should: "disse gir bedre kvalitetssikring og transparens",
-          nice: "disse kan forbedre prosess etter at grunnmodell er validert",
-        },
-      },
-      flow: {
-        overview:
-          "Flyten går fra oppsett av kriterier til individuell scoring, aggregasjon og revisjon.",
-        nodes: [
-          {
-            id: "setup",
-            title: "Oppsett",
-            description:
-              "Arrangør definerer kriterier, vekter og tie-breaker-regler før runden starter.",
-            screens: ["Kriterieoppsett", "Vekter", "Regelkontroll"],
-          },
-          {
-            id: "score",
-            title: "Individuell scoring",
-            description:
-              "Dommere scorer bidrag med validering av felt og kommentar ved avvik.",
-            screens: ["Scorepanel", "Kommentar", "Status"],
-          },
-          {
-            id: "aggregate",
-            title: "Aggregasjon",
-            description:
-              "Systemet beregner totalscore og markerer potensielle konflikter automatisk.",
-            screens: ["Resultattabell", "Avvik", "Tie-break"],
-          },
-          {
-            id: "review",
-            title: "Review",
-            description:
-              "Panelleder gjennomgår logg og godkjenner endelig resultat.",
-            screens: ["Audit-logg", "Godkjenning"],
-          },
-        ],
-      },
-      exceptions: [
-        {
-          trigger: "Dommer sender inn uten alle kriterier",
-          response: "Systemet blokkerer innsending og markerer mangler",
-          rule: "Alle kriterier er påkrevd",
-          consequence: "Lik datakvalitet på tvers av dommere",
+          title: "Forretningslogikk",
+          body:
+            "Rammeverket var laget for å øke tillit og fullføringsgrad i konkurranser, samtidig som det gjør produktet enklere å videreutvikle uten å bygge nye regler for hver chall.",
         },
         {
-          trigger: "To bidrag får identisk totalscore",
-          response: "Tie-breaker-regel anvendes automatisk",
-          rule: "Forhåndsdefinert tie-break prioriteres",
-          consequence: "Rask og forutsigbar rangering",
-        },
-        {
-          trigger: "Uvanlig stort avvik mellom dommere",
-          response: "Bidrag flagges for panelreview",
-          rule: "Avvik over terskel krever ekstra gjennomgang",
-          consequence: "Redusert bias i sluttresultat",
-        },
-      ],
-      dataModel: {
-        entities: [
-          {
-            name: "Competition",
-            description: "Konkurranse med runder, kriterier og regelsett.",
-            relations: ["Har mange runder", "Har mange bidrag"],
-          },
-          {
-            name: "Submission",
-            description: "Innsendt bidrag som vurderes av flere dommere.",
-            relations: ["Har mange vurderinger", "Tilhører en runde"],
-          },
-          {
-            name: "JudgeScore",
-            description: "Poeng og kommentar per kriterium, per dommer.",
-            relations: ["Tilhører submission", "Kobles til kriterium"],
-          },
-          {
-            name: "ScoreResult",
-            description: "Aggregert resultat med tie-break metadata og logg.",
-            relations: ["Bygges fra JudgeScore", "Godkjennes av panelleder"],
-          },
-        ],
-        principles: [
-          {
-            title: "Lik tolkning",
-            body: "Kriterier skal presenteres med samme definisjon for alle dommere.",
-          },
-          {
-            title: "Transparent beregning",
-            body: "Totalscore skal kunne spores tilbake til enkeltvurderinger.",
-          },
-          {
-            title: "Regelbasert avvikshåndtering",
-            body: "Store avvik skal utløse standardisert review.",
-          },
-        ],
-      },
-      buildPlan: [
-        {
-          phase: "Modellering",
-          duration: "2 uker",
-          goals: ["Definere kriterier", "Definere vekter", "Lage tie-break-regel"],
-          deliverables: ["Regelsett", "Modellskisse", "Testdata"],
-          integrations: ["Ingen, oppstart"],
-        },
-        {
-          phase: "Dommerflyt",
-          duration: "3 uker",
-          goals: ["Bygge scoreflate", "Legge inn validering", "Teste innsending"],
-          deliverables: ["Lo-fi", "Interaksjonsregler", "Pilot"],
-          integrations: ["Autentisering"],
-        },
-        {
-          phase: "Aggregasjon",
-          duration: "3 uker",
-          goals: [
-            "Bygge resultatmotor",
-            "Implementere tie-break",
-            "Synliggjøre avvik",
+          title: "Bevis og impact",
+          bullets: [
+            "Før og etter kan vises som konkret friksjonsreduksjon: færre dead ends og færre steg til å delta og levere contribution.",
+            "Målbare indikatorer i en MVP eller i produksjon: gjenbruksgrad av komponenter, reduksjon i one off-varianter, andel challs som bruker kriteriebasert scoring og fullføringsgrad på domming.",
           ],
-          deliverables: ["Resultatvisning", "Avvikspanel", "Audit-logg"],
-          integrations: ["Analyse", "Eksport"],
-        },
-        {
-          phase: "Kvalitetssikring",
-          duration: "2 uker",
-          goals: ["Kjøre testsett", "Lukke avvik", "Dokumentere videre"],
-          deliverables: ["Testfunn", "Justering", "Release-notat"],
-          integrations: ["Supportkanal"],
         },
       ],
-      artifacts: [
+    },
+  },
+  {
+    slug: "investor-insights",
+    title: "Portfolio Insights",
+    subtitle: "Rollebasert KPI-rapportering",
+    logo: "/logos/portfolio-insight.svg",
+    story: {
+      sections: [
         {
-          label: "ScoreFlow logo",
-          type: "Brand",
-          href: "/logos/scoreflow.svg",
-          thumbnail: "/logos/scoreflow.svg",
+          title: "Kort fortalt",
+          body:
+            "Jeg designet en SaaS-plattform som samler porteføljeselskaper og investorer i ett felles KPI- og rapporteringssystem, med mekanismer som gjør data mer konsistent, mer etterprøvbar og enklere å bruke i beslutninger.",
         },
         {
-          label: "Prosjektbilde",
-          type: "Cover",
-          href: "/images/projects/ikea-projectimage.jpg",
-          thumbnail: "/images/projects/ikea-projectimage.jpg",
+          title: "Min rolle",
+          body:
+            "UX og Product Designer med ansvar for produktstruktur, informasjonsarkitektur, prototyping og mekanismer for datakvalitet og ansvarlighet i brukeropplevelsen.",
+        },
+        {
+          title: "Kontekst",
+          body:
+            "Porteføljerapportering skjer ofte i regneark og e-post, med ulik definisjon av KPIer, varierende datakvalitet og sen beslutningsstøtte. I tillegg brukes subjektive ratinger ofte i oppfølging, men de blir fort bias og lite sammenlignbare uten struktur.",
+        },
+        {
+          title: "Hva jeg leverte",
+          body:
+            "Leveransen besto av struktur for innsamling og oppfølging, valideringsmekanismer for subjektive vurderinger og tydelig etterprøvbarhet i data.",
+        },
+        {
+          title: "Struktur for innsamling og oppfølging",
+          body:
+            "En felles modell for innsamling, validering og analyse på tvers av selskaper og roller, med standardisert input og tydelig eierskap.",
+        },
+        {
+          title: "Validering av subjektive vurderinger",
+          body:
+            "Mekanismer som gjør ratinger mer troverdige og sammenlignbare: benchmarking mot historikk, validering mot objektive KPIer, avviksdeteksjon via konsistenssjekker, varsler ved avvik og krav om begrunnelse ved ekstreme vurderinger.",
+        },
+        {
+          title: "Etterprøvbarhet og historikk",
+          body:
+            "Audit trail-tenkning som kobler datapunkt til ansvar, endringer og tidspunkt, slik at rapportering tåler etterkontroll og det er tydelig hva beslutninger er basert på.",
+        },
+        {
+          title: "Forretningslogikk",
+          body:
+            "Løsningen er laget for å redusere manuelt arbeid, øke datakvalitet og korte ned tiden fra rapportering til beslutningsgrunnlag, samtidig som den bygger en historikk som gir bedre trendforståelse over tid.",
+        },
+        {
+          title: "Bevis og impact",
+          body:
+            "Målbare indikatorer som følger direkte av konseptet: tid fra periode slutt til ferdig rapport, tid brukt per selskap per syklus, andel komplette innsendinger innen frist, antall avvik fanget av valideringsregler og andel datapunkter med audit trail.",
         },
       ],
-      reflection: [
-        "Kalibreringsmodus bør testes i flere dommerpaneler.",
-        "Terskler for avvik må eies tydelig av fagansvarlig.",
-        "Audit-logg er kritisk for tillit i etterkant av konkurranser.",
+    },
+  },
+  {
+    slug: "senseon",
+    title: "Re:Source",
+    subtitle: "Produktfundament fra null",
+    logo: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg",
+    story: {
+      sections: [
+        {
+          title: "Kort fortalt",
+          body:
+            "Jeg bygget et komplett produktfundament for et inventar- og sirkulærøkonomi-økosystem før utvikling, i en situasjon uten utviklingsteam og uten finansiering. Leveransen var en klikkbar prototype og et designsystem som var klart for overlevering til engineering, og prosjektet ble ferdigstilt to uker før estimat.",
+        },
+        {
+          title: "Min rolle",
+          body:
+            "Lead designer i en pre-engineering-fase. Jeg eide informasjonsarkitektur, rolle og tilgang, kjerneflyter, designsystem, prototyping og dokumentasjon som grunnlag for videre utvikling.",
+        },
+        {
+          title: "Kontekst",
+          body:
+            "Prosjektet måtte fungere som beslutningsgrunnlag for investorer og kunder, samtidig som det måtte være realistisk å bygge hvis finansiering kom på plass. Risikoen var å ende med en prototype som ser bra ut, men som mangler modell, states og regler til å fungere i praksis.",
+        },
+        {
+          title: "Hva jeg leverte",
+          body:
+            "Leveransen dekket produktøkosystem, systemmodell, designsystem og planlegging for gjennomførbar engineering.",
+        },
+        {
+          title: "Produktøkosystem med fire flater",
+          bullets: [
+            "Admin og backoffice for masterdata, roller, verifisering og oversikt.",
+            "Intern app for QR-basert registrering.",
+            "Kunde-backoffice for fleet management og service.",
+            "Kundeapp for rapportering og vedlikehold i felt.",
+          ],
+        },
+        {
+          title: "Systemmodell og livssykkel",
+          body:
+            "Jeg modellerte objekt- og hendelseslogikk som grunnlag for konsistente flyter: Base Unit, Instance, Series, Fleet, Event og Verification. Dette gjorde det mulig å designe rollebaserte handlinger, statusendringer, historikk og sporbarhet på tvers av flater.",
+        },
+        {
+          title: "Designsystem før høyvolum produksjon",
+          body:
+            "Jeg etablerte et komponent- og tokensystem med tydelige states, semantiske farger, typografi, modulær form og valideringsmønstre. Målet var gjenbruk, konsistens og mindre rework.",
+        },
+        {
+          title: "Planlegging med flyt og gjenbruk",
+          body:
+            "Jeg brukte flytdiagrammer til å beregne skjermvolum, identifisere gjenbruk, estimere produksjonstakt og styre milepæler. Med økende gjenbruk økte farten, og leveransen ble ferdig to uker før estimat.",
+        },
+        {
+          title: "Forretningslogikk",
+          body:
+            "Arbeidet reduserte teknisk og produktmessig risiko før utvikling ved å avklare modell, roller og state transitions, og ved å etablere et skalerbart UI-fundament som tåler videre produktutvikling.",
+        },
+        {
+          title: "Bevis og impact",
+          bullets: [
+            "Leveranse: ferdigstilt to uker før estimat.",
+            "Målbare indikatorer som følger direkte av arbeidsmåten: gjenbruksgrad av komponenter, skjermvolum per uke etter at systemet var etablert, og antall kjerneflyter med definerte states og edge cases før engineering.",
+          ],
+        },
       ],
     },
   },

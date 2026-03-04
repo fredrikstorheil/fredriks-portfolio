@@ -29,7 +29,6 @@ export function TabsNav() {
         </span>
         Hjem
       </Link>
-      <span className="tabDivider" aria-hidden="true" />
       {projects.map((project) => {
         const href = `/projects/${project.slug}`;
         const active = isActive(href);
