@@ -1,7 +1,19 @@
 import type { ReactElement } from "react";
 import { notFound } from "next/navigation";
 
-import { getProjectBySlug, projects } from "@/data/projects";
+import {
+  ArtifactsGallery,
+  BuildPlan,
+  CaseHeader,
+  CaseSection,
+  DataModel,
+  ExceptionsList,
+  FindingsGrid,
+  FlowMap,
+  ScopeMatrix,
+  Scoreboard,
+} from "@/components/case";
+import { getProjectBySlug, projects, type Project } from "@/data/projects";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -85,6 +97,98 @@ function renderProjectText(text: string) {
   return elements;
 }
 
+function renderLegacyContent(project: Project) {
+  const isResource = project.slug === "resource";
+
+  return (
+    <>
+      <h1 className="projectPageTitle">{project.title}</h1>
+      <p className="projectBodyText">{project.subtitle}</p>
+
+      <div className="project-hero">
+        {isResource ? (
+          <figure
+            className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
+            role="img"
+            aria-label={`${project.title} hovedbilde`}
+          >
+            <div className="projectMediaGrid" aria-hidden="true">
+              <div className="projectMediaGridItem">
+                <img
+                  className="projectMediaMockup projectMediaMockup--laptop"
+                  src="/images/projects/resource/SenseOn Backoffice Macbook Mockup.svg"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+              </div>
+              <div className="projectMediaGridItem">
+                <img
+                  className="projectMediaMockup projectMediaMockup--phone"
+                  src="/images/projects/resource/Login Mobil Iphone Mockup.svg"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+              </div>
+              <div className="projectMediaGridItem">
+                <img
+                  className="projectMediaMockup projectMediaMockup--phone"
+                  src="/images/projects/resource/Kunde Mobil Iphone Mockup.svg"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+              </div>
+              <div className="projectMediaGridItem">
+                <img
+                  className="projectMediaMockup projectMediaMockup--laptop"
+                  src="/images/projects/resource/Kunde Backoffice Macbook Mockup.svg"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </figure>
+        ) : (
+          <figure
+            className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
+            role="img"
+            aria-label={`${project.title} hovedbilde`}
+          >
+            <img
+              className="projectMediaLogo projectMediaLogo--main"
+              src={project.logo}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+            />
+          </figure>
+        )}
+      </div>
+
+      {project.heroText ? (
+        <div className="projectTextBlock">{renderProjectText(project.heroText)}</div>
+      ) : null}
+
+      {[
+        ...(project.context ?? []),
+        ...(project.role ?? []),
+        ...(project.process ?? []),
+        ...(project.outcome ?? []),
+      ].map((text, idx) => (
+        <section key={idx} className="projectBlock">
+          <div className="projectPhoto" aria-hidden="true">
+            <span className="projectPhotoLabel">Bilde</span>
+          </div>
+          <div className="projectTextBlock">{renderProjectText(text)}</div>
+        </section>
+      ))}
+    </>
+  );
+}
+
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
@@ -93,96 +197,48 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  const isResource = project.slug === "resource";
+  const caseContent = project.caseContent;
 
   return (
     <div className={`projectPage projectPage-${project.slug}`}>
       <div className="projectContent">
-        <h1 className="projectPageTitle">{project.title}</h1>
-        <p className="projectBodyText">{project.subtitle}</p>
+        {caseContent ? (
+          <>
+            <CaseHeader
+              header={caseContent.header}
+              media={{
+                slug: project.slug,
+                title: project.title,
+                logo: project.logo,
+              }}
+            />
+            <FindingsGrid findings={caseContent.findings} />
+            <Scoreboard kpis={caseContent.kpis} />
+            <ScopeMatrix scope={caseContent.scope} />
+            <FlowMap flow={caseContent.flow} />
+            <ExceptionsList exceptions={caseContent.exceptions} />
+            <DataModel dataModel={caseContent.dataModel} />
+            <BuildPlan buildPlan={caseContent.buildPlan} />
+            <ArtifactsGallery artifacts={caseContent.artifacts} />
 
-        <div className="project-hero">
-          {isResource ? (
-            <figure
-              className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
-              role="img"
-              aria-label={`${project.title} hovedbilde`}
-            >
-              <div className="projectMediaGrid" aria-hidden="true">
-                <div className="projectMediaGridItem">
-                  <img
-                    className="projectMediaMockup projectMediaMockup--laptop"
-                    src="/images/projects/resource/SenseOn Backoffice Macbook Mockup.svg"
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="projectMediaGridItem">
-                  <img
-                    className="projectMediaMockup projectMediaMockup--phone"
-                    src="/images/projects/resource/Login Mobil Iphone Mockup.svg"
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="projectMediaGridItem">
-                  <img
-                    className="projectMediaMockup projectMediaMockup--phone"
-                    src="/images/projects/resource/Kunde Mobil Iphone Mockup.svg"
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="projectMediaGridItem">
-                  <img
-                    className="projectMediaMockup projectMediaMockup--laptop"
-                    src="/images/projects/resource/Kunde Backoffice Macbook Mockup.svg"
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </figure>
-          ) : (
-            <figure
-              className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
-              role="img"
-              aria-label={`${project.title} hovedbilde`}
-            >
-              <img
-                className="projectMediaLogo projectMediaLogo--main"
-                src={project.logo}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-              />
-            </figure>
-          )}
-        </div>
-
-        {project.heroText ? (
-          <div className="projectTextBlock">
-            {renderProjectText(project.heroText)}
-          </div>
-        ) : null}
-
-        {[
-          ...(project.context ?? []),
-          ...(project.role ?? []),
-          ...(project.process ?? []),
-          ...(project.outcome ?? []),
-        ].map((text, idx) => (
-          <section key={idx} className="projectBlock">
-            <div className="projectPhoto" aria-hidden="true">
-              <span className="projectPhotoLabel">Bilde</span>
-            </div>
-            <div className="projectTextBlock">{renderProjectText(text)}</div>
-          </section>
-        ))}
+            {caseContent.reflection?.length ? (
+              <CaseSection
+                title="Refleksjon"
+                lede="Punkter vi ville ha prioritert enda tidligere i neste iterasjon."
+              >
+                <ul className="caseReflectionList">
+                  {caseContent.reflection.map((item) => (
+                    <li key={item} className="caseReflectionItem">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </CaseSection>
+            ) : null}
+          </>
+        ) : (
+          renderLegacyContent(project)
+        )}
       </div>
     </div>
   );
