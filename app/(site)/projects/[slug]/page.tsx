@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { ReactElement } from "react";
 import { notFound } from "next/navigation";
 
@@ -98,74 +99,25 @@ function renderProjectText(text: string) {
 }
 
 function renderLegacyContent(project: Project) {
-  const isResource = project.slug === "resource";
-
   return (
     <>
       <h1 className="projectPageTitle">{project.title}</h1>
       <p className="projectBodyText">{project.subtitle}</p>
 
       <div className="project-hero">
-        {isResource ? (
-          <figure
-            className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
-            role="img"
-            aria-label={`${project.title} hovedbilde`}
-          >
-            <div className="projectMediaGrid" aria-hidden="true">
-              <div className="projectMediaGridItem">
-                <img
-                  className="projectMediaMockup projectMediaMockup--laptop"
-                  src="/images/projects/resource/SenseOn Backoffice Macbook Mockup.svg"
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                />
-              </div>
-              <div className="projectMediaGridItem">
-                <img
-                  className="projectMediaMockup projectMediaMockup--phone"
-                  src="/images/projects/resource/Login Mobil Iphone Mockup.svg"
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                />
-              </div>
-              <div className="projectMediaGridItem">
-                <img
-                  className="projectMediaMockup projectMediaMockup--phone"
-                  src="/images/projects/resource/Kunde Mobil Iphone Mockup.svg"
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                />
-              </div>
-              <div className="projectMediaGridItem">
-                <img
-                  className="projectMediaMockup projectMediaMockup--laptop"
-                  src="/images/projects/resource/Kunde Backoffice Macbook Mockup.svg"
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </figure>
-        ) : (
-          <figure
-            className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
-            role="img"
-            aria-label={`${project.title} hovedbilde`}
-          >
-            <img
-              className="projectMediaLogo projectMediaLogo--main"
-              src={project.logo}
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-            />
-          </figure>
-        )}
+        <figure
+          className={`project-hero__media projectMainPhoto projectMedia-${project.slug}`}
+          role="img"
+          aria-label={`${project.title} hovedbilde`}
+        >
+          <img
+            className="projectMediaLogo projectMediaLogo--main"
+            src={project.logo}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+        </figure>
       </div>
 
       {project.heroText ? (
@@ -210,6 +162,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 slug: project.slug,
                 title: project.title,
                 logo: project.logo,
+                mockups: project.mockups,
               }}
             />
             <FindingsGrid findings={caseContent.findings} />
@@ -248,4 +201,14 @@ export function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }));
+}
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+  if (!project) return {};
+  return {
+    title: `${project.title} — Fredrik Storheil`,
+    description: project.subtitle,
+  };
 }

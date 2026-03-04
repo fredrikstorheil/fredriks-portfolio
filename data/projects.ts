@@ -6,11 +6,17 @@ export type ProjectSignals = {
   keyStrength: string;
 };
 
+export type ProjectMockup = {
+  src: string;
+  type: "laptop" | "phone";
+};
+
 export type Project = {
   slug: string;
   title: string;
   subtitle: string;
   logo: string;
+  mockups?: ProjectMockup[];
   signals: ProjectSignals;
   heroText?: string;
   context: string[];
@@ -25,7 +31,13 @@ export const projects: Project[] = [
     slug: "resource",
     title: "Re:Source",
     subtitle: "Digital infrastruktur for sirkulær ressursforvaltning",
-    logo: "/images/projects/resource/SenseOn Backoffice Macbook Mockup.svg",
+    logo: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg",
+    mockups: [
+      { src: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg", type: "laptop" },
+      { src: "/images/projects/resource/login-mobil-iphone-mockup.svg", type: "phone" },
+      { src: "/images/projects/resource/kunde-mobil-iphone-mockup.svg", type: "phone" },
+      { src: "/images/projects/resource/kunde-backoffice-macbook-mockup.svg", type: "laptop" },
+    ],
     signals: {
       domain: "Sirkulær drift",
       caseType: "Plattform",
@@ -279,26 +291,26 @@ export const projects: Project[] = [
         {
           label: "Backoffice mockup",
           type: "UI",
-          href: "/images/projects/resource/SenseOn Backoffice Macbook Mockup.svg",
-          thumbnail: "/images/projects/resource/SenseOn Backoffice Macbook Mockup.svg",
+          href: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg",
+          thumbnail: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg",
         },
         {
           label: "Login mobil",
           type: "UI",
-          href: "/images/projects/resource/Login Mobil Iphone Mockup.svg",
-          thumbnail: "/images/projects/resource/Login Mobil Iphone Mockup.svg",
+          href: "/images/projects/resource/login-mobil-iphone-mockup.svg",
+          thumbnail: "/images/projects/resource/login-mobil-iphone-mockup.svg",
         },
         {
           label: "Kunde mobil",
           type: "UI",
-          href: "/images/projects/resource/Kunde Mobil Iphone Mockup.svg",
-          thumbnail: "/images/projects/resource/Kunde Mobil Iphone Mockup.svg",
+          href: "/images/projects/resource/kunde-mobil-iphone-mockup.svg",
+          thumbnail: "/images/projects/resource/kunde-mobil-iphone-mockup.svg",
         },
         {
           label: "Kunde backoffice",
           type: "UI",
-          href: "/images/projects/resource/Kunde Backoffice Macbook Mockup.svg",
-          thumbnail: "/images/projects/resource/Kunde Backoffice Macbook Mockup.svg",
+          href: "/images/projects/resource/kunde-backoffice-macbook-mockup.svg",
+          thumbnail: "/images/projects/resource/kunde-backoffice-macbook-mockup.svg",
         },
       ],
       reflection: [
@@ -312,7 +324,7 @@ export const projects: Project[] = [
     slug: "credit-builder",
     title: "Credit Builder",
     subtitle: "Kredittkort for førstegangsbrukere",
-    logo: "/images/projects/Credit Builder Card.svg",
+    logo: "/images/projects/credit-builder-card.svg",
     signals: {
       domain: "Finans",
       caseType: "Mobilbank",
@@ -584,20 +596,20 @@ export const projects: Project[] = [
         {
           label: "Kortvisual",
           type: "UI",
-          href: "/images/projects/Credit Builder Card.svg",
-          thumbnail: "/images/projects/Credit Builder Card.svg",
+          href: "/images/projects/credit-builder-card.svg",
+          thumbnail: "/images/projects/credit-builder-card.svg",
         },
         {
           label: "Behavioral tier system",
           type: "Systemkart",
-          href: "/images/projects/Behavioural Tier System.svg",
-          thumbnail: "/images/projects/Behavioural Tier System.svg",
+          href: "/images/projects/behavioural-tier-system.svg",
+          thumbnail: "/images/projects/behavioural-tier-system.svg",
         },
         {
           label: "Current credit score",
           type: "Datavisning",
-          href: "/images/projects/Current Credit Score.svg",
-          thumbnail: "/images/projects/Current Credit Score.svg",
+          href: "/images/projects/current-credit-score.svg",
+          thumbnail: "/images/projects/current-credit-score.svg",
         },
       ],
       reflection: [
