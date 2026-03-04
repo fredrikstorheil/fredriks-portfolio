@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { projects } from "@/data/projects";
 import { ArrowRight } from "@/components/icons";
+import { projects } from "@/data/projects";
 
 export function ProjectCards() {
   return (
@@ -13,33 +13,24 @@ export function ProjectCards() {
               className={`projectMedia projectMedia-${project.slug}`}
               aria-hidden="true"
             >
-              <img
-                className="projectMediaLogo"
-                src={project.logo}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="projectSignals" aria-label="Prosjektsignaler">
-              <span className="projectSignalChip">{project.signals.domain}</span>
-              <span className="projectSignalChip">{project.signals.caseType}</span>
-              <span className="projectSignalChip">{project.signals.keyStrength}</span>
+              {project.logo ? (
+                <img
+                  className="projectMediaLogo"
+                  src={project.logo}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+              ) : null}
             </div>
 
             <div className="projectText">
-              <h3 className="projectTitle">{project.title}</h3>
-              <p className="projectSubtitle">{project.subtitle}</p>
-              <span className="projectCta">
-                Se case
-                <ArrowRight
-                  className="projectCtaIcon"
-                  size={16}
-                  strokeWidth={2}
-                  aria-hidden="true"
-                />
-              </span>
+              <div className="projectTitleRow">
+                <h3 className="projectTitle">{project.title}</h3>
+                <span className="projectArrow" aria-hidden="true">
+                  <ArrowRight size={18} strokeWidth={2.2} />
+                </span>
+              </div>
             </div>
           </Link>
         </article>
