@@ -22,9 +22,20 @@ export type Project = {
   story: ProjectStory;
 };
 
-export const projects: Project[] = [
+const projectOrder = [
+  "re-source",
+  "credit-builder",
+  "scoreflow",
+  "portfolio-insights",
+] as const;
+
+const projectOrderIndex = Object.fromEntries(
+  projectOrder.map((slug, index) => [slug, index]),
+) as Record<string, number>;
+
+const projectLibrary: Project[] = [
   {
-    slug: "riseup",
+    slug: "credit-builder",
     title: "Credit Builder",
     subtitle: "Kredittkonsept for Emerging Prime",
     logo: "/images/projects/credit-builder-card.svg",
@@ -39,9 +50,14 @@ export const projects: Project[] = [
             "Unge voksne i starten av kredittlivet, med begrenset historikk og høy følsomhet for uforutsigbarhet møter ofte grenser, priser og straff, men mangler tydelig veiledning, kontroll på tilbakebetaling og konkrete verktøy for å bygge gode vaner i dagens kredittprodukter. Målet var å designe en opplevelse som gjør kredittscore synlig og handlingsbar, reduserer stress rundt minimumsbetaling og samtidig er kommersielt robust. ",
         },
         {
-          title: "Min rolle",
+          title: "Rolle",
           body:
             "Lead UX og Product Designer i konsept- og prototypefase. Jeg eide produktretning, informasjonsarkitektur, kjerneflyter, mestringsmekanismer, prototyping og formidling mot interessenter på tvers av design, produkt og business.",
+        },
+        {
+          title: "Prosess",
+          body:
+            "Jeg startet med å definere problemet fra både brukerens og bankens perspektiv. Emerging Prime er en krevende målgruppe fordi de ofte mangler erfaring med kreditt, mens tradisjonelle kredittkort er laget for mer etablerte kunder. Derfor kartla jeg først hvilke beslutninger brukeren faktisk må ta i hverdagen, og hvor friksjonen oppstår. I stedet for å starte med funksjoner, strukturerte jeg produktet rundt handlinger som forbedrer kredittscore, og utviklet en enkel modell for opplevelsen: mål, handling, belønning og trygghet. Denne modellen ble grunnlag for informasjonsarkitektur, flyter og funksjoner. Derfra jobbet jeg iterativt med produktstrukturen og de fem hovedreisene, brukte prototyper for å teste om mekanismene var forståelige og motiverende, og dokumenterte forretningshypoteser for å sikre at konseptet støttet lavere risiko og høyere engasjement.",
         },
         {
           title: "Leveranse",
@@ -78,20 +94,16 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "chall",
-    title: "ScoreFlow",
+    slug: "scoreflow",
+    title: "Compete",
     subtitle: "Skalerbar konkurranseplattform",
+    logo: "/logos/compete.svg",
     story: {
       sections: [
         {
           title: "Kort fortalt",
           body:
-            "Jeg utviklet en mer troverdig og skalerbar konkurransemotor for en challenge-plattform ved å definere et tydelig rammeverk for domming og scoring, og ved å rydde opp i navigasjon og design- og utvikling-alignment.",
-        },
-        {
-          title: "Min rolle",
-          body:
-            "UX og Product Designer. Jeg eide rammeverk for scoring og vurdering, restrukturering av kjerneflyter og etablering av et produksjonsnært designsystem i Figma basert på eksisterende frontend.",
+            "Jeg utviklet en mer troverdig og skalerbar konkurransemotor for en utfordringsplattform ved å definere et tydelig rammeverk for dømming og scoring, og ved å rydde opp i navigasjonen samt styrke samspillet mellom design og utvikling..",
         },
         {
           title: "Kontekst",
@@ -99,7 +111,17 @@ export const projects: Project[] = [
             "Plattformen hadde inkonsistens mellom Figma og implementert UI, fragmentert navigasjon med dead ends og en vinnerlogikk som var for løs til at konkurranser føltes rettferdige. Samtidig bygget produktet opp teknisk og visuell gjeld som gjorde videre utvikling tregere og mer risikabel.",
         },
         {
-          title: "Hva jeg leverte",
+          title: "Rolle",
+          body:
+            "Lead UX Designer. Jeg eide rammeverk for scoring og vurdering, restrukturering av kjerneflyter og etablering av et produksjonsnært designsystem i Figma basert på eksisterende frontend.",
+        },
+        {
+          title: "Prosess",
+          body:
+            "Utgangspunktet var en plattform som hadde vokst organisk, der design og implementasjon ikke lenger var i synk. Før jeg tegnet nye løsninger brukte jeg tid på å forstå hvordan produktet faktisk fungerte i produksjon. Jeg tok utgangspunkt i eksisterende frontend som fasit, og kartla komponenter, tokens og navigasjonsmønstre for å identifisere inkonsistenser. Parallelt analyserte jeg kjerneflytene for å finne hvor brukere mistet kontekst eller traff dead ends, med mål om en mer sammenhengende og forutsigbar navigasjon. Når strukturen var tydeligere, utviklet jeg et robust rammeverk for scoring og vurdering med tydelige kriterier, vekting og rangering, slik at konkurranser kan skaleres uten at hver chall trenger egne regler.",
+        },
+        {
+          title: "Leveranse",
           body:
             "Leveransen besto av et produksjonsnært designsystem, kjerneflyt uten dead ends og et skalerbart rammeverk for scoring og domming.",
         },
@@ -123,21 +145,14 @@ export const projects: Project[] = [
           body:
             "Rammeverket var laget for å øke tillit og fullføringsgrad i konkurranser, samtidig som det gjør produktet enklere å videreutvikle uten å bygge nye regler for hver chall.",
         },
-        {
-          title: "Bevis og impact",
-          bullets: [
-            "Før og etter kan vises som konkret friksjonsreduksjon: færre dead ends og færre steg til å delta og levere contribution.",
-            "Målbare indikatorer i en MVP eller i produksjon: gjenbruksgrad av komponenter, reduksjon i one off-varianter, andel challs som bruker kriteriebasert scoring og fullføringsgrad på domming.",
-          ],
-        },
       ],
     },
   },
   {
-    slug: "investor-insights",
+    slug: "portfolio-insights",
     title: "Portfolio Insights",
     subtitle: "Rollebasert KPI-rapportering",
-    logo: "/logos/portfolio-insight.svg",
+    logo: "/images/projects/portfolio-insights-desktop-mockup.png",
     story: {
       sections: [
         {
@@ -146,17 +161,22 @@ export const projects: Project[] = [
             "Jeg designet en SaaS-plattform som samler porteføljeselskaper og investorer i ett felles KPI- og rapporteringssystem, med mekanismer som gjør data mer konsistent, mer etterprøvbar og enklere å bruke i beslutninger.",
         },
         {
-          title: "Min rolle",
-          body:
-            "UX og Product Designer med ansvar for produktstruktur, informasjonsarkitektur, prototyping og mekanismer for datakvalitet og ansvarlighet i brukeropplevelsen.",
-        },
-        {
           title: "Kontekst",
           body:
             "Porteføljerapportering skjer ofte i regneark og e-post, med ulik definisjon av KPIer, varierende datakvalitet og sen beslutningsstøtte. I tillegg brukes subjektive ratinger ofte i oppfølging, men de blir fort bias og lite sammenlignbare uten struktur.",
         },
         {
-          title: "Hva jeg leverte",
+          title: "Rolle",
+          body:
+            "UX og Product Designer med ansvar for produktstruktur, informasjonsarkitektur, prototyping og mekanismer for datakvalitet og ansvarlighet i brukeropplevelsen.",
+        },
+        {
+          title: "Prosess",
+          body:
+            "Prosjektet startet med å forstå hvordan porteføljerapportering faktisk skjer i praksis, ofte gjennom regneark, e-post og manuelle oppsummeringer. Første steg var å kartlegge hvilke datapunkter som brukes, hvem som eier dem, og hvordan de inngår i beslutninger. I stedet for å starte med enkeltgrensesnitt begynte jeg med informasjonsstrukturen: hvilke KPI-er som må rapporteres, hvordan de henger sammen og hvilke roller som trenger tilgang til hva. Derfra utviklet jeg mekanismer i opplevelsen for å sikre datakvalitet, som validering mot historiske trender, konsistenssjekker mellom KPI-er og krav om begrunnelse ved avvik. Prototyper ble brukt iterativt for å teste hvordan rapporteringen kan være strukturert uten å bli tung å bruke.",
+        },
+        {
+          title: "Leveranse",
           body:
             "Leveransen besto av struktur for innsamling og oppfølging, valideringsmekanismer for subjektive vurderinger og tydelig etterprøvbarhet i data.",
         },
@@ -180,30 +200,20 @@ export const projects: Project[] = [
           body:
             "Løsningen er laget for å redusere manuelt arbeid, øke datakvalitet og korte ned tiden fra rapportering til beslutningsgrunnlag, samtidig som den bygger en historikk som gir bedre trendforståelse over tid.",
         },
-        {
-          title: "Bevis og impact",
-          body:
-            "Målbare indikatorer som følger direkte av konseptet: tid fra periode slutt til ferdig rapport, tid brukt per selskap per syklus, andel komplette innsendinger innen frist, antall avvik fanget av valideringsregler og andel datapunkter med audit trail.",
-        },
       ],
     },
   },
   {
-    slug: "senseon",
+    slug: "re-source",
     title: "Re:Source",
     subtitle: "Produktfundament fra null",
-    logo: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg",
+    logo: "/images/projects/resource/re-source-qr-card.png",
     story: {
       sections: [
         {
           title: "Kort fortalt",
           body:
-            "Jeg bygget et komplett produktfundament for et inventar- og sirkulærøkonomi-økosystem før utvikling, i en situasjon uten utviklingsteam og uten finansiering. Leveransen var en klikkbar prototype og et designsystem som var klart for overlevering til engineering, og prosjektet ble ferdigstilt to uker før estimat.",
-        },
-        {
-          title: "Min rolle",
-          body:
-            "Lead designer i en pre-engineering-fase. Jeg eide informasjonsarkitektur, rolle og tilgang, kjerneflyter, designsystem, prototyping og dokumentasjon som grunnlag for videre utvikling.",
+            "Jeg bygget et komplett produktfundament for et inventar- og sirkulærøkonomi-økosystem før utvikling, i en situasjon uten utviklingsteam og uten finansiering.Leveransen var en klikkbar prototype og et designsystem som var klart for overlevering til engineering, og prosjektet ble ferdigstilt to uker før estimat.",
         },
         {
           title: "Kontekst",
@@ -211,7 +221,17 @@ export const projects: Project[] = [
             "Prosjektet måtte fungere som beslutningsgrunnlag for investorer og kunder, samtidig som det måtte være realistisk å bygge hvis finansiering kom på plass. Risikoen var å ende med en prototype som ser bra ut, men som mangler modell, states og regler til å fungere i praksis.",
         },
         {
-          title: "Hva jeg leverte",
+          title: "Rolle",
+          body:
+            "Lead designer i en pre-engineering-fase. Jeg eide informasjonsarkitektur, rolle og tilgang, kjerneflyter, designsystem, prototyping og dokumentasjon som grunnlag for videre utvikling.",
+        },
+        {
+          title: "Prosess",
+          body:
+            "Prosjektet startet i en fase uten teknisk plattform eller utviklingsteam, så designarbeidet måtte fungere som fundament for videre produktutvikling. Jeg begynte med systemets grunnstruktur og jobbet først med datamodellen og relasjonene mellom objekter, siden inventar må spores over tid, flyttes mellom lokasjoner og gjennom flere livssyklusfaser. Når strukturen var tydelig, delte jeg produktet i fire flater med ulike roller og behov: administrasjon, intern registrering, kunde-backoffice og feltapplikasjon. Jeg etablerte et designsystem tidlig for å kunne produsere raskere og mer konsistent, og brukte flytdiagrammer aktivt for å estimere skjermvolum, identifisere gjenbruk og strukturere milepæler.",
+        },
+        {
+          title: "Leveranse",
           body:
             "Leveransen dekket produktøkosystem, systemmodell, designsystem og planlegging for gjennomførbar engineering.",
         },
@@ -244,17 +264,17 @@ export const projects: Project[] = [
           body:
             "Arbeidet reduserte teknisk og produktmessig risiko før utvikling ved å avklare modell, roller og state transitions, og ved å etablere et skalerbart UI-fundament som tåler videre produktutvikling.",
         },
-        {
-          title: "Bevis og impact",
-          bullets: [
-            "Leveranse: ferdigstilt to uker før estimat.",
-            "Målbare indikatorer som følger direkte av arbeidsmåten: gjenbruksgrad av komponenter, skjermvolum per uke etter at systemet var etablert, og antall kjerneflyter med definerte states og edge cases før engineering.",
-          ],
-        },
       ],
     },
   },
 ];
+
+export const projects: Project[] = [...projectLibrary].sort((a, b) => {
+  const aOrder = projectOrderIndex[a.slug] ?? Number.MAX_SAFE_INTEGER;
+  const bOrder = projectOrderIndex[b.slug] ?? Number.MAX_SAFE_INTEGER;
+
+  return aOrder - bOrder;
+});
 
 export const getProjectBySlug = (slug: string) =>
   projects.find((project) => project.slug === slug);
