@@ -657,14 +657,6 @@ button:focus-visible,
   filter: drop-shadow(0 22px 36px rgba(0, 0, 0, 0.4));
 }
 
-.projectMedia-riseup .projectMediaLogo {
-  width: clamp(90px, 54%, 220px);
-  max-height: 78%;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 22px 36px rgba(0, 0, 0, 0.4));
-}
-
 /* Tablet breakpoint */
 @media (min-width: 768px) {
   .appNavInner,
@@ -926,9 +918,32 @@ button:focus-visible,
   background-image: url("/images/projects/redq-projectimage.jpg");
 }
 
-.projectMedia-chall {
+.projectMedia-scoreflow {
   background-color: var(--color-chall-accent);
   background-image: url("/images/projects/chall-projectimage.jpg");
+}
+
+.projectMedia-scoreflow::after {
+  background:
+    radial-gradient(
+      90% 78% at 50% 50%,
+      rgba(7, 10, 16, 0.74) 0%,
+      rgba(7, 10, 16, 0.56) 48%,
+      rgba(7, 10, 16, 0.3) 78%,
+      rgba(7, 10, 16, 0.16) 100%
+    ),
+    linear-gradient(180deg, rgba(5, 8, 12, 0.38) 0%, rgba(5, 8, 12, 0.5) 100%);
+}
+
+.projectMedia-scoreflow .projectMediaLogo {
+  width: clamp(120px, 56%, 260px);
+  max-height: 84%;
+  filter: drop-shadow(0 24px 42px rgba(0, 0, 0, 0.72));
+}
+
+.projectMedia-scoreflow .projectMediaLogo--hero {
+  width: clamp(168px, 64%, 420px);
+  max-height: 84%;
 }
 
 .projectMedia-ikea {
@@ -936,59 +951,62 @@ button:focus-visible,
   background-image: url("/images/projects/ikea-projectimage.jpg");
 }
 
-.projectMedia-resource,
-.projectMedia-senseon {
-  background-color: #0f766e;
-  background-image:
-    radial-gradient(
-      120% 120% at 0% 0%,
-      rgba(229, 96, 0, 0.55) 0%,
-      rgba(15, 118, 110, 0) 55%
-    ),
-    radial-gradient(
-      120% 120% at 100% 100%,
-      rgba(204, 251, 241, 0.75) 0%,
-      rgba(15, 118, 110, 0) 60%
-    ),
-    linear-gradient(140deg, #0f766e 0%, #0b5f58 100%);
-  padding: clamp(8px, 2vw, 16px);
-  box-sizing: border-box;
+.projectMedia-re-source {
+  background-color: #2f3338;
+  background-image: url("/images/projects/resource/re-source-office-background.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 0;
 }
 
-.projectMedia-resource .projectMediaLogo,
-.projectMedia-senseon .projectMediaLogo {
+.projectMedia-re-source::after {
+  background:
+    radial-gradient(
+      90% 80% at 50% 52%,
+      rgba(8, 10, 14, 0.52) 0%,
+      rgba(8, 10, 14, 0.34) 56%,
+      rgba(8, 10, 14, 0.18) 100%
+    ),
+    linear-gradient(180deg, rgba(8, 10, 14, 0.2) 0%, rgba(8, 10, 14, 0.38) 100%);
+}
+
+.projectMedia-re-source .projectMediaLogo {
   display: block;
+  width: clamp(130px, 48%, 250px);
+  max-height: 86%;
+  height: auto;
+  max-width: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.52));
+}
+
+.projectMedia-re-source .projectMediaLogo--hero {
+  width: clamp(180px, 50%, 340px);
+  max-height: 86%;
+}
+
+.projectMedia-portfolio-insights {
+  background-color: #06080d;
+  background-image: none;
+  padding: 0;
+}
+
+.projectMedia-portfolio-insights .projectMediaLogo {
   width: 100%;
   height: 100%;
-  max-width: 94%;
-  max-height: 94%;
+  max-width: none;
+  max-height: none;
   object-fit: contain;
+  filter: none;
 }
 
-.projectMedia-portfolio-insight,
-.projectMedia-investor-insights {
-  background-color: #334155;
-  background-image:
-    radial-gradient(
-      120% 120% at 0% 0%,
-      rgba(168, 85, 247, 0.5) 0%,
-      rgba(51, 65, 85, 0) 55%
-    ),
-    radial-gradient(
-      120% 120% at 100% 100%,
-      rgba(216, 180, 254, 0.55) 0%,
-      rgba(51, 65, 85, 0) 60%
-    ),
-    radial-gradient(
-      90% 90% at 60% 30%,
-      rgba(248, 250, 252, 0.35) 0%,
-      rgba(248, 250, 252, 0) 55%
-    ),
-    linear-gradient(140deg, #334155 0%, #581c87 100%);
+.projectLink:hover .projectMedia-portfolio-insights .projectMediaLogo,
+.projectLink:focus-visible .projectMedia-portfolio-insights .projectMediaLogo {
+  transform: none;
+  filter: none;
 }
 
-.projectMedia-credit-builder,
-.projectMedia-riseup {
+.projectMedia-credit-builder {
   background-color: #0b2a44;
   background-image:
     radial-gradient(
@@ -1004,39 +1022,12 @@ button:focus-visible,
     linear-gradient(140deg, #0b2a44 0%, #0b1f35 100%);
 }
 
-.project-hero .projectMedia-resource {
-  background-image:
-    radial-gradient(
-      140% 120% at 10% 0%,
-      rgba(229, 96, 0, 0.5) 0%,
-      rgba(15, 118, 110, 0) 55%
-    ),
-    radial-gradient(
-      140% 120% at 90% 100%,
-      rgba(204, 251, 241, 0.7) 0%,
-      rgba(15, 118, 110, 0) 65%
-    ),
-    linear-gradient(140deg, #0f766e 0%, #0b5f58 100%);
+.project-hero .projectMedia-re-source {
+  background-image: url("/images/projects/resource/re-source-office-background.jpg");
 }
 
-.project-hero .projectMedia-portfolio-insight {
-  background-image:
-    radial-gradient(
-      140% 120% at 10% 0%,
-      rgba(168, 85, 247, 0.55) 0%,
-      rgba(51, 65, 85, 0) 55%
-    ),
-    radial-gradient(
-      140% 120% at 90% 100%,
-      rgba(203, 213, 225, 0.6) 0%,
-      rgba(51, 65, 85, 0) 65%
-    ),
-    radial-gradient(
-      90% 90% at 50% 20%,
-      rgba(250, 250, 250, 0.3) 0%,
-      rgba(250, 250, 250, 0) 55%
-    ),
-    linear-gradient(140deg, #334155 0%, #581c87 100%);
+.project-hero .projectMedia-portfolio-insights {
+  background-image: none;
 }
 
 .project-hero .projectMedia-credit-builder {
@@ -1054,7 +1045,7 @@ button:focus-visible,
     linear-gradient(140deg, #0b2a44 0%, #0b1f35 100%);
 }
 
-.projectPage-resource .projectPhoto {
+.projectPage-re-source .projectPhoto {
   background-color: #0f766e;
   background-image:
     radial-gradient(
@@ -1072,7 +1063,7 @@ button:focus-visible,
   background-position: center;
 }
 
-.projectPage-portfolio-insight .projectPhoto {
+.projectPage-portfolio-insights .projectPhoto {
   background-color: #334155;
   background-image:
     radial-gradient(
@@ -1108,7 +1099,7 @@ button:focus-visible,
   background-position: center;
 }
 
-.projectPage-resource .projectBlock:nth-of-type(3n + 2) .projectPhoto {
+.projectPage-re-source .projectBlock:nth-of-type(3n + 2) .projectPhoto {
   background-image:
     radial-gradient(
       130% 120% at 0% 25%,
@@ -1123,7 +1114,7 @@ button:focus-visible,
     linear-gradient(140deg, #0f766e 0%, #0b5f58 100%);
 }
 
-.projectPage-portfolio-insight
+.projectPage-portfolio-insights
   .projectBlock:nth-of-type(3n + 2)
   .projectPhoto {
   background-image:
@@ -1155,7 +1146,7 @@ button:focus-visible,
     linear-gradient(140deg, #0b2a44 0%, #0b1f35 100%);
 }
 
-.projectPage-resource .projectBlock:nth-of-type(3n) .projectPhoto {
+.projectPage-re-source .projectBlock:nth-of-type(3n) .projectPhoto {
   background-image:
     radial-gradient(
       130% 120% at 20% 0%,
@@ -1170,7 +1161,7 @@ button:focus-visible,
     linear-gradient(140deg, #0f766e 0%, #0b5f58 100%);
 }
 
-.projectPage-portfolio-insight .projectBlock:nth-of-type(3n) .projectPhoto {
+.projectPage-portfolio-insights .projectBlock:nth-of-type(3n) .projectPhoto {
   background-image:
     radial-gradient(
       130% 120% at 20% 0%,

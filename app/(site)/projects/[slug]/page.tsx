@@ -198,7 +198,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     (section) => section.title !== "Kort fortalt",
   );
   const hasHeroMockups = Boolean(project.mockups?.length);
-  const isCreditBuilder = project.slug === "riseup";
+  const isCreditBuilder = project.slug === "credit-builder";
 
   const sections: RenderSection[] = [];
 
