@@ -43,13 +43,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const sourceSections = project.story.sections.filter(
     (section) => section.title !== "Kort fortalt",
   );
+  const hasHeroMockups = Boolean(project.mockups?.length);
 
   const sections: RenderSection[] = [];
 
   for (let i = 0; i < sourceSections.length; i += 1) {
     const current = sourceSections[i];
+    const isDeliverablesRoot =
+      current.title === "Hva jeg leverte" || current.title === "Leveranse";
 
-    if (current.title !== "Hva jeg leverte") {
+    if (!isDeliverablesRoot) {
       sections.push({
         title: current.title,
         body: current.body,
@@ -101,19 +104,43 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             role="img"
             aria-label={`${project.title} prosjektillustrasjon`}
           >
-            {project.logo ? (
-              <img
-                className="projectMediaLogo projectMediaLogo--hero"
-                src={project.logo}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-              />
-            ) : (
-              <span className="projectHeroMonogram" aria-hidden="true">
-                {project.title}
-              </span>
-            )}
+            {hasHeroMockups
+              ? (
+                  <>
+                    {project.mockups?.slice(0, 2).map((mockup, index) => {
+                      const floatClass =
+                        index === 0
+                          ? "projectMediaFloat projectMediaFloat--score"
+                          : "projectMediaFloat projectMediaFloat--tier";
+
+                      return (
+                        <img
+                          key={mockup.src}
+                          className={floatClass}
+                          src={mockup.src}
+                          alt=""
+                          aria-hidden="true"
+                          loading="lazy"
+                        />
+                      );
+                    })}
+                  </>
+                )
+              : project.logo
+              ? (
+                  <img
+                    className="projectMediaLogo projectMediaLogo--hero"
+                    src={project.logo}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                  />
+                )
+              : (
+                  <span className="projectHeroMonogram" aria-hidden="true">
+                    {project.title}
+                  </span>
+                )}
           </figure>
         </header>
 

@@ -28,52 +28,86 @@ export const projects: Project[] = [
     title: "Credit Builder",
     subtitle: "Kredittkonsept for Emerging Prime",
     logo: "/images/projects/credit-builder-card.svg",
+    mockups: [
+      {
+        src: "/images/projects/current-credit-score.svg",
+        type: "laptop",
+      },
+      {
+        src: "/images/projects/behavioural-tier-system.svg",
+        type: "laptop",
+      },
+    ],
     story: {
       sections: [
         {
           title: "Kort fortalt",
           body:
-            "Jeg designet et kredittkortkonsept som gjør kredittscore forståelig og handlingsbar for Emerging Prime. Løsningen er bygget som en mestringsreise og testet best i målgruppen 18 til 24 i en konsepttest med 1 013 respondenter.",
-        },
-        {
-          title: "Min rolle",
-          body:
-            "Lead UX og Product Designer i konsept og prototypefase. Jeg eide retning, informasjonsarkitektur, kjerneflyter, mestringsmekanismer, prototyping og formidling mot interessenter.",
+            "For Lloyds Banking Group utviklet jeg et atferdsdrevet kredittkortkonsept som gjør kredittscore forståelig, handlingsbar og mindre stressende for Emerging Prime. Løsningen ble bygget som en guidet mestringsreise og validert i en kvantitativ konsepttest med 1 013 respondenter, der RiseUp rangerte høyest totalt og spesielt sterkt i aldersgruppen 18-24.",
         },
         {
           title: "Kontekst",
           body:
-            "Tradisjonelle kredittkort er ofte bygget rundt grenser, priser og straff. For unge brukere skaper det stress, lav forutsigbarhet og dårlige valg. Målet var å utvikle en opplevelse som bygger gode vaner og kredittscore over tid, samtidig som modellen er kommersielt bærekraftig.",
+            "Emerging Prime er en krevende målgruppe: unge voksne i starten av kredittlivet, med begrenset historikk og høy følsomhet for uforutsigbarhet. I dagens kredittprodukter møter de ofte grenser, priser og straff, men mangler tydelig veiledning, kontroll på tilbakebetaling og konkrete verktøy for å bygge gode vaner. Målet var å designe en opplevelse som gjør kredittscore synlig og handlingsbar, reduserer stress rundt minimumsbetaling og samtidig er kommersielt robust.",
         },
         {
-          title: "Hva jeg leverte",
-          body: "Leveransen besto av produktstruktur, mestringsmekanismer og tydelig forretningslogikk.",
-        },
-        {
-          title: "Produktstruktur",
+          title: "Min rolle",
           body:
-            "Fem hovedreiser som henger sammen: søknad og onboarding, dashboard, medlemskap med nivåer og belønninger, kredittscore og mål, kortkontroll og forbruksstyring.",
+            "Lead UX og Product Designer i konsept- og prototypefase. Jeg eide produktretning, informasjonsarkitektur, kjerneflyter, mestringsmekanismer, prototyping og formidling mot interessenter på tvers av design, produkt og business.",
         },
         {
-          title: "Mekanismer for mestring og kontroll",
+          title: "Leveranse",
+          body:
+            "Jeg leverte et helhetlig konsept som flytter kredittkortet fra passiv betalingsmekanisme til en guidet progresjonsreise med tydelig sammenheng mellom brukeradferd, belønning og risikokontroll.",
+        },
+        {
+          title: "Modell for mestring og kontroll",
+          body:
+            "Kjernemodellen ble bygget som en enkel sløyfe: mål -> handling -> belønning -> trygghet.",
           bullets: [
-            "Goal Engine for å sette og følge kredittscore mål.",
-            "Buffer gjennom round ups for å redusere betalingsstress.",
-            "Future Fund som belønner god adferd over tid.",
-            "Tier system som knytter progresjon til perks og fordeler.",
-            "Price Promise som gir bedre vilkår ved ansvarlig bruk.",
+            "Mål: Goal Engine gjør kredittscore-mål konkret med delmål og anbefalte tiltak.",
+            "Handling: Daglige valg oversettes til tydelige handlinger i dashboard og kortkontroll.",
+            "Belønning: Future Fund og tier-system gjør ansvarlig adferd synlig og attraktiv over tid.",
+            "Trygghet: Cushion via round ups reduserer betalingsstress, og Price Promise kobler disiplin til bedre vilkår.",
           ],
         },
         {
-          title: "Forretningslogikk",
+          title: "Fem hovedreiser som bygger progresjon",
           body:
-            "Konseptet ble koblet til hypoteser om differensiering, risikoreduksjon, økt langsiktig engasjement og høyere livstidsverdi.",
+            "Produktarkitekturen ble designet som fem sammenhengende reiser som støtter progresjon fra oppstart til kontroll og mestring.",
+          bullets: [
+            "Søknad og onboarding som setter forventning, mål og startnivå.",
+            "Dashboard med status, neste beste handling og løpende oversikt.",
+            "Medlemskap med nivåer, progresjon og belønninger.",
+            "Kredittscore-oppfølging med mål, tiltak og fremdrift.",
+            "Kortkontroll og forbruksstyring som gir praktisk kontroll i hverdagen.",
+          ],
+        },
+        {
+          title: "Nøkkelskjermer",
+          bullets: [
+            "Goal Engine + Cushion: skjerm for kredittscore-mål, anbefalte handlinger og automatisk bufferbygging via round ups.",
+            "Tier-progresjon: skjerm som viser utvikling fra Rookie til Star med tydelige perks, cashback og neste milepæl.",
+          ],
+        },
+        {
+          title: "Forretningshypoteser og risikoreduksjon",
+          body:
+            "Konseptet ble koblet til tydelige hypoteser om vekst, risiko og langsiktig verdi.",
+          bullets: [
+            "Økt penetrasjon i Emerging Prime gjennom en mer relevant og pedagogisk kredittopplevelse.",
+            "Lavere misligholdsrisiko ved å belønne ønsket adferd tidlig, ikke bare straffe avvik sent.",
+            "Høyere livstidsverdi gjennom varige vaner, progresjon og gjentatt bruk.",
+            "Sterkere differensiering i et kredittmarked med ellers like produkter.",
+            "Bedre grunnlag for kryssalg i et større finansielt økosystem.",
+          ],
         },
         {
           title: "Bevis og impact",
           bullets: [
-            "Konsepttest: RiseUp rangerte høyest totalt og særlig sterkt i segmentet 18 til 24, basert på 1 013 respondenter.",
-            "MVP metrics som følger direkte av løsningen: andel som setter kredittscore mål, bygger buffer og velger planlagt nedbetaling fremfor minimum.",
+            "Kvantitativ konsepttest med 1 013 respondenter: RiseUp rangerte høyest totalt og spesielt sterkt i segmentet 18-24.",
+            "Definerte MVP-metrikker fra mekanikkene: andel som setter kredittscore-mål, andel som bygger Cushion-buffer og andel som velger planlagt nedbetaling fremfor minimum.",
+            "Porteføljeverdi: caset viser kombinasjon av produktstrategi, atferdsdesign og tydelig informasjonsarkitektur, underbygget av faktisk testgrunnlag.",
           ],
         },
       ],
