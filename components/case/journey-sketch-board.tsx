@@ -1,0 +1,282 @@
+"use client";
+
+import { useEffect, useId, useMemo, useState } from "react";
+
+type JourneySketchScreen = {
+  title: string;
+  imageSrc?: string;
+  imageAlt?: string;
+};
+
+type JourneySketchItem = {
+  step: number;
+  title: string;
+  caption?: string;
+  screens: JourneySketchScreen[];
+};
+
+type JourneySketchBoardProps = {
+  items: JourneySketchItem[];
+  ariaLabel?: string;
+};
+
+export function JourneySketchBoard({
+  items,
+  ariaLabel = "Skisseboard for de fem hovedreisene",
+}: JourneySketchBoardProps) {
+  const dialogTitleId = useId();
+  const [activeSlide, setActiveSlide] = useState<{
+    itemIndex: number;
+    screenIndex: number;
+  } | null>(null);
+
+  const activeFlow = useMemo(() => {
+    if (!activeSlide) {
+      return null;
+    }
+
+    return items[activeSlide.itemIndex] ?? null;
+  }, [activeSlide, items]);
+
+  const activeScreen = useMemo(() => {
+    if (!activeSlide || !activeFlow) {
+      return null;
+    }
+
+    return activeFlow.screens[activeSlide.screenIndex] ?? null;
+  }, [activeFlow, activeSlide]);
+
+  const openSlide = (itemIndex: number, screenIndex: number) => {
+    const item = items[itemIndex];
+    const screen = item?.screens[screenIndex];
+
+    if (!item || !screen || !screen.imageSrc) {
+      return;
+    }
+
+    setActiveSlide({ itemIndex, screenIndex });
+  };
+
+  const closeSlide = () => {
+    setActiveSlide(null);
+  };
+
+  const goToPrevious = () => {
+    if (!activeSlide || !activeFlow) {
+      return;
+    }
+
+    const totalScreens = activeFlow.screens.length;
+    const previousIndex = (activeSlide.screenIndex - 1 + totalScreens) % totalScreens;
+
+    setActiveSlide({
+      itemIndex: activeSlide.itemIndex,
+      screenIndex: previousIndex,
+    });
+  };
+
+  const goToNext = () => {
+    if (!activeSlide || !activeFlow) {
+      return;
+    }
+
+    const totalScreens = activeFlow.screens.length;
+    const nextIndex = (activeSlide.screenIndex + 1) % totalScreens;
+
+    setActiveSlide({
+      itemIndex: activeSlide.itemIndex,
+      screenIndex: nextIndex,
+    });
+  };
+
+  useEffect(() => {
+    if (!activeSlide) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeSlide();
+      }
+
+      if (event.key === "ArrowLeft") {
+        goToPrevious();
+      }
+
+      if (event.key === "ArrowRight") {
+        goToNext();
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [activeSlide, goToNext, goToPrevious]);
+
+  return (
+    <section className="journeySketchBoard" aria-label={ariaLabel}>
+      <div className="journeySketchGrid">
+        {items.map((item, itemIndex) => (
+          <article key={`${item.step}-${item.title}`} className="journeySketchCard">
+            <header className="journeySketchHeader">
+              <span className="journeySketchStep">{item.step}</span>
+              <h4 className="journeySketchTitle">{item.title}</h4>
+            </header>
+
+            {item.caption ? (
+              <p className="journeySketchCaption">
+                <span className="journeySketchCaptionLabel"></span> {item.caption}
+              </p>
+            ) : null}
+
+            <div className="journeySketchRail">
+              {item.screens.map((screen, screenIndex) => (
+                <div
+                  key={`${item.step}-${screen.title}-${screenIndex}`}
+                  className="journeySketchRailItem"
+                >
+                  <div className="journeySketchScreen">
+                    <div className="journeySketchScreenMeta">
+                      <span className="journeySketchScreenIndex">
+                        Skjerm {screenIndex + 1}
+                      </span>
+                      <p className="journeySketchScreenLabel">{screen.title}</p>
+                    </div>
+
+                    {screen.imageSrc
+                      ? (
+                          <button
+                            type="button"
+                            className="journeySketchFrameButton"
+                            onClick={() => openSlide(itemIndex, screenIndex)}
+                            aria-label={`Åpne ${item.title} - ${screen.title} i galleri`}
+                          >
+                            <div className="journeySketchFrame">
+                              <img
+                                src={screen.imageSrc}
+                                alt={screen.imageAlt ?? `${item.title} - ${screen.title}`}
+                                loading="lazy"
+                              />
+                            </div>
+                          </button>
+                        )
+                      : (
+                          <div className="journeySketchFrame" aria-hidden="true">
+                            <div className="journeySketchPlaceholder" aria-hidden="true">
+                              Last opp mobilskisse
+                            </div>
+                          </div>
+                        )}
+                  </div>
+
+                  {screenIndex < item.screens.length - 1
+                    ? (
+                        <svg
+                          className="journeySketchArrow"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M5 12h14m0 0-4-4m4 4-4 4" />
+                        </svg>
+                      )
+                    : null}
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {activeSlide && activeFlow && activeScreen && activeScreen.imageSrc ? (
+        <div className="journeySketchLightbox" role="presentation">
+          <button
+            type="button"
+            className="journeySketchLightboxBackdrop"
+            onClick={closeSlide}
+            aria-label="Lukk galleri"
+          />
+          <div
+            className="journeySketchLightboxDialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={dialogTitleId}
+          >
+            <header className="journeySketchLightboxHeader">
+              <div className="journeySketchLightboxMeta">
+                <p id={dialogTitleId} className="journeySketchLightboxTitle">
+                  {activeFlow.step}. {activeFlow.title}
+                </p>
+                <p className="journeySketchLightboxSubtitle">
+                  {activeScreen.title} · {activeSlide.screenIndex + 1}/{activeFlow.screens.length}
+                </p>
+              </div>
+              <button
+                type="button"
+                className="journeySketchLightboxClose"
+                onClick={closeSlide}
+                aria-label="Lukk galleri"
+              >
+                Lukk
+              </button>
+            </header>
+
+            <div className="journeySketchLightboxStage">
+              <button
+                type="button"
+                className="journeySketchLightboxNav"
+                onClick={goToPrevious}
+                aria-label="Forrige skjerm"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M15 5 8 12l7 7" />
+                </svg>
+              </button>
+
+              <figure className="journeySketchLightboxFigure">
+                <img
+                  src={activeScreen.imageSrc}
+                  alt={activeScreen.imageAlt ?? `${activeFlow.title} - ${activeScreen.title}`}
+                />
+                {activeFlow.caption ? (
+                  <figcaption className="journeySketchLightboxCaption">
+                    {activeFlow.caption}
+                  </figcaption>
+                ) : null}
+              </figure>
+
+              <button
+                type="button"
+                className="journeySketchLightboxNav"
+                onClick={goToNext}
+                aria-label="Neste skjerm"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="m9 5 7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      <p className="srOnly">
+        Seksjonen inneholder flyter med flere skisseplassholdere: {items
+          .map((item) => item.title)
+          .join(", ")}.
+        Hver flyt har flere skisser med pil mellom hvert steg i flyten.
+      </p>
+      <p className="srOnly">
+        Flyter: {items
+          .map((item) => `${item.title} (${item.screens.length} skisser)`)
+          .join(", ")}
+        . Trykk på en skisse for å åpne gallerivisning med forrige og neste.
+      </p>
+    </section>
+  );
+}

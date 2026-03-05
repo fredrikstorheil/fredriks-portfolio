@@ -1278,8 +1278,6 @@ button:focus-visible,
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  padding: 0 0 20px;
-  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .projectHeroText {
@@ -1459,6 +1457,375 @@ button:focus-visible,
   line-height: 1.58;
   font-weight: 500;
   color: var(--color-text);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.journeySketchBoard {
+  --journey-sketch-screen-width: clamp(228px, 62vw, 280px);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.journeySketchGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.journeySketchCard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(14px, 2.4vw, 18px);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.journeySketchHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.journeySketchStep {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-text-muted) 45%, transparent);
+  color: var(--color-text-muted);
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.journeySketchTitle {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.journeySketchRail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scroll-padding-inline: 2px;
+  padding-bottom: 2px;
+  padding-inline: 2px;
+}
+
+.journeySketchRailItem {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  min-width: max-content;
+  flex: 0 0 auto;
+}
+
+.journeySketchScreen {
+  width: var(--journey-sketch-screen-width);
+  max-width: var(--journey-sketch-screen-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: var(--journey-sketch-screen-width);
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.journeySketchScreenMeta {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.journeySketchScreenIndex {
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.journeySketchScreenLabel {
+  margin: 0;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.32;
+  color: var(--color-text);
+  font-weight: 600;
+  min-height: 2.64em;
+  text-wrap: balance;
+}
+
+.journeySketchFrameButton {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+  cursor: zoom-in;
+}
+
+.journeySketchFrameButton:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 70%, #fff 30%);
+  outline-offset: 2px;
+}
+
+.journeySketchFrame {
+  width: 100%;
+  aspect-ratio: 390 / 844;
+  border-radius: 12px;
+  border: 1px dashed color-mix(in srgb, var(--color-border-subtle) 76%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.journeySketchArrow {
+  width: 20px;
+  height: 20px;
+  color: color-mix(in srgb, var(--color-text-muted) 75%, transparent);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+}
+
+.journeySketchFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.journeySketchPlaceholder {
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.journeySketchCaption {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.journeySketchCaptionLabel {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.journeySketchLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.journeySketchLightboxBackdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: rgba(7, 10, 16, 0.82);
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+}
+
+.journeySketchLightboxDialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1120px);
+  max-height: calc(100vh - 24px);
+  overflow: auto;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--color-border-subtle) 78%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 95%, #000 5%);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.38);
+  padding: clamp(12px, 2.4vw, 18px);
+}
+
+.journeySketchLightboxHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.journeySketchLightboxMeta {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.journeySketchLightboxTitle {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.32;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.journeySketchLightboxSubtitle {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+.journeySketchLightboxClose {
+  border: 1px solid color-mix(in srgb, var(--color-border-subtle) 88%, transparent);
+  background: color-mix(in srgb, var(--color-surface-subtle) 88%, transparent);
+  color: var(--color-text);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.journeySketchLightboxClose:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 70%, #fff 30%);
+  outline-offset: 2px;
+}
+
+.journeySketchLightboxStage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(8px, 2vw, 16px);
+}
+
+.journeySketchLightboxNav {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-border-subtle) 84%, transparent);
+  background: color-mix(in srgb, var(--color-surface-subtle) 88%, transparent);
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.journeySketchLightboxNav svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.journeySketchLightboxNav:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 70%, #fff 30%);
+  outline-offset: 2px;
+}
+
+.journeySketchLightboxFigure {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.journeySketchLightboxFigure img {
+  width: min(100%, 460px);
+  height: auto;
+  max-height: calc(100vh - 220px);
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--color-border-subtle) 80%, transparent);
+  background: color-mix(in srgb, var(--color-surface-subtle) 88%, transparent);
+  object-fit: contain;
+}
+
+.journeySketchLightboxCaption {
+  margin: 0;
+  width: min(100%, 460px);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .journeySketchLightboxStage {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .journeySketchLightboxNav {
+    width: 44px;
+    height: 44px;
+  }
+
+  .journeySketchLightboxNav:first-of-type {
+    justify-self: start;
+  }
+
+  .journeySketchLightboxNav:last-of-type {
+    justify-self: end;
+  }
 }
 
 @media (min-width: 768px) {
