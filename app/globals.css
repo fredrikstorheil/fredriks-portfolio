@@ -1461,6 +1461,272 @@ button:focus-visible,
   color: var(--color-text);
 }
 
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.caseDiagramCard {
+  margin-top: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: clamp(12px, 2.5vw, 16px);
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--color-border-subtle) 84%, transparent);
+  background: color-mix(in srgb, var(--color-surface-subtle) 86%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.caseDiagramTitle {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.caseDiagramSubtitle {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.caseDiagramFlow {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+}
+
+.caseDiagramFlow--vertical,
+.caseDiagramFlow--horizontal,
+.caseDiagramFlow--rail {
+  flex-direction: column;
+}
+
+.caseDiagramFlowItem {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.caseDiagramFlowItem--inline {
+  flex: 1 1 auto;
+}
+
+.caseDiagramNode {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--color-border-subtle) 88%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+.caseDiagramNode--step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.caseDiagramStepBadge {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--color-text-muted) 35%, transparent);
+  background: color-mix(in srgb, var(--color-surface-subtle) 88%, transparent);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.caseDiagramConnectorIcon {
+  width: 20px;
+  height: 20px;
+  align-self: center;
+  color: color-mix(in srgb, var(--color-text-muted) 78%, transparent);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+}
+
+.caseDiagramConnectorIcon--adaptive {
+  transform: rotate(90deg);
+}
+
+.caseDiagramDefinitionList {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.caseDiagramDefinitionItem {
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--color-border-subtle) 88%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 91%, transparent);
+}
+
+.caseDiagramDefinitionItem dt {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.caseDiagramDefinitionItem dd {
+  margin: 5px 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.caseDiagramFootnote {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.caseDiagramAssistive {
+  margin: 0;
+}
+
+.caseKeyScreensGrid {
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.caseKeyScreenCard {
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--color-border-subtle) 88%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 91%, transparent);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.caseKeyScreenMedia {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--color-border-subtle) 84%, transparent);
+  overflow: hidden;
+  background: radial-gradient(
+      120% 120% at 4% 4%,
+      color-mix(in srgb, var(--color-text-muted) 14%, transparent) 0%,
+      transparent 62%
+    ),
+    color-mix(in srgb, var(--color-surface-subtle) 94%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.caseKeyScreenMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.caseKeyScreenPlaceholder {
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.caseKeyScreenCard h5 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.caseKeyScreenCard p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .caseDiagramFlow--horizontal,
+  .caseDiagramFlow--rail {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .caseDiagramFlow--horizontal .caseDiagramFlowItem--inline,
+  .caseDiagramFlow--rail .caseDiagramFlowItem--inline {
+    flex-direction: row;
+    align-items: center;
+    flex: 1 1 0;
+  }
+
+  .caseDiagramFlow--horizontal .caseDiagramFlowItem--inline .caseDiagramNode,
+  .caseDiagramFlow--rail .caseDiagramFlowItem--inline .caseDiagramNode {
+    flex: 1 1 auto;
+  }
+
+  .caseDiagramConnectorIcon--adaptive {
+    transform: none;
+  }
+
+  .caseDiagramDefinitionList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .caseKeyScreensGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (min-width: 768px) {
   .projectHeroCard {
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);

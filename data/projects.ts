@@ -43,12 +43,12 @@ export const projects: Project[] = [
         {
           title: "Kort fortalt",
           body:
-            "For Lloyds Banking Group utviklet jeg et atferdsdrevet kredittkortkonsept som gjør kredittscore forståelig, handlingsbar og mindre stressende for Emerging Prime. Løsningen ble bygget som en guidet mestringsreise og validert i en kvantitativ konsepttest med 1 013 respondenter, der RiseUp rangerte høyest totalt og spesielt sterkt i aldersgruppen 18-24.",
+            "Jeg designet et atferdsdrevet kredittkortkonsept for en bank sin mobilapplikasjon som gjør kredittscore forståelig, handlingsbar og mindre stressende for unge voksne. Løsningen ble bygget som en guidet mestringsreise og validert i en kvantitativ konsepttest med over 1 000 respondenter, der Credit Builder rangerte høyest totalt og spesielt sterkt i aldersgruppen 18-24.",
         },
         {
           title: "Kontekst",
           body:
-            "Emerging Prime er en krevende målgruppe: unge voksne i starten av kredittlivet, med begrenset historikk og høy følsomhet for uforutsigbarhet. I dagens kredittprodukter møter de ofte grenser, priser og straff, men mangler tydelig veiledning, kontroll på tilbakebetaling og konkrete verktøy for å bygge gode vaner. Målet var å designe en opplevelse som gjør kredittscore synlig og handlingsbar, reduserer stress rundt minimumsbetaling og samtidig er kommersielt robust.",
+            "Denne målgruppen har sine utfordringer: unge voksne i starten av kredittlivet, med begrenset historikk og høy følsomhet for uforutsigbarhet. I dagens kredittprodukter møter de ofte grenser, priser og straff, men mangler tydelig veiledning, kontroll på tilbakebetaling og konkrete verktøy for å bygge gode vaner. Målet var å designe en opplevelse som gjør kredittscore synlig og handlingsbar, reduserer stress rundt minimumsbetaling og samtidig er kommersielt robust.",
         },
         {
           title: "Min rolle",
@@ -64,15 +64,9 @@ export const projects: Project[] = [
           title: "Modell for mestring og kontroll",
           body:
             "Kjernemodellen ble bygget som en enkel sløyfe: mål -> handling -> belønning -> trygghet.",
-          bullets: [
-            "Mål: Goal Engine gjør kredittscore-mål konkret med delmål og anbefalte tiltak.",
-            "Handling: Daglige valg oversettes til tydelige handlinger i dashboard og kortkontroll.",
-            "Belønning: Future Fund og tier-system gjør ansvarlig adferd synlig og attraktiv over tid.",
-            "Trygghet: Cushion via round ups reduserer betalingsstress, og Price Promise kobler disiplin til bedre vilkår.",
-          ],
         },
         {
-          title: "Fem hovedreiser som bygger progresjon",
+          title: "Produktstruktur",
           body:
             "Produktarkitekturen ble designet som fem sammenhengende reiser som støtter progresjon fra oppstart til kontroll og mestring.",
           bullets: [
@@ -84,14 +78,19 @@ export const projects: Project[] = [
           ],
         },
         {
-          title: "Nøkkelskjermer",
+          title: "Mekanismer for mestring og kontroll",
+          body:
+            "Løsningen kombinerer mekanismer som gjør ønsket adferd tydelig, trygg og belønnende over tid.",
           bullets: [
-            "Goal Engine + Cushion: skjerm for kredittscore-mål, anbefalte handlinger og automatisk bufferbygging via round ups.",
-            "Tier-progresjon: skjerm som viser utvikling fra Rookie til Star med tydelige perks, cashback og neste milepæl.",
+            "Goal Engine for å sette og følge kredittscore-mål.",
+            "Cushion via round ups for å bygge buffer og redusere betalingsstress.",
+            "Future Fund som belønner ansvarlig bruk over tid.",
+            "Tier-system fra Rookie til Star med tydelige perks og cashback.",
+            "Price Promise der disiplinert bruk kan gi bedre vilkår over tid.",
           ],
         },
         {
-          title: "Forretningshypoteser og risikoreduksjon",
+          title: "Forretningslogikk",
           body:
             "Konseptet ble koblet til tydelige hypoteser om vekst, risiko og langsiktig verdi.",
           bullets: [
