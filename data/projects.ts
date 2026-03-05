@@ -28,27 +28,15 @@ export const projects: Project[] = [
     title: "Credit Builder",
     subtitle: "Kredittkonsept for Emerging Prime",
     logo: "/images/projects/credit-builder-card.svg",
-    mockups: [
-      {
-        src: "/images/projects/current-credit-score.svg",
-        type: "laptop",
-      },
-      {
-        src: "/images/projects/behavioural-tier-system.svg",
-        type: "laptop",
-      },
-    ],
     story: {
       sections: [
         {
           title: "Kort fortalt",
           body:
-            "Jeg designet et atferdsdrevet kredittkortkonsept for en bank sin mobilapplikasjon som gjør kredittscore forståelig, handlingsbar og mindre stressende for unge voksne. Løsningen ble bygget som en guidet mestringsreise og validert i en kvantitativ konsepttest med over 1 000 respondenter, der Credit Builder rangerte høyest totalt og spesielt sterkt i aldersgruppen 18-24.",
-        },
-        {
+            "Jeg designet et atferdsdrevet kredittkortkonsept for en banks mobilapplikasjon som gjør kredittscore forståelig, handlingsbar og mindre stressende for unge voksne. Løsningen ble bygget som en guidet mestringsreise og validert i en kvantitativ konsepttest med over 1 000 respondenter, der Credit Builder rangerte høyest totalt og spesielt sterkt i aldersgruppen 18–24.", }, {
           title: "Kontekst",
           body:
-            "Denne målgruppen har sine utfordringer: unge voksne i starten av kredittlivet, med begrenset historikk og høy følsomhet for uforutsigbarhet. I dagens kredittprodukter møter de ofte grenser, priser og straff, men mangler tydelig veiledning, kontroll på tilbakebetaling og konkrete verktøy for å bygge gode vaner. Målet var å designe en opplevelse som gjør kredittscore synlig og handlingsbar, reduserer stress rundt minimumsbetaling og samtidig er kommersielt robust.",
+            "Unge voksne i starten av kredittlivet, med begrenset historikk og høy følsomhet for uforutsigbarhet møter ofte grenser, priser og straff, men mangler tydelig veiledning, kontroll på tilbakebetaling og konkrete verktøy for å bygge gode vaner i dagens kredittprodukter. Målet var å designe en opplevelse som gjør kredittscore synlig og handlingsbar, reduserer stress rundt minimumsbetaling og samtidig er kommersielt robust. ",
         },
         {
           title: "Min rolle",
@@ -61,40 +49,11 @@ export const projects: Project[] = [
             "Jeg leverte et helhetlig konsept som flytter kredittkortet fra passiv betalingsmekanisme til en guidet progresjonsreise med tydelig sammenheng mellom brukeradferd, belønning og risikokontroll.",
         },
         {
-          title: "Modell for mestring og kontroll",
-          body:
-            "Kjernemodellen ble bygget som en enkel sløyfe: mål -> handling -> belønning -> trygghet.",
-        },
-        {
-          title: "Produktstruktur",
-          body:
-            "Produktarkitekturen ble designet som fem sammenhengende reiser som støtter progresjon fra oppstart til kontroll og mestring.",
-          bullets: [
-            "Søknad og onboarding som setter forventning, mål og startnivå.",
-            "Dashboard med status, neste beste handling og løpende oversikt.",
-            "Medlemskap med nivåer, progresjon og belønninger.",
-            "Kredittscore-oppfølging med mål, tiltak og fremdrift.",
-            "Kortkontroll og forbruksstyring som gir praktisk kontroll i hverdagen.",
-          ],
-        },
-        {
-          title: "Mekanismer for mestring og kontroll",
-          body:
-            "Løsningen kombinerer mekanismer som gjør ønsket adferd tydelig, trygg og belønnende over tid.",
-          bullets: [
-            "Goal Engine for å sette og følge kredittscore-mål.",
-            "Cushion via round ups for å bygge buffer og redusere betalingsstress.",
-            "Future Fund som belønner ansvarlig bruk over tid.",
-            "Tier-system fra Rookie til Star med tydelige perks og cashback.",
-            "Price Promise der disiplinert bruk kan gi bedre vilkår over tid.",
-          ],
-        },
-        {
-          title: "Forretningslogikk",
+          title: "Forretningshypoteser og risikoreduksjon",
           body:
             "Konseptet ble koblet til tydelige hypoteser om vekst, risiko og langsiktig verdi.",
           bullets: [
-            "Økt penetrasjon i Emerging Prime gjennom en mer relevant og pedagogisk kredittopplevelse.",
+            "Økt penetrasjon i målgruppen gjennom en mer relevant og pedagogisk kredittopplevelse.",
             "Lavere misligholdsrisiko ved å belønne ønsket adferd tidlig, ikke bare straffe avvik sent.",
             "Høyere livstidsverdi gjennom varige vaner, progresjon og gjentatt bruk.",
             "Sterkere differensiering i et kredittmarked med ellers like produkter.",
@@ -102,12 +61,18 @@ export const projects: Project[] = [
           ],
         },
         {
-          title: "Bevis og impact",
+          title: "Modell for mestring og kontroll",
+          body:
+            "Kjernemodellen ble bygget som en enkel sløyfe: mål -> handling -> belønning -> trygghet.",
           bullets: [
-            "Kvantitativ konsepttest med 1 013 respondenter: RiseUp rangerte høyest totalt og spesielt sterkt i segmentet 18-24.",
-            "Definerte MVP-metrikker fra mekanikkene: andel som setter kredittscore-mål, andel som bygger Cushion-buffer og andel som velger planlagt nedbetaling fremfor minimum.",
-            "Porteføljeverdi: caset viser kombinasjon av produktstrategi, atferdsdesign og tydelig informasjonsarkitektur, underbygget av faktisk testgrunnlag.",
+            "Mål: Goal Engine gjør kredittscore-mål konkret med delmål og anbefalte tiltak.",
+            "Handling: Daglige valg oversettes til tydelige handlinger i dashboard og kortkontroll.",
+            "Belønning: Future Fund og tier-system gjør ansvarlig adferd synlig og attraktiv over tid.",
+            "Trygghet: Cushion via round ups reduserer betalingsstress, og Price Promise kobler disiplin til bedre vilkår.",
           ],
+        },
+        {
+          title: "Fem hovedreiser som bygger progresjon",
         },
       ],
     },

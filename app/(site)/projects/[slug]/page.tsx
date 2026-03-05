@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import {
-  BehaviorLoopModel,
-  BusinessValueChain,
-  JourneyRail,
-  KeyScreensRow,
-  ProblemMap,
-} from "@/components/case-diagrams";
+import { JourneySketchBoard } from "@/components/case/journey-sketch-board";
 import { getProjectBySlug, projects } from "@/data/projects";
 
 type ProjectPageProps = {
@@ -36,60 +30,156 @@ const toAnchorId = (title: string, index: number) => {
   return `project-section-${normalizedTitle || index + 1}-${index + 1}`;
 };
 
-const creditBuilderProblemMapItems = [
-  "Lite erfaring med kreditt",
-  "Usikkerhet rundt betaling",
-  "Minimumsbetaling blir standardvalg",
-  "Stress og lavere kredittscore",
-];
-
-const creditBuilderLoopNodes = ["Mål", "Handling", "Belønning", "Trygghet"];
-const creditBuilderLoopExamples = [
+const creditBuilderJourneySketches = [
   {
-    label: "Mål",
-    value: "Goal Engine",
+    step: 1,
+    title: "Søknad og onboarding",
+    caption:
+      "Reduserer usikkerhet tidlig, setter tydelige forventninger og får brukeren raskt i gang med ansvarlig kredittbruk.",
+    screens: [
+      {
+        title: "Home",
+        imageSrc: "/images/projects/credit-builder/onboarding/onboarding-1.svg",
+        imageAlt: "Onboarding skjerm 1",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/onboarding/onboarding-2.svg",
+        imageAlt: "Onboarding skjerm 2",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/onboarding/onboarding-3.svg",
+        imageAlt: "Onboarding skjerm 3",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/onboarding/onboarding-4.svg",
+        imageAlt: "Onboarding skjerm 4",
+      },
+    ],
   },
   {
-    label: "Handling",
-    value: "Planlagt nedbetaling + round ups",
+    step: 2,
+    title: "Dashboard",
+    caption:
+      "Gir løpende oversikt over saldo, betalinger og status, slik at brukeren kan ta tryggere valg i hverdagen.",
+    screens: [
+      {
+        title: "Card Management",
+        imageSrc: "/images/projects/credit-builder/dashboard/dashboard-1.svg",
+        imageAlt: "Dashboard skjerm 1",
+      },
+      {
+        title: "Transactions",
+        imageSrc: "/images/projects/credit-builder/dashboard/dashboard-2.svg",
+        imageAlt: "Dashboard skjerm 2",
+      },
+    ],
   },
   {
-    label: "Belønning",
-    value: "Tier-progresjon",
+    step: 3,
+    title: "Medlemskap",
+    caption:
+      "Synliggjør progresjon og belønninger, slik at gode vaner oppleves konkrete og motiverende over tid.",
+    screens: [
+      {
+        title: "Membership Dashboard",
+        imageSrc: "/images/projects/credit-builder/membership/membership-1.svg",
+        imageAlt: "Medlemskap skjerm 1",
+      },
+      {
+        title: "Reward Points",
+        imageSrc: "/images/projects/credit-builder/membership/membership-2.svg",
+        imageAlt: "Medlemskap skjerm 2",
+      },
+      {
+        title: "Annual Percentage Rate",
+        imageSrc: "/images/projects/credit-builder/membership/membership-3.svg",
+        imageAlt: "Medlemskap skjerm 3",
+      },
+      {
+        title: "Educational Hub",
+        imageSrc: "/images/projects/credit-builder/membership/membership-4.svg",
+        imageAlt: "Medlemskap skjerm 4",
+      },
+    ],
   },
   {
-    label: "Trygghet",
-    value: "Buffer (Cushion)",
+    step: 4,
+    title: "Kredittscore og mål",
+    caption:
+      "Gjør kredittscore handlingsbar med tydelige mål og tiltak, så brukeren vet hva som forbedrer scoren.",
+    screens: [
+      {
+        title: "Credit Score Monitoring",
+        imageSrc: "/images/projects/credit-builder/kredittscore/kredittscore-1.svg",
+        imageAlt: "Kredittscore og mål skjerm 1",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/kredittscore/kredittscore-2.svg",
+        imageAlt: "Kredittscore og mål skjerm 2",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/kredittscore/kredittscore-3.svg",
+        imageAlt: "Kredittscore og mål skjerm 3",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/kredittscore/kredittscore-4.svg",
+        imageAlt: "Kredittscore og mål skjerm 4",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/kredittscore/kredittscore-5.svg",
+        imageAlt: "Kredittscore og mål skjerm 5",
+      },
+    ],
   },
-];
-
-const creditBuilderJourneySteps = [
-  "Søknad og onboarding",
-  "Dashboard",
-  "Medlemskap",
-  "Kredittscore og mål",
-  "Kortkontroll",
-];
-
-const creditBuilderValueChainSteps = [
-  "Ansvarlig bruk",
-  "Lavere misligholdsrisiko",
-  "Høyere engasjement",
-  "Økt livstidsverdi",
-];
-
-const creditBuilderKeyScreens = [
   {
-    title: "Goal Engine",
-    caption: "Setter kredittscore-mål med neste anbefalte handling.",
-  },
-  {
-    title: "Cushion / buffer",
-    caption: "Bygger buffer automatisk med round ups for lavere betalingsstress.",
-  },
-  {
-    title: "Tier progresjon",
-    caption: "Synlig progresjon fra Rookie til Star med perks og cashback.",
+    step: 5,
+    title: "Kortkontroll",
+    caption:
+      "Gir direkte kontroll på kortbruk og grenser, som forebygger overforbruk og øker tryggheten rundt tilbakebetaling.",
+    screens: [
+      {
+        title: "Card Control Tooltip",
+        imageSrc: "/images/projects/credit-builder/kortkontroll/kortkontroll-1.svg",
+        imageAlt: "Kortkontroll skjerm 1",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/kortkontroll/kortkontroll-2.svg",
+        imageAlt: "Kortkontroll skjerm 2",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/kortkontroll/kortkontroll-3.svg",
+        imageAlt: "Kortkontroll skjerm 3",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/kortkontroll/kortkontroll-4.svg",
+        imageAlt: "Kortkontroll skjerm 4",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/kortkontroll/kortkontroll-5.svg",
+        imageAlt: "Kortkontroll skjerm 5",
+      },
+      {
+        title: "Walkthrough",
+        imageSrc: "/images/projects/credit-builder/kortkontroll/kortkontroll-6.svg",
+        imageAlt: "Kortkontroll skjerm 6",
+      },
+      {
+        title: "Card Controls",
+        imageSrc: "/images/projects/credit-builder/kortkontroll/kortkontroll-7.svg",
+        imageAlt: "Kortkontroll skjerm 7",
+      },
+    ],
   },
 ];
 
@@ -227,15 +317,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
               {section.body ? <p className="projectBodyText">{section.body}</p> : null}
 
-              {isCreditBuilder && section.title === "Kontekst"
-                ? (
-                    <ProblemMap
-                      items={creditBuilderProblemMapItems}
-                      subtitle="Hvorfor Emerging Prime ofte faller i et dårlig mønster"
-                    />
-                  )
-                : null}
-
               {section.bullets?.length ? (
                 <ul className="projectBulletList">
                   {section.bullets.map((item, itemIndex) => (
@@ -261,25 +342,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                           ) : null}
 
                           {isCreditBuilder &&
-                              subSection.title === "Modell for mestring og kontroll"
+                              subSection.title === "Fem hovedreiser som bygger progresjon"
                             ? (
-                                <BehaviorLoopModel
-                                  nodes={creditBuilderLoopNodes}
-                                  examples={creditBuilderLoopExamples}
-                                />
-                              )
-                            : null}
-
-                          {isCreditBuilder && subSection.title === "Produktstruktur"
-                            ? <JourneyRail steps={creditBuilderJourneySteps} />
-                            : null}
-
-                          {isCreditBuilder && subSection.title === "Forretningslogikk"
-                            ? (
-                                <BusinessValueChain
-                                  steps={creditBuilderValueChainSteps}
-                                  note="Dette ble dokumentert som hypoteser i konseptet for å koble brukeradferd til risiko og verdi."
-                                />
+                                <JourneySketchBoard items={creditBuilderJourneySketches} />
                               )
                             : null}
 
@@ -295,11 +360,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                               ))}
                             </ul>
                           ) : null}
-
-                          {isCreditBuilder &&
-                              subSection.title === "Mekanismer for mestring og kontroll"
-                            ? <KeyScreensRow items={creditBuilderKeyScreens} />
-                            : null}
                         </div>
                       ))}
                     </div>
