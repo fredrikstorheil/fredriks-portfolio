@@ -17,6 +17,7 @@ export type Project = {
   slug: string;
   title: string;
   subtitle: string;
+  description?: string;
   logo?: string;
   mockups?: ProjectMockup[];
   story: ProjectStory;
@@ -38,6 +39,8 @@ const projectLibrary: Project[] = [
     slug: "credit-builder",
     title: "Credit Builder",
     subtitle: "Kredittkonsept for Emerging Prime",
+    description:
+      "Et atferdsdrevet kredittkortkonsept som gjør kredittscore forståelig og handlingsbar for unge voksne.",
     logo: "/images/projects/credit-builder-card.svg",
     story: {
       sections: [
@@ -97,6 +100,8 @@ const projectLibrary: Project[] = [
     slug: "scoreflow",
     title: "Compete",
     subtitle: "Skalerbar konkurranseplattform",
+    description:
+      "En gamifisert konkurranseplattform med et tydelig rammeverk for dømming, scoring og ranking.",
     logo: "/logos/compete.svg",
     story: {
       sections: [
@@ -152,6 +157,8 @@ const projectLibrary: Project[] = [
     slug: "portfolio-insights",
     title: "Portfolio Insights",
     subtitle: "Rollebasert KPI-rapportering",
+    description:
+      "En SaaS-plattform for porteføljerapportering som gjør KPI-data mer konsistent, etterprøvbar og nyttig i beslutninger.",
     logo: "/images/projects/portfolio-insights-desktop-mockup.png",
     story: {
       sections: [
@@ -207,6 +214,8 @@ const projectLibrary: Project[] = [
     slug: "re-source",
     title: "Re:Source",
     subtitle: "Produktfundament fra null",
+    description:
+      "Et digitalt system for å registrere, spore og forvalte inventar gjennom hele livssyklusen.",
     logo: "/images/projects/resource/re-source-qr-card.png",
     story: {
       sections: [
