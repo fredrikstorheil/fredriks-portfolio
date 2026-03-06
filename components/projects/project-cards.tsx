@@ -31,6 +31,9 @@ export function ProjectCards() {
                   <ArrowRight size={18} strokeWidth={2.2} />
                 </span>
               </div>
+              {project.description ? (
+                <p className="projectDescription">{project.description}</p>
+              ) : null}
             </div>
           </Link>
         </article>
