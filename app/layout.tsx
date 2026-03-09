@@ -5,8 +5,12 @@ import "./globals.css";
 const manrope = Manrope({ subsets: ["latin"], weight: ["500", "600", "700"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://fredriksweb.site"),
   title: "Fredrik Storheil",
   description: "Produktdesigner portefølje",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
