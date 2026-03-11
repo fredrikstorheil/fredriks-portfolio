@@ -42,7 +42,7 @@ const projectLibrary: Project[] = [
     subtitle: "Kredittkonsept for Emerging Prime",
     description:
       "Et atferdsdrevet kredittkortkonsept som gjør kredittscore forståelig og handlingsbar for unge voksne.",
-    logo: "/images/projects/credit-builder-card.svg",
+    logo: "/images/projects/credit-builder/credit-builder-card.svg",
     story: {
       sections: [
         {
@@ -161,8 +161,8 @@ const projectLibrary: Project[] = [
     subtitle: "Rollebasert KPI-rapportering",
     description:
       "En SaaS-plattform for porteføljerapportering som gjør KPI-data mer konsistent, etterprøvbar og nyttig i beslutninger.",
-    logo: "/images/projects/portfolio-insights-min-card.svg",
-    heroImage: "/images/projects/portfolio-insights-min-card.svg",
+    logo: "/images/projects/portfolio-insights/portfolio-insights-min-card.svg",
+    heroImage: "/images/projects/portfolio-insights/portfolio-insights-min-card.svg",
     story: {
       sections: [
         {
