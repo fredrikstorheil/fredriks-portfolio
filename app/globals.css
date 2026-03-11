@@ -920,24 +920,37 @@ button:focus-visible,
 }
 
 .projectMedia-portfolio-insights {
-  background-color: #06080d;
+  background-color: #cfd5df;
   background-image: none;
   padding: 0;
 }
 
+.projectMedia-portfolio-insights::after {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 16, 0.04) 0%,
+    rgba(10, 12, 16, 0.14) 100%
+  );
+}
+
 .projectMedia-portfolio-insights .projectMediaLogo {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
+  width: clamp(120px, 48%, 300px);
+  height: auto;
+  max-width: 88%;
+  max-height: 82%;
   object-fit: contain;
-  filter: none;
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.32));
+}
+
+.projectMedia-portfolio-insights .projectMediaLogo--hero {
+  width: clamp(180px, 56%, 420px);
+  max-height: 84%;
 }
 
 .projectLink:hover .projectMedia-portfolio-insights .projectMediaLogo,
 .projectLink:focus-visible .projectMedia-portfolio-insights .projectMediaLogo {
   transform: none;
-  filter: none;
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.32));
 }
 
 .projectMedia-credit-builder {

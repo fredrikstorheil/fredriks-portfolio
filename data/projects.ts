@@ -19,6 +19,7 @@ export type Project = {
   subtitle: string;
   description?: string;
   logo?: string;
+  heroImage?: string;
   mockups?: ProjectMockup[];
   story: ProjectStory;
 };
@@ -159,7 +160,8 @@ const projectLibrary: Project[] = [
     subtitle: "Rollebasert KPI-rapportering",
     description:
       "En SaaS-plattform for porteføljerapportering som gjør KPI-data mer konsistent, etterprøvbar og nyttig i beslutninger.",
-    logo: "/images/projects/portfolio-insights-desktop-mockup.png",
+    logo: "/images/projects/portfolio-insights-min-card.svg",
+    heroImage: "/images/projects/portfolio-insights-min-card.svg",
     story: {
       sections: [
         {

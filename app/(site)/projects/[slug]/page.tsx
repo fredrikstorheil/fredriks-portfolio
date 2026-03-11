@@ -198,6 +198,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     (section) => section.title !== "Kort fortalt",
   );
   const hasHeroMockups = Boolean(project.mockups?.length);
+  const heroImageSrc = project.heroImage ?? project.logo;
   const isCreditBuilder = project.slug === "credit-builder";
 
   const sections: RenderSection[] = [];
@@ -281,11 +282,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     })}
                   </>
                 )
-              : project.logo
+              : heroImageSrc
               ? (
                   <img
                     className="projectMediaLogo projectMediaLogo--hero"
-                    src={project.logo}
+                    src={heroImageSrc}
                     alt=""
                     aria-hidden="true"
                     loading="lazy"
@@ -388,7 +389,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 
   return {
-    title: `${project.title} — Fredrik Storheil`,
+    title: `${project.title} | Fredrik Storheil`,
     description: project.subtitle,
   };
 }
