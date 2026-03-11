@@ -6,8 +6,12 @@ const manrope = Manrope({ subsets: ["latin"], weight: ["500", "600", "700"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fredriksweb.site"),
-  title: "Fredrik Storheil",
+  title: "Produktdesigner | Fredrik Storheil",
   description: "Produktdesigner portefølje",
+  icons: {
+    icon: [{ url: "/favicon-fredrik-portfolio.svg", type: "image/svg+xml" }],
+    shortcut: ["/favicon-fredrik-portfolio.svg"],
+  },
   alternates: {
     canonical: "/",
   },
