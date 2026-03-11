@@ -24,6 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="no" className={manrope.className}>
+      <head>
+        <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async />
+      </head>
       <body>{children}</body>
     </html>
   );
