@@ -14,6 +14,7 @@ This file documents project-wide context, major features, milestones, and the da
 - Shared project data in `data/projects.ts` for nav + cards + pages.
 - Assets added in `public/images/` (portrait) plus default Next.js icons.
 - Accessibility updates: skip link, `aria-current` for active nav, reduced-motion styles, and improved project media semantics.
+- Theme system simplified to a single dark theme: dark design tokens moved to `:root`, light-mode overrides removed, and theme-toggle logic deleted.
 
 ## Database schema
 
