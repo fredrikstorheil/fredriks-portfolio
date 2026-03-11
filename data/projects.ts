@@ -103,7 +103,8 @@ const projectLibrary: Project[] = [
     subtitle: "Skalerbar konkurranseplattform",
     description:
       "En gamifisert konkurranseplattform med et tydelig rammeverk for dømming, scoring og ranking.",
-    logo: "/logos/compete.svg",
+    logo: "/logos/compete-logo.svg",
+    heroImage: "/logos/compete-logo.svg",
     story: {
       sections: [
         {

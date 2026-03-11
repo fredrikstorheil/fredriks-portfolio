@@ -233,8 +233,21 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
   margin-right: 6px;
   opacity: 0.85;
+}
+
+.tabIconProject {
+  opacity: 1;
+}
+
+.tabProjectIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .tabActive {
@@ -920,8 +933,8 @@ button:focus-visible,
 }
 
 .projectMedia-portfolio-insights {
-  background-color: #cfd5df;
-  background-image: none;
+  background-color: #334155;
+  background-image: url("/images/projects/portfolio-insights-desktop-mockup.png");
   padding: 0;
 }
 
@@ -974,7 +987,7 @@ button:focus-visible,
 }
 
 .project-hero .projectMedia-portfolio-insights {
-  background-image: none;
+  background-image: url("/images/projects/portfolio-insights-desktop-mockup.png");
 }
 
 .project-hero .projectMedia-credit-builder {
