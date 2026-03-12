@@ -179,7 +179,7 @@ p {
 .tabNav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   padding: 8px 16px 12px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -236,7 +236,7 @@ p {
   width: 24px;
   height: 24px;
   flex: 0 0 24px;
-  margin-right: 10px;
+  margin-right: 8px;
   opacity: 0.85;
 }
 
@@ -728,7 +728,7 @@ button:focus-visible,
     flex-direction: column;
     align-items: stretch;
     padding: 0;
-    gap: 3px;
+    gap: 4px;
     overflow-y: auto;
     overflow-x: hidden;
   }
