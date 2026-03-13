@@ -1,0 +1,258 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1380" viewBox="0 0 1536 1380" fill="none">
+  <defs>
+    <style>
+      .bg { fill: #232426; }
+      .card { fill: #35383c; stroke: #7b7f86; stroke-width: 1.5; rx: 14; }
+      .divider { stroke: #7b7f86; stroke-width: 1.25; }
+      .title { font: 700 25px "SFMono-Regular", Menlo, Consolas, monospace; }
+      .title-accent { fill: #e58a2e; }
+      .title-main { fill: #d9dde2; }
+      .field-name { fill: #b184d7; font: 600 16px "SFMono-Regular", Menlo, Consolas, monospace; }
+      .field-type { fill: #d6dbe1; font: 500 16px "SFMono-Regular", Menlo, Consolas, monospace; }
+      .field-dot { fill: #8c6bb2; }
+      .line { stroke: #c2c5ca; stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .diamond { fill: #c2c5ca; }
+      .label { fill: #d0d4d8; font: 500 14px "SFMono-Regular", Menlo, Consolas, monospace; }
+      .count { fill: #d0d4d8; font: 500 15px "SFMono-Regular", Menlo, Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1536" height="1380" />
+
+  <g>
+    <rect class="card" x="32" y="30" width="262" height="108" />
+    <line class="divider" x1="32" y1="74" x2="294" y2="74" />
+    <text class="title" x="48" y="61">
+      <tspan fill="#e58a2e">data</tspan>
+      <tspan dx="12" fill="#d9dde2">Component</tspan>
+    </text>
+    <circle class="field-dot" cx="44" cy="98" r="4" />
+    <text class="field-name" x="58" y="103">name</text>
+    <text class="field-type" x="222" y="103">String</text>
+    <circle class="field-dot" cx="44" cy="128" r="4" />
+    <text class="field-name" x="58" y="133">amount</text>
+    <text class="field-type" x="244" y="133">Int</text>
+  </g>
+
+  <g>
+    <rect class="card" x="356" y="30" width="270" height="108" />
+    <line class="divider" x1="356" y1="74" x2="626" y2="74" />
+    <text class="title" x="372" y="61">
+      <tspan fill="#e58a2e">data</tspan>
+      <tspan dx="12" fill="#d9dde2">Producer</tspan>
+    </text>
+    <circle class="field-dot" cx="368" cy="98" r="4" />
+    <text class="field-name" x="382" y="103">name</text>
+    <text class="field-type" x="530" y="103">String</text>
+    <circle class="field-dot" cx="368" cy="128" r="4" />
+    <text class="field-name" x="382" y="133">produktNumber</text>
+    <text class="field-type" x="560" y="133">String</text>
+  </g>
+
+  <g>
+    <rect class="card" x="742" y="108" width="312" height="142" />
+    <line class="divider" x1="742" y1="152" x2="1054" y2="152" />
+    <text class="title" x="758" y="139">
+      <tspan fill="#e58a2e">data</tspan>
+      <tspan dx="12" fill="#d9dde2">ReuseValue</tspan>
+    </text>
+    <circle class="field-dot" cx="754" cy="176" r="4" />
+    <text class="field-name" x="768" y="181">productionDate</text>
+    <text class="field-type" x="958" y="181">LocalDate</text>
+    <circle class="field-dot" cx="754" cy="206" r="4" />
+    <text class="field-name" x="768" y="211">lifeSpan</text>
+    <text class="field-type" x="1036" y="211">Year</text>
+    <circle class="field-dot" cx="754" cy="236" r="4" />
+    <text class="field-name" x="768" y="241">purchaseDate</text>
+    <text class="field-type" x="956" y="241">LocalDate</text>
+  </g>
+
+  <g>
+    <rect class="card" x="202" y="270" width="452" height="344" />
+    <line class="divider" x1="202" y1="314" x2="654" y2="314" />
+    <text class="title" x="218" y="301">
+      <tspan fill="#e58a2e">data</tspan>
+      <tspan dx="12" fill="#d9dde2">FurnitureUnit</tspan>
+    </text>
+    <circle class="field-dot" cx="214" cy="344" r="4" />
+    <text class="field-name" x="228" y="349">updated</text>
+    <text class="field-type" x="512" y="349">LocalDateTime</text>
+    <circle class="field-dot" cx="214" cy="376" r="4" />
+    <text class="field-name" x="228" y="381">components</text>
+    <text class="field-type" x="468" y="381">Set&lt;Component&gt;</text>
+    <circle class="field-dot" cx="214" cy="408" r="4" />
+    <text class="field-name" x="228" y="413">pictures</text>
+    <text class="field-type" x="510" y="413">Set&lt;Picture&gt;</text>
+    <circle class="field-dot" cx="214" cy="440" r="4" />
+    <text class="field-name" x="228" y="445">producer</text>
+    <text class="field-type" x="564" y="445">Producer</text>
+    <circle class="field-dot" cx="214" cy="472" r="4" />
+    <text class="field-name" x="228" y="477">maintenanceCycle</text>
+    <text class="field-type" x="432" y="477">MaintenanceCycleType</text>
+    <circle class="field-dot" cx="214" cy="504" r="4" />
+    <text class="field-name" x="228" y="509">register</text>
+    <text class="field-type" x="520" y="509">LocalDateTime</text>
+    <circle class="field-dot" cx="214" cy="536" r="4" />
+    <text class="field-name" x="228" y="541">reuseValue</text>
+    <text class="field-type" x="550" y="541">ReuseValue</text>
+    <circle class="field-dot" cx="214" cy="568" r="4" />
+    <text class="field-name" x="228" y="573">productCategories</text>
+    <text class="field-type" x="446" y="573">ProductCategories</text>
+    <circle class="field-dot" cx="214" cy="600" r="4" />
+    <text class="field-name" x="228" y="605">priceCategory</text>
+    <text class="field-type" x="540" y="605">PriceCategory</text>
+  </g>
+
+  <g>
+    <rect class="card" x="986" y="384" width="212" height="116" />
+    <line class="divider" x1="986" y1="428" x2="1198" y2="428" />
+    <text class="title" x="1002" y="415">
+      <tspan fill="#e58a2e">data</tspan>
+      <tspan dx="12" fill="#d9dde2">Picture</tspan>
+    </text>
+    <circle class="field-dot" cx="998" cy="454" r="4" />
+    <text class="field-name" x="1012" y="459">key</text>
+    <text class="field-type" x="1144" y="459">String</text>
+    <circle class="field-dot" cx="998" cy="486" r="4" />
+    <text class="field-name" x="1012" y="491">value</text>
+    <text class="field-type" x="1130" y="491">String</text>
+  </g>
+
+  <g>
+    <rect class="card" x="228" y="760" width="392" height="258" />
+    <line class="divider" x1="228" y1="804" x2="620" y2="804" />
+    <text class="title" x="244" y="791">
+      <tspan fill="#e58a2e">data</tspan>
+      <tspan dx="12" fill="#d9dde2">Furniture</tspan>
+    </text>
+    <circle class="field-dot" cx="240" cy="834" r="4" />
+    <text class="field-name" x="254" y="839">updated</text>
+    <text class="field-type" x="478" y="839">LocalDateTime</text>
+    <circle class="field-dot" cx="240" cy="866" r="4" />
+    <text class="field-name" x="254" y="871">state</text>
+    <text class="field-type" x="488" y="871">UserStateType</text>
+    <circle class="field-dot" cx="240" cy="898" r="4" />
+    <text class="field-name" x="254" y="903">qrCodeId</text>
+    <text class="field-type" x="554" y="903">String</text>
+    <circle class="field-dot" cx="240" cy="930" r="4" />
+    <text class="field-name" x="254" y="935">reviewed</text>
+    <text class="field-type" x="530" y="935">Boolean</text>
+    <circle class="field-dot" cx="240" cy="962" r="4" />
+    <text class="field-name" x="254" y="967">refFurnitureUnit</text>
+    <text class="field-type" x="468" y="967">FurnitureUnit</text>
+    <circle class="field-dot" cx="240" cy="994" r="4" />
+    <text class="field-name" x="254" y="999">register</text>
+    <text class="field-type" x="486" y="999">LocalDateTime</text>
+    <circle class="field-dot" cx="240" cy="1026" r="4" />
+    <text class="field-name" x="254" y="1031">reuseState</text>
+    <text class="field-type" x="444" y="1031">FurnitureReuseStateType</text>
+    <circle class="field-dot" cx="240" cy="1058" r="4" />
+    <text class="field-name" x="254" y="1063">location</text>
+    <text class="field-type" x="558" y="1063">Location</text>
+  </g>
+
+  <g>
+    <rect class="card" x="684" y="806" width="336" height="132" />
+    <line class="divider" x1="684" y1="850" x2="1020" y2="850" />
+    <text class="title" x="700" y="837">
+      <tspan fill="#e58a2e">data</tspan>
+      <tspan dx="12" fill="#d9dde2">Location</tspan>
+    </text>
+    <circle class="field-dot" cx="696" cy="878" r="4" />
+    <text class="field-name" x="710" y="883">zoneCategory</text>
+    <text class="field-type" x="910" y="883">ZoneCategory</text>
+    <circle class="field-dot" cx="696" cy="910" r="4" />
+    <text class="field-name" x="710" y="915">address</text>
+    <text class="field-type" x="944" y="915">String?</text>
+    <circle class="field-dot" cx="696" cy="942" r="4" />
+    <text class="field-name" x="710" y="947">floor</text>
+    <text class="field-type" x="982" y="947">Int</text>
+  </g>
+
+  <g>
+    <rect class="card" x="1146" y="1002" width="318" height="194" />
+    <line class="divider" x1="1146" y1="1046" x2="1464" y2="1046" />
+    <text class="title" x="1162" y="1033">
+      <tspan fill="#e58a2e">data</tspan>
+      <tspan dx="12" fill="#d9dde2">FurnitureEventLog</tspan>
+    </text>
+    <circle class="field-dot" cx="1158" cy="1072" r="4" />
+    <text class="field-name" x="1172" y="1077">description</text>
+    <text class="field-type" x="1388" y="1077">String</text>
+    <circle class="field-dot" cx="1158" cy="1104" r="4" />
+    <text class="field-name" x="1172" y="1109">picture</text>
+    <text class="field-type" x="1344" y="1109">Set&lt;Picture&gt;</text>
+    <circle class="field-dot" cx="1158" cy="1136" r="4" />
+    <text class="field-name" x="1172" y="1141">changeType</text>
+    <text class="field-type" x="1374" y="1141">ChangeType</text>
+    <circle class="field-dot" cx="1158" cy="1168" r="4" />
+    <text class="field-name" x="1172" y="1173">registered</text>
+    <text class="field-type" x="1360" y="1173">LocalDateTime</text>
+    <circle class="field-dot" cx="1158" cy="1200" r="4" />
+    <text class="field-name" x="1172" y="1205">furniture</text>
+    <text class="field-type" x="1374" y="1205">Furniture</text>
+  </g>
+
+  <g>
+    <rect class="card" x="230" y="1180" width="304" height="120" />
+    <line class="divider" x1="230" y1="1224" x2="534" y2="1224" />
+    <text class="title" x="246" y="1211">
+      <tspan fill="#e58a2e">data</tspan>
+      <tspan dx="12" fill="#d9dde2">FurnitureFleet</tspan>
+    </text>
+    <circle class="field-dot" cx="242" cy="1250" r="4" />
+    <text class="field-name" x="256" y="1255">furniture</text>
+    <text class="field-type" x="446" y="1255">Furniture</text>
+    <circle class="field-dot" cx="242" cy="1282" r="4" />
+    <text class="field-name" x="256" y="1287">customer</text>
+    <text class="field-type" x="446" y="1287">Customer</text>
+  </g>
+
+  <path class="line" d="M253 270V198C253 178 244 164 224 164H196V138" />
+  <polygon class="diamond" points="246,270 253,279 260,270 253,261" />
+  <text class="label" x="226" y="174">components</text>
+  <text class="count" x="175" y="206">1</text>
+  <text class="count" x="232" y="166">1</text>
+
+  <path class="line" d="M425 270V198C425 180 436 164 454 164V138" />
+  <polygon class="diamond" points="425,270 432,279 439,270 432,261" />
+  <text class="label" x="462" y="170">producer</text>
+  <text class="count" x="430" y="170">1</text>
+
+  <path class="line" d="M432 204H742" />
+  <text class="label" x="648" y="192">reuseValue</text>
+  <text class="count" x="436" y="196">1</text>
+  <text class="count" x="726" y="196">1</text>
+
+  <path class="line" d="M654 443H986" />
+  <text class="label" x="560" y="506">pictures</text>
+  <text class="count" x="972" y="435">*</text>
+
+  <path class="line" d="M417 614V760" />
+  <polygon class="diamond" points="417,614 424,623 431,614 424,605" />
+  <text class="label" x="430" y="658">refFurnitureUnit</text>
+  <text class="count" x="406" y="647">1</text>
+  <text class="count" x="406" y="742">1</text>
+
+  <path class="line" d="M620 885H684" />
+  <text class="label" x="635" y="870">location</text>
+  <text class="count" x="640" y="906">1</text>
+  <text class="count" x="668" y="906">1</text>
+
+  <path class="line" d="M620 1112H1146" />
+  <polygon class="diamond" points="1146,1112 1137,1105 1137,1119" />
+  <text class="label" x="796" y="1094">furniture</text>
+  <text class="count" x="730" y="1102">1</text>
+  <text class="count" x="1088" y="1102">1</text>
+
+  <path class="line" d="M382 1018V1180" />
+  <polygon class="diamond" points="382,1180 389,1189 396,1180 389,1171" />
+  <text class="label" x="394" y="1096">furniture</text>
+  <text class="count" x="370" y="1086">1</text>
+  <text class="count" x="370" y="1164">1</text>
+
+  <path class="line" d="M1198 442H1278C1294 442 1308 456 1308 472V1002" />
+  <polygon class="diamond" points="1308,1002 1315,1011 1322,1002 1315,993" />
+  <text class="label" x="1212" y="420">picture</text>
+  <text class="count" x="1278" y="452">*</text>
+</svg>

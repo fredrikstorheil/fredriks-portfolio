@@ -3,10 +3,18 @@ export type ProjectMockup = {
   type: "laptop" | "phone";
 };
 
+export type ProjectStoryGalleryItem = {
+  title: string;
+  body: string;
+  imageSrc: string;
+  imageAlt: string;
+};
+
 export type ProjectStorySection = {
   title: string;
   body?: string;
   bullets?: string[];
+  gallery?: ProjectStoryGalleryItem[];
 };
 
 export type ProjectStory = {
@@ -249,17 +257,37 @@ const projectLibrary: Project[] = [
         },
         {
           title: "Produktøkosystem med fire flater",
-          bullets: [
-            "Admin og backoffice for masterdata, roller, verifisering og oversikt.",
-            "Intern app for QR-basert registrering.",
-            "Kunde-backoffice for fleet management og service.",
-            "Kundeapp for rapportering og vedlikehold i felt.",
+          gallery: [
+            {
+              title: "SenseOn backoffice",
+              body: "Admin og backoffice for masterdata, roller, verifisering og oversikt.",
+              imageSrc: "/images/projects/resource/senseon-backoffice-macbook-mockup.svg",
+              imageAlt: "office vist på laptopskjerm",
+            },
+            {
+              title: "Registrator-app",
+              body: "Intern app for QR-basert registrering.",
+              imageSrc: "/images/projects/resource/login-mobil-iphone-mockup.svg",
+              imageAlt: "Mobilskjerm for intern app til QR-basert registrering",
+            },
+            {
+              title: "Kunde-backoffice",
+              body: "Kunde-backoffice for fleet management og service.",
+              imageSrc: "/images/projects/resource/kunde-backoffice-macbook-mockup.svg",
+              imageAlt: "Kunde-backoffice vist på laptopskjerm",
+            },
+            {
+              title: "Kundeapp i felt",
+              body: "Kundeapp for rapportering og vedlikehold i felt.",
+              imageSrc: "/images/projects/resource/kunde-mobil-iphone-mockup.svg",
+              imageAlt: "Mobilskjerm for kundeapp til rapportering og vedlikehold i felt",
+            },
           ],
         },
         {
           title: "Systemmodell og livssykkel",
           body:
-            "Jeg modellerte objekt- og hendelseslogikk som grunnlag for konsistente flyter: Base Unit, Instance, Series, Fleet, Event og Verification. Dette gjorde det mulig å designe rollebaserte handlinger, statusendringer, historikk og sporbarhet på tvers av flater.",
+            "Sammen med tech lead modellerte vi objekt- og hendelseslogikk som grunnlag for konsistente flyter: Base Unit, Instance, Series, Fleet, Event og Verification. Dette gjorde det mulig å designe rollebaserte handlinger, statusendringer, historikk og sporbarhet på tvers av flater.",
         },
         {
           title: "Designsystem før høyvolum produksjon",
