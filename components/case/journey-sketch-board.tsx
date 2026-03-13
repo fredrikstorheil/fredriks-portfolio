@@ -1,10 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useId, useMemo, useState } from "react";
+import { type CSSProperties, useCallback, useEffect, useId, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 
 type JourneySketchScreen = {
   title: string;
+  caption?: string;
+  frameAspectRatio?: string;
+  frameWidth?: string;
   imageSrc?: string;
   imageAlt?: string;
 };
@@ -19,11 +22,21 @@ type JourneySketchItem = {
 type JourneySketchBoardProps = {
   items: JourneySketchItem[];
   ariaLabel?: string;
+  showItemHeader?: boolean;
+  showScreenMeta?: boolean;
+  showScreenIndex?: boolean;
+  disableRailScroll?: boolean;
+  stretchScreens?: boolean;
 };
 
 export function JourneySketchBoard({
   items,
   ariaLabel = "Skisseboard for de fem hovedreisene",
+  showItemHeader = true,
+  showScreenMeta = true,
+  showScreenIndex = true,
+  disableRailScroll = false,
+  stretchScreens = false,
 }: JourneySketchBoardProps) {
   const dialogTitleId = useId();
   const [activeSlide, setActiveSlide] = useState<{
@@ -124,10 +137,12 @@ export function JourneySketchBoard({
       <div className="journeySketchGrid">
         {items.map((item, itemIndex) => (
           <article key={`${item.step}-${item.title}`} className="journeySketchCard">
-            <header className="journeySketchHeader">
-              <span className="journeySketchStep">{item.step}</span>
-              <h4 className="journeySketchTitle">{item.title}</h4>
-            </header>
+            {showItemHeader ? (
+              <header className="journeySketchHeader">
+                <span className="journeySketchStep">{item.step}</span>
+                <h4 className="journeySketchTitle">{item.title}</h4>
+              </header>
+            ) : null}
 
             {item.caption ? (
               <p className="journeySketchCaption">
@@ -135,19 +150,37 @@ export function JourneySketchBoard({
               </p>
             ) : null}
 
-            <div className="journeySketchRail">
+            <div
+              className={`journeySketchRail${disableRailScroll ? " journeySketchRailNoScroll" : ""}`}
+            >
               {item.screens.map((screen, screenIndex) => (
                 <div
                   key={`${item.step}-${screen.title}-${screenIndex}`}
-                  className="journeySketchRailItem"
+                  className={`journeySketchRailItem${stretchScreens ? " journeySketchRailItemStretch" : ""}`}
                 >
-                  <div className="journeySketchScreen">
-                    <div className="journeySketchScreenMeta">
-                      <span className="journeySketchScreenIndex">
-                        Skjerm {screenIndex + 1}
-                      </span>
-                      <p className="journeySketchScreenLabel">{screen.title}</p>
-                    </div>
+                  <div
+                    className={`journeySketchScreen${stretchScreens ? " journeySketchScreenStretch" : ""}`}
+                    style={
+                      screen.frameWidth
+                        ? ({
+                            "--journey-sketch-screen-width": screen.frameWidth,
+                          } as CSSProperties)
+                        : undefined
+                    }
+                  >
+                    {showScreenMeta ? (
+                      <div className="journeySketchScreenMeta">
+                        {showScreenIndex ? (
+                          <span className="journeySketchScreenIndex">
+                            Skjerm {screenIndex + 1}
+                          </span>
+                        ) : null}
+                        <p className="journeySketchScreenLabel">{screen.title}</p>
+                        {screen.caption ? (
+                          <p className="journeySketchScreenCaption">{screen.caption}</p>
+                        ) : null}
+                      </div>
+                    ) : null}
 
                     {screen.imageSrc
                       ? (
@@ -157,7 +190,16 @@ export function JourneySketchBoard({
                             onClick={() => openSlide(itemIndex, screenIndex)}
                             aria-label={`Åpne ${item.title} - ${screen.title} i galleri`}
                           >
-                            <div className="journeySketchFrame">
+                            <div
+                              className="journeySketchFrame"
+                              style={
+                                screen.frameAspectRatio
+                                  ? ({
+                                      "--journey-sketch-frame-ratio": screen.frameAspectRatio,
+                                    } as CSSProperties)
+                                  : undefined
+                              }
+                            >
                               <img
                                 src={screen.imageSrc}
                                 alt={screen.imageAlt ?? `${item.title} - ${screen.title}`}
@@ -241,16 +283,16 @@ export function JourneySketchBoard({
                   </button>
 
                   <figure className="journeySketchLightboxFigure">
-                    <img
-                      src={activeScreen.imageSrc}
-                      alt={activeScreen.imageAlt ?? `${activeFlow.title} - ${activeScreen.title}`}
-                    />
-                    {activeFlow.caption ? (
-                      <figcaption className="journeySketchLightboxCaption">
-                        {activeFlow.caption}
-                      </figcaption>
-                    ) : null}
-                  </figure>
+                <img
+                  src={activeScreen.imageSrc}
+                  alt={activeScreen.imageAlt ?? `${activeFlow.title} - ${activeScreen.title}`}
+                />
+                {activeScreen.caption ?? activeFlow.caption ? (
+                  <figcaption className="journeySketchLightboxCaption">
+                    {activeScreen.caption ?? activeFlow.caption}
+                  </figcaption>
+                ) : null}
+              </figure>
 
                   <button
                     type="button"
