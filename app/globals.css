@@ -158,6 +158,31 @@ p {
   gap: 4px;
 }
 
+@media (max-width: 1023px) {
+  .appNavTop {
+    max-height: 120px;
+    overflow: hidden;
+    transform-origin: top center;
+    transition:
+      max-height 0.22s ease,
+      padding-top 0.22s ease,
+      padding-bottom 0.22s ease,
+      gap 0.22s ease,
+      opacity 0.18s ease,
+      transform 0.22s ease;
+  }
+
+  .appNavTopHidden {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    gap: 0;
+    opacity: 0;
+    transform: translateY(-16px);
+    pointer-events: none;
+  }
+}
+
 .appName {
   margin: 0;
   font-size: var(--font-size-app-name);
@@ -1922,6 +1947,7 @@ button:focus-visible,
 
 @media (prefers-reduced-motion: reduce) {
   .skipLink,
+  .appNavTop,
   .tab,
   .projectLink,
   .projectArrow {

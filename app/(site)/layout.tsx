@@ -1,4 +1,4 @@
-import { TabsNav } from "@/components/nav/tabs-nav";
+import { AppNav } from "@/components/nav/app-nav";
 
 export default function SiteLayout({
   children,
@@ -10,15 +10,7 @@ export default function SiteLayout({
       <a className="skipLink" href="#main-content">
         Hopp til innhold
       </a>
-      <header className="appNav" aria-label="Hovednavigasjon">
-        <div className="appNavInner">
-          <div className="appNavTop">
-            <p className="appName">Fredrik Storheil</p>
-            <p className="appRole">Produktdesigner</p>
-          </div>
-          <TabsNav />
-        </div>
-      </header>
+      <AppNav />
 
       <main id="main-content" className="appMain" tabIndex={-1}>
         <div className="appMainInner">{children}</div>
