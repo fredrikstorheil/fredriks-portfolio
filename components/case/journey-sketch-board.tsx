@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 
 type JourneySketchScreen = {
   title: string;
@@ -57,11 +58,11 @@ export function JourneySketchBoard({
     setActiveSlide({ itemIndex, screenIndex });
   };
 
-  const closeSlide = () => {
+  const closeSlide = useCallback(() => {
     setActiveSlide(null);
-  };
+  }, []);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     if (!activeSlide || !activeFlow) {
       return;
     }
@@ -73,9 +74,9 @@ export function JourneySketchBoard({
       itemIndex: activeSlide.itemIndex,
       screenIndex: previousIndex,
     });
-  };
+  }, [activeFlow, activeSlide]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     if (!activeSlide || !activeFlow) {
       return;
     }
@@ -87,7 +88,7 @@ export function JourneySketchBoard({
       itemIndex: activeSlide.itemIndex,
       screenIndex: nextIndex,
     });
-  };
+  }, [activeFlow, activeSlide]);
 
   useEffect(() => {
     if (!activeSlide) {
@@ -96,7 +97,7 @@ export function JourneySketchBoard({
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        closeSlide();
+        setActiveSlide(null);
       }
 
       if (event.key === "ArrowLeft") {
@@ -193,77 +194,80 @@ export function JourneySketchBoard({
         ))}
       </div>
 
-      {activeSlide && activeFlow && activeScreen && activeScreen.imageSrc ? (
-        <div className="journeySketchLightbox" role="presentation">
-          <button
-            type="button"
-            className="journeySketchLightboxBackdrop"
-            onClick={closeSlide}
-            aria-label="Lukk galleri"
-          />
-          <div
-            className="journeySketchLightboxDialog"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={dialogTitleId}
-          >
-            <header className="journeySketchLightboxHeader">
-              <div className="journeySketchLightboxMeta">
-                <p id={dialogTitleId} className="journeySketchLightboxTitle">
-                  {activeFlow.step}. {activeFlow.title}
-                </p>
-                <p className="journeySketchLightboxSubtitle">
-                  {activeScreen.title} · {activeSlide.screenIndex + 1}/{activeFlow.screens.length}
-                </p>
-              </div>
+      {activeSlide && activeFlow && activeScreen && activeScreen.imageSrc
+        ? createPortal(
+            <div className="journeySketchLightbox" role="presentation">
               <button
                 type="button"
-                className="journeySketchLightboxClose"
+                className="journeySketchLightboxBackdrop"
                 onClick={closeSlide}
                 aria-label="Lukk galleri"
+              />
+              <div
+                className="journeySketchLightboxDialog"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby={dialogTitleId}
               >
-                Lukk
-              </button>
-            </header>
+                <header className="journeySketchLightboxHeader">
+                  <div className="journeySketchLightboxMeta">
+                    <p id={dialogTitleId} className="journeySketchLightboxTitle">
+                      {activeFlow.step}. {activeFlow.title}
+                    </p>
+                    <p className="journeySketchLightboxSubtitle">
+                      {activeScreen.title} · {activeSlide.screenIndex + 1}/{activeFlow.screens.length}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    className="journeySketchLightboxClose"
+                    onClick={closeSlide}
+                    aria-label="Lukk galleri"
+                  >
+                    Lukk
+                  </button>
+                </header>
 
-            <div className="journeySketchLightboxStage">
-              <button
-                type="button"
-                className="journeySketchLightboxNav"
-                onClick={goToPrevious}
-                aria-label="Forrige skjerm"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path d="M15 5 8 12l7 7" />
-                </svg>
-              </button>
+                <div className="journeySketchLightboxStage">
+                  <button
+                    type="button"
+                    className="journeySketchLightboxNav journeySketchLightboxNavPrevious"
+                    onClick={goToPrevious}
+                    aria-label="Forrige skjerm"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M15 5 8 12l7 7" />
+                    </svg>
+                  </button>
 
-              <figure className="journeySketchLightboxFigure">
-                <img
-                  src={activeScreen.imageSrc}
-                  alt={activeScreen.imageAlt ?? `${activeFlow.title} - ${activeScreen.title}`}
-                />
-                {activeFlow.caption ? (
-                  <figcaption className="journeySketchLightboxCaption">
-                    {activeFlow.caption}
-                  </figcaption>
-                ) : null}
-              </figure>
+                  <figure className="journeySketchLightboxFigure">
+                    <img
+                      src={activeScreen.imageSrc}
+                      alt={activeScreen.imageAlt ?? `${activeFlow.title} - ${activeScreen.title}`}
+                    />
+                    {activeFlow.caption ? (
+                      <figcaption className="journeySketchLightboxCaption">
+                        {activeFlow.caption}
+                      </figcaption>
+                    ) : null}
+                  </figure>
 
-              <button
-                type="button"
-                className="journeySketchLightboxNav"
-                onClick={goToNext}
-                aria-label="Neste skjerm"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path d="m9 5 7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : null}
+                  <button
+                    type="button"
+                    className="journeySketchLightboxNav journeySketchLightboxNavNext"
+                    onClick={goToNext}
+                    aria-label="Neste skjerm"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="m9 5 7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>,
+            document.body
+          )
+        : null}
 
       <p className="srOnly">
         Seksjonen inneholder flyter med flere skisseplassholdere: {items
