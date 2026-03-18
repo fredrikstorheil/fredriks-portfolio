@@ -1,5 +1,8 @@
+import Image from "next/image";
+
 import type { CaseHeaderData } from "@/data/project-case";
 import type { ProjectMockup } from "@/data/projects";
+import { getPublicImageMetadata } from "@/lib/public-image-metadata";
 
 type CaseHeaderMedia = {
   slug: string;
@@ -22,21 +25,30 @@ function ProjectHeroMedia({ media }: { media: CaseHeaderMedia }) {
         aria-label={`${media.title} hovedbilde`}
       >
         <div className="projectMediaGrid" aria-hidden="true">
-          {media.mockups.map((mockup) => (
-            <div key={mockup.src} className="projectMediaGridItem">
-              <img
-                className={`projectMediaMockup projectMediaMockup--${mockup.type}`}
-                src={mockup.src}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-              />
-            </div>
-          ))}
+          {media.mockups.map((mockup) => {
+            const metadata = getPublicImageMetadata(mockup.src);
+
+            return (
+              <div key={mockup.src} className="projectMediaGridItem">
+                <Image
+                  className={`projectMediaMockup projectMediaMockup--${mockup.type}`}
+                  src={mockup.src}
+                  alt=""
+                  aria-hidden="true"
+                  width={metadata.width}
+                  height={metadata.height}
+                  sizes="(min-width: 768px) 280px, 220px"
+                  unoptimized={metadata.unoptimized}
+                />
+              </div>
+            );
+          })}
         </div>
       </figure>
     );
   }
+
+  const logoMetadata = getPublicImageMetadata(media.logo);
 
   return (
     <figure
@@ -44,12 +56,15 @@ function ProjectHeroMedia({ media }: { media: CaseHeaderMedia }) {
       role="img"
       aria-label={`${media.title} hovedbilde`}
     >
-      <img
+      <Image
         className="projectMediaLogo projectMediaLogo--main"
         src={media.logo}
         alt=""
         aria-hidden="true"
-        loading="lazy"
+        width={logoMetadata.width}
+        height={logoMetadata.height}
+        sizes="(min-width: 768px) 240px, 180px"
+        unoptimized={logoMetadata.unoptimized}
       />
     </figure>
   );

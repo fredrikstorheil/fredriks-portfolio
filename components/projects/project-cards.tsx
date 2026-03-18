@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowRight } from "@/components/icons";
 import { projects } from "@/data/projects";
+import { getPublicImageMetadata } from "@/lib/public-image-metadata";
 
 export function ProjectCards() {
   return (
@@ -13,15 +15,24 @@ export function ProjectCards() {
               className={`projectMedia projectMedia-${project.slug}`}
               aria-hidden="true"
             >
-              {project.logo ? (
-                <img
-                  className="projectMediaLogo"
-                  src={project.logo}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                />
-              ) : null}
+              {project.logo
+                ? (() => {
+                    const metadata = getPublicImageMetadata(project.logo);
+
+                    return (
+                      <Image
+                        className="projectMediaLogo"
+                        src={project.logo}
+                        alt=""
+                        aria-hidden="true"
+                        width={metadata.width}
+                        height={metadata.height}
+                        sizes="(min-width: 768px) 220px, 160px"
+                        unoptimized={metadata.unoptimized}
+                      />
+                    );
+                  })()
+                : null}
             </div>
 
             <div className="projectText">

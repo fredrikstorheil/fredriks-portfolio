@@ -1,7 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { type CSSProperties, useCallback, useEffect, useId, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
+
+import { isSvgImage } from "@/lib/image-paths";
 
 type JourneySketchScreen = {
   title: string;
@@ -200,10 +203,12 @@ export function JourneySketchBoard({
                                   : undefined
                               }
                             >
-                              <img
+                              <Image
                                 src={screen.imageSrc}
                                 alt={screen.imageAlt ?? `${item.title} - ${screen.title}`}
-                                loading="lazy"
+                                fill
+                                sizes="(min-width: 1024px) 280px, (min-width: 768px) 220px, 70vw"
+                                unoptimized={isSvgImage(screen.imageSrc)}
                               />
                             </div>
                           </button>
@@ -283,16 +288,21 @@ export function JourneySketchBoard({
                   </button>
 
                   <figure className="journeySketchLightboxFigure">
-                <img
-                  src={activeScreen.imageSrc}
-                  alt={activeScreen.imageAlt ?? `${activeFlow.title} - ${activeScreen.title}`}
-                />
-                {activeScreen.caption ?? activeFlow.caption ? (
-                  <figcaption className="journeySketchLightboxCaption">
-                    {activeScreen.caption ?? activeFlow.caption}
-                  </figcaption>
-                ) : null}
-              </figure>
+                    <div className="journeySketchLightboxImage">
+                      <Image
+                        src={activeScreen.imageSrc}
+                        alt={activeScreen.imageAlt ?? `${activeFlow.title} - ${activeScreen.title}`}
+                        fill
+                        sizes="100vw"
+                        unoptimized={isSvgImage(activeScreen.imageSrc)}
+                      />
+                    </div>
+                    {activeScreen.caption ?? activeFlow.caption ? (
+                      <figcaption className="journeySketchLightboxCaption">
+                        {activeScreen.caption ?? activeFlow.caption}
+                      </figcaption>
+                    ) : null}
+                  </figure>
 
                   <button
                     type="button"

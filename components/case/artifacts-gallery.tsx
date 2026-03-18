@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import type { CaseArtifact } from "@/data/project-case";
 
 import { CaseSection } from "@/components/case/case-section";
+import { isSvgImage } from "@/lib/image-paths";
 
 type ArtifactsGalleryProps = {
   artifacts: CaseArtifact[];
@@ -98,7 +100,13 @@ export function ArtifactsGallery({ artifacts }: ArtifactsGalleryProps) {
             >
               <span className="artifactThumb" aria-hidden="true">
                 {artifact.thumbnail ? (
-                  <img src={artifact.thumbnail} alt="" loading="lazy" />
+                  <Image
+                    src={artifact.thumbnail}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 280px, (min-width: 768px) 33vw, 100vw"
+                    unoptimized={isSvgImage(artifact.thumbnail)}
+                  />
                 ) : (
                   <span className="artifactPlaceholder">Preview</span>
                 )}
@@ -140,7 +148,13 @@ export function ArtifactsGallery({ artifacts }: ArtifactsGalleryProps) {
 
             <div className="artifactModalPreview" aria-hidden="true">
               {activeArtifact.thumbnail ? (
-                <img src={activeArtifact.thumbnail} alt="" loading="lazy" />
+                <Image
+                  src={activeArtifact.thumbnail}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 840px, 100vw"
+                  unoptimized={isSvgImage(activeArtifact.thumbnail)}
+                />
               ) : (
                 <span className="artifactPlaceholder">Preview</span>
               )}
