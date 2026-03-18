@@ -1,8 +1,10 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { JourneySketchBoard } from "@/components/case/journey-sketch-board";
 import { getProjectBySlug, projects } from "@/data/projects";
+import { getPublicImageMetadata } from "@/lib/public-image-metadata";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -511,15 +513,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         index === 0
                           ? "projectMediaFloat projectMediaFloat--score"
                           : "projectMediaFloat projectMediaFloat--tier";
+                      const metadata = getPublicImageMetadata(mockup.src);
 
                       return (
-                        <img
+                        <Image
                           key={mockup.src}
                           className={floatClass}
                           src={mockup.src}
                           alt=""
                           aria-hidden="true"
-                          loading="lazy"
+                          width={metadata.width}
+                          height={metadata.height}
+                          sizes="(min-width: 768px) 280px, 240px"
+                          unoptimized={metadata.unoptimized}
                         />
                       );
                     })}
@@ -527,12 +533,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 )
               : heroImageSrc
               ? (
-                  <img
+                  <Image
                     className="projectMediaLogo projectMediaLogo--hero"
                     src={heroImageSrc}
                     alt=""
                     aria-hidden="true"
-                    loading="lazy"
+                    {...(() => {
+                      const metadata = getPublicImageMetadata(heroImageSrc);
+
+                      return {
+                        width: metadata.width,
+                        height: metadata.height,
+                        sizes: "(min-width: 768px) 300px, 220px",
+                        unoptimized: metadata.unoptimized,
+                      };
+                    })()}
                   />
                 )
               : (
