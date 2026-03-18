@@ -227,7 +227,8 @@ const projectLibrary: Project[] = [
     subtitle: "Produktfundament fra null",
     description:
       "Et digitalt system for å registrere, spore og forvalte inventar gjennom hele livssyklusen.",
-    logo: "/images/projects/resource/re-source-qr-card.png",
+    logo: "/images/projects/resource/re-source-projecthero-qr-code.svg",
+    heroImage: "/images/projects/resource/re-source-projecthero-qr-code.svg",
     story: {
       sections: [
         {
